@@ -42,7 +42,7 @@ defmodule DataForSeo do
   """
   @impl Behaviour
   defdelegate configure, to: DataForSeo.Config, as: :get
-  
+
   @doc """
   Provides general dataforseo API access interface.
   This method simply returns parsed json in Map structure.
@@ -51,7 +51,7 @@ defmodule DataForSeo do
   """
   @impl Behaviour
   defdelegate request(method, path), to: DataForSeo.API.Base
-  
+
   @doc """
   Provides general dataforseo API access interface.
   This method simply returns parsed json in Map structure.
@@ -60,4 +60,31 @@ defmodule DataForSeo do
   """
   @impl Behaviour
   defdelegate request(method, path, params), to: DataForSeo.API.Base
+
+  @doc """
+  POST v2/srp_tasks_post
+  ## Examples
+      DataForSeo.create_tasks(%{"Schrauben" => 123987}, "German", "20537,Hamburg,Germany", "google.de")
+  ## Reference
+  https://docs.dataforseo.com/v2/srp#setting-serp-tasks
+  """
+  @impl Behaviour
+  defdelegate create_tasks(
+                keys_with_unique_ids,
+                se_language,
+                loc_name_canonical,
+                se_name,
+                optional_params
+              ),
+              to: DataForSeo.API.Serp
+
+  @doc """
+  GET v2/srp_tasks_get
+  ## Examples
+      DataForSeo.completed_tasks
+  ## Reference
+  https://docs.dataforseo.com/v2/srp#get-serp-completed-tasks
+  """
+  @impl Behaviour
+  defdelegate completed_tasks, to: DataForSeo.API.Serp
 end
