@@ -1,0 +1,63 @@
+defmodule DataForSeo do
+  @moduledoc """
+  Provides access interfaces for the DataForSeo API.
+  """
+
+  alias DataForSeo.Behaviour
+  @behaviour Behaviour
+
+  # -------------- DataForSeo Settings -------------
+
+  @doc """
+  Provides DataForSeo configuration settings for accessing dataforseo server.
+  The specified configuration applies globally. Use `DataForSeo.configure/2`
+  for setting different configurations on each processes.
+  ## Examples
+      DataForSeo.configure(
+        login: System.get_env("DATAFORSEO_LOGIN"),
+        password: System.get_env("DATAFORSEO_PASSWORD")
+      )
+  """
+  @impl Behaviour
+  defdelegate configure(auth), to: DataForSeo.Config, as: :set
+
+  @doc """
+  Provides Auth configuration settings for accessing dataforseo server.
+  ## Options
+    The `scope` can have one of the following values.
+    * `:global` - configuration is shared for all processes.
+    * `:process` - configuration is isolated for each process.
+  ## Examples
+      DataForSeo.configure(
+        :process,
+        login: System.get_env("DATAFORSEO_LOGIN"),
+        password: System.get_env("DATAFORSEO_PASSWORD")
+      )
+  """
+  @impl Behaviour
+  defdelegate configure(scope, auth), to: DataForSeo.Config, as: :set
+
+  @doc """
+  Returns current Auth configuration settings for accessing dataforseo server.
+  """
+  @impl Behaviour
+  defdelegate configure, to: DataForSeo.Config, as: :get
+  
+  @doc """
+  Provides general dataforseo API access interface.
+  This method simply returns parsed json in Map structure.
+  ## Examples
+      DataForSeo.request(:get, "v2/cmn_user")
+  """
+  @impl Behaviour
+  defdelegate request(method, path), to: DataForSeo.API.Base
+  
+  @doc """
+  Provides general dataforseo API access interface.
+  This method simply returns parsed json in Map structure.
+  ## Examples
+      DataForSeo.request(:post, "v2/srp_tasks_post", [priority: 1, se_name: "google.de", se_language: "German", loc_name_canonical: "Hamburg,Germany", key: "Schrauben"])
+  """
+  @impl Behaviour
+  defdelegate request(method, path, params), to: DataForSeo.API.Base
+end
