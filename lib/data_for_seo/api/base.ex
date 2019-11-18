@@ -1,4 +1,6 @@
 defmodule DataForSeo.API.Base do
+  @base_url Application.get_env(:data_for_seo, :api)[:base_url]
+
   @moduledoc """
   Provides basic and common functionalities for DataForSeo API.
   """
@@ -6,23 +8,17 @@ defmodule DataForSeo.API.Base do
   @doc """
   Send request to the api.dataforseo.com server.
   """
-  def request(path, method, params \\ %{}) do
-    IO.inspect({path, method, params})
-    do_request(request_url(path), method, params)
+  def request(method, path, params \\ []) do
+    do_request(method, request_url(path), params)
   end
 
   def request_url(path) do
-    "https://api.dataforseo.com/#{path}"
+    "#{@base_url}/#{path}"
   end
 
-  defp do_request(url, method, params, options \\ [parse_result: true]) do
+  defp do_request(method, url, params, options \\ [parse_result: true]) do
     auth = DataForSeo.Config.get_tuples() |> verify_params
-
-    IO.inspect({url, method, params})
-
-    response = mojito_request(url, method, params, auth)
-
-    IO.inspect(response)
+    response = mojito_request(method, url, params, auth)
 
     case response do
       {:ok, r} ->
@@ -41,7 +37,7 @@ defmodule DataForSeo.API.Base do
 
   def verify_params(params), do: params
 
-  defp mojito_request(url, :get, params, auth) do
+  defp mojito_request(:get, url, params, auth) do
     url
     |> URI.parse()
     |> Map.put(:query, URI.encode_query(params))
@@ -49,12 +45,18 @@ defmodule DataForSeo.API.Base do
     |> Mojito.get([{"content-type", "application/json"}, auth_headers(auth)])
   end
 
-  defp mojito_request(url, :post, params, auth) do
+  defp mojito_request(:post, url, params, auth) do
     Mojito.post(
       url,
       [{"content-type", "application/json"}, auth_headers(auth)],
-      Jason.encode!(params)
+      params_to_json(params)
     )
+  end
+
+  defp params_to_json(params) do
+    params
+    |> Enum.into(Map.new())
+    |> Jason.encode!()
   end
 
   defp auth_headers(auth) do

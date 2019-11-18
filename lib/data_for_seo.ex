@@ -64,7 +64,7 @@ defmodule DataForSeo do
   @doc """
   POST v2/srp_tasks_post
   ## Examples
-      DataForSeo.create_tasks(%{"Schrauben" => 123987}, "German", "20537,Hamburg,Germany", "google.de")
+      DataForSeo.create_tasks(%{"Schrauben" => "123987"}, "German", "20537,Hamburg,Germany", "google.de")
   ## Reference
   https://docs.dataforseo.com/v2/srp#setting-serp-tasks
   """
