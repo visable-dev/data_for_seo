@@ -7,7 +7,11 @@ defmodule DataForSeo.MixProject do
       version: "0.1.0",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      description: description(),
+      package: package(),
+      source_url: "https://github.com/egze/data_for_seo",
+      name: "DataForSeo"
     ]
   end
 
@@ -24,6 +28,20 @@ defmodule DataForSeo.MixProject do
       {:mojito, "~> 0.5.0"},
       {:jason, "~> 1.1"},
       {:fake_server, "~> 2.1", only: :test}
+    ]
+  end
+
+  defp description do
+    """
+    DataForSEO client library for elixir.
+    """
+  end
+
+  defp package do
+    [
+      maintainers: ["egze"],
+      licenses: ["MIT"],
+      links: %{"GitLab" => "https://github.com/egze/data_for_seo"}
     ]
   end
 end
