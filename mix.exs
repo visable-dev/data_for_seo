@@ -22,7 +22,8 @@ defmodule DataForSeo.MixProject do
   defp deps do
     [
       {:mojito, "~> 0.5.0"},
-      {:jason, "~> 1.1"}
+      {:jason, "~> 1.1"},
+      {:fake_server, "~> 2.1", only: :test}
     ]
   end
 end
