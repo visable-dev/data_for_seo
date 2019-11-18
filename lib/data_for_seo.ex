@@ -87,4 +87,14 @@ defmodule DataForSeo do
   """
   @impl Behaviour
   defdelegate completed_tasks, to: DataForSeo.API.Serp
+
+  @doc """
+  GET v2/srp_tasks_get
+  ## Examples
+      DataForSeo.task_result(123456789)
+  ## Reference
+  https://docs.dataforseo.com/v2/srp#get-serp-results-by-task_id
+  """
+  @impl Behaviour
+  defdelegate task_result(task_id), to: DataForSeo.API.Serp
 end

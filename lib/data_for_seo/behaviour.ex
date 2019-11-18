@@ -12,4 +12,6 @@ defmodule DataForSeo.Behaviour do
   @callback create_tasks(map(), String.t(), String.t(), String.t(), Keyword.t()) ::
               DataForSeo.Serp.CreateTasksResponse.t()
   @callback completed_tasks :: DataForSeo.Serp.CompletedTasksResponse.t()
+
+  @callback task_result(integer()) :: DataForSeo.Serp.TaskResultResponse.t()
 end

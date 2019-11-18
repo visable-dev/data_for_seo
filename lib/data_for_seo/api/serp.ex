@@ -4,7 +4,7 @@ defmodule DataForSeo.API.Serp do
   """
 
   import DataForSeo.API.Base
-  alias DataForSeo.Serp.{CreateTasksResponse, CompletedTasksResponse}
+  alias DataForSeo.Serp.{CreateTasksResponse, CompletedTasksResponse, TaskResultResponse}
 
   @doc """
   Creates a task for each key.
@@ -53,5 +53,15 @@ defmodule DataForSeo.API.Serp do
   def completed_tasks do
     request(:get, "v2/srp_tasks_get")
     |> CompletedTasksResponse.build()
+  end
+
+  @doc """
+  Gets result for a single task.
+  ## Examples
+      DataForSeo.API.Serp.completed_tasks()
+  """
+  def task_result(task_id) do
+    request(:get, "v2/srp_tasks_get/#{task_id}")
+    |> TaskResultResponse.build()
   end
 end
