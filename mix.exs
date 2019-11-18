@@ -30,7 +30,8 @@ defmodule DataForSeo.MixProject do
     [
       {:mojito, "~> 0.5.0"},
       {:jason, "~> 1.1"},
-      {:fake_server, "~> 2.1", only: :test}
+      {:fake_server, "~> 2.1", only: :test},
+      {:ex_doc, ">= 0.0.0", only: [:dev, :docs]}
     ]
   end
 
