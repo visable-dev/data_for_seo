@@ -1,6 +1,4 @@
 defmodule DataForSeo.API.Base do
-  @base_url Application.get_env(:data_for_seo, :api)[:base_url]
-
   @moduledoc """
   Provides basic and common functionalities for DataForSeo API.
   """
@@ -13,7 +11,8 @@ defmodule DataForSeo.API.Base do
   end
 
   def request_url(path) do
-    "#{@base_url}/#{path}"
+    config = DataForSeo.Config.get_tuples()
+    "#{config[:base_url]}/#{path}"
   end
 
   defp do_request(method, url, params, options \\ [parse_result: true]) do
@@ -29,13 +28,13 @@ defmodule DataForSeo.API.Base do
     end
   end
 
-  def verify_params([]) do
+  defp verify_params([]) do
     raise DataForSeo.Error,
       message:
         "Auth parameters are not set. Use DataForSeo.configure function to set parameters in advance."
   end
 
-  def verify_params(params), do: params
+  defp verify_params(params), do: params
 
   defp mojito_request(:get, url, params, auth) do
     url

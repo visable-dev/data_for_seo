@@ -1,6 +1,6 @@
 defmodule DataForSeo.MixProject do
   use Mix.Project
-  
+
   @source_url "https://gitlab.com/egze/data_for_seo"
 
   def project do
@@ -14,7 +14,8 @@ defmodule DataForSeo.MixProject do
       package: package(),
       source_url: @source_url,
       name: "DataForSeo",
-      docs: [main: DataForSeo]
+      docs: [main: DataForSeo],
+      elixirc_paths: elixirc_paths(Mix.env())
     ]
   end
 
@@ -48,4 +49,7 @@ defmodule DataForSeo.MixProject do
       links: %{"GitLab" => @source_url}
     ]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 end

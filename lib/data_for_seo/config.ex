@@ -26,6 +26,20 @@ defmodule DataForSeo.Config do
   end
 
   @doc """
+  Add or change values
+  """
+  def add(value), do: add(current_scope(), value)
+
+  def add(:global, value) do
+    Application.put_env(:data_for_seo, :api, Keyword.merge(get_tuples() || [], value))
+  end
+
+  def add(:process, value) do
+    Process.put(:_data_for_seo_api, Keyword.merge(get_tuples() || [], value))
+    :ok
+  end
+
+  @doc """
   Get Auth configuration values in tuple format.
   """
   def get_tuples do

@@ -36,4 +36,13 @@ defmodule DataForSeo.ConfigTest do
     DataForSeo.Config.set(nil)
     assert DataForSeo.Config.get_tuples() == []
   end
+
+  describe "add/1" do
+    test "change options values" do
+      old_config = DataForSeo.Config.get_tuples()
+      DataForSeo.Config.add(login: "test")
+
+      assert DataForSeo.Config.get_tuples() == Keyword.merge(old_config, login: "test")
+    end
+  end
 end
