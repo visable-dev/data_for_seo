@@ -29,7 +29,7 @@ defmodule DataForSeo.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:mojito, "~> 0.5.0"},
+      {:mojito, ">= 0.5.0"},
       {:jason, "~> 1.1"},
       {:fake_server, "~> 2.1", only: :test},
       {:ex_doc, ">= 0.0.0", only: [:dev, :docs]}
