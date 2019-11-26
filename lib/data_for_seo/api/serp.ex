@@ -14,14 +14,14 @@ defmodule DataForSeo.API.Serp do
     * `:global` - configuration is shared for all processes.
     * `:process` - configuration is isolated for each process.
   ## Examples
-      DataForSeo.API.Serp.create_tasks(%{"Schrauben" => 123987}, "German", "20537,Hamburg,Germany", "google.de")
+      DataForSeo.API.Serp.create_tasks(%{"Schrauben" => 123987}, "German", "20537,Hamburg,Germany", "google.de", [])
   """
   def create_tasks(
         keys_with_post_ids,
         se_language,
         loc_name_canonical,
         se_name,
-        optional_params \\ []
+        optional_params
       )
       when is_map(keys_with_post_ids) do
     # TODO refactor this
@@ -41,8 +41,13 @@ defmodule DataForSeo.API.Serp do
         Map.put(acc, post_id, task_params)
       end)
 
-    request(:post, "v2/srp_tasks_post", data: all_params)
-    |> CreateTasksResponse.build()
+    case request(:post, "v2/srp_tasks_post", data: all_params) do
+      {:ok, map} ->
+        CreateTasksResponse.build(map)
+
+      {:error, error} ->
+        {:error, error}
+    end
   end
 
   @doc """
@@ -51,8 +56,13 @@ defmodule DataForSeo.API.Serp do
       DataForSeo.API.Serp.completed_tasks()
   """
   def completed_tasks do
-    request(:get, "v2/srp_tasks_get")
-    |> CompletedTasksResponse.build()
+    case request(:get, "v2/srp_tasks_get") do
+      {:ok, map} ->
+        CompletedTasksResponse.build(map)
+
+      {:error, error} ->
+        {:error, error}
+    end
   end
 
   @doc """
@@ -61,7 +71,12 @@ defmodule DataForSeo.API.Serp do
       DataForSeo.API.Serp.completed_tasks()
   """
   def task_result(task_id) do
-    request(:get, "v2/srp_tasks_get/#{task_id}")
-    |> TaskResultResponse.build()
+    case request(:get, "v2/srp_tasks_get/#{task_id}") do
+      {:ok, map} ->
+        TaskResultResponse.build(map)
+
+      {:error, error} ->
+        {:error, error}
+    end
   end
 end

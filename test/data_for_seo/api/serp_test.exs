@@ -9,7 +9,7 @@ defmodule DataForSeo.Api.SerpTest do
       DataForSeo.Config.add(:process, base_url: FakeServer.http_address())
       route("/v2/srp_tasks_post", RespFactory.build(:create_tasks))
 
-      Serp.create_tasks(%{"Schrauben" => 1234}, "German", "Germany", "google.de")
+      Serp.create_tasks(%{"Schrauben" => 1234}, "German", "Germany", "google.de", [])
 
       assert(
         request_received(
@@ -31,7 +31,7 @@ defmodule DataForSeo.Api.SerpTest do
       DataForSeo.Config.add(:process, base_url: FakeServer.http_address())
       route("/v2/srp_tasks_post", RespFactory.build(:create_tasks))
 
-      resp = Serp.create_tasks(%{"Schrauben" => 1234}, "German", "Germany", "google.de")
+      resp = Serp.create_tasks(%{"Schrauben" => 1234}, "German", "Germany", "google.de", [])
 
       assert(
         %DataForSeo.Serp.CreateTasksResponse{
@@ -166,6 +166,14 @@ defmodule DataForSeo.Api.SerpTest do
           status: "ok"
         } = resp
       )
+    end
+
+    test_with_server "it doesn't raise exception whe error commes from DataForSeo" do
+      DataForSeo.Config.add(:process, base_url: FakeServer.http_address())
+      route("/v2/srp_tasks_get/1", RespFactory.build(:bad))
+
+      result = Serp.task_result(1)
+      assert {:error, %{"code" => _, "message" => _}} = result
     end
   end
 end

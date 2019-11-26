@@ -67,11 +67,11 @@ defmodule DataForSeo.API.Base do
     parsed_body = Jason.decode!(body)
 
     case parsed_body do
-      %{"error" => %{"code" => code, "message" => message}} ->
-        raise(DataForSeo.Error, code: code, message: message)
+      %{"error" => error} ->
+        {:error, error}
 
       _ ->
-        parsed_body
+        {:ok, parsed_body}
     end
   end
 end

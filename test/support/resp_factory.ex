@@ -9,35 +9,16 @@ defmodule RespFactory do
   end
 
   def bad_response do
-    ok(
-      %{
-        "error" => %{
-          "test" => %{
-            "code" => 404,
-            "message" => "not found or not enough data: location"
-          }
-        },
-        "results" => %{
-          "test" => %{
-            "error" => %{
-              "code" => 404,
-              "message" => "not found or not enough data: location"
-            },
-            "key_id" => 7_281_593,
-            "loc_id" => nil,
-            "post_id" => "test",
-            "post_key" => "test",
-            "se_id" => nil,
-            "status" => "error",
-            "task_id" => nil
-          }
-        },
-        "results_count" => 1,
-        "results_time" => "0.0512 sec.",
-        "status" => "error"
+    ok(%{
+      "error" => %{
+        "code" => 400,
+        "message" => "this task id is used by another client, check the task id"
       },
-      %{"Content-Type" => "application/json"}
-    )
+      "results" => [],
+      "results_count" => 0,
+      "results_time" => "0.0437 sec.",
+      "status" => "error"
+    })
   end
 
   def create_tasks_response do

@@ -81,7 +81,7 @@ defmodule DataForSeo.Api.BaseTest do
 
       response = API.Base.request(:post, "test")
 
-      assert %{"error" => _, "results" => _, "status" => "error"} = response
+      assert {:error, %{"code" => _, "message" => _}} = response
     end
   end
 end

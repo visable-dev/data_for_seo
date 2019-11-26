@@ -74,7 +74,7 @@ defmodule DataForSeo do
                 se_language,
                 loc_name_canonical,
                 se_name,
-                optional_params
+                optional_params \\ []
               ),
               to: DataForSeo.API.Serp
 
