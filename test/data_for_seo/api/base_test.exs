@@ -1,87 +1,74 @@
 defmodule DataForSeo.Api.BaseTest do
   use ExUnit.Case
-  import FakeServer
 
   alias DataForSeo.API
 
+  setup do
+    bypass = Bypass.open()
+
+    DataForSeo.Config.add(:process, base_url: "http://localhost:#{bypass.port}")
+
+    {:ok, bypass: bypass}
+  end
+
   describe "request_url/1" do
-    test "it returnes full url" do
-      assert API.Base.request_url("test/request") == "http://localhost/test/request"
+    test "it returnes full url", %{bypass: bypass} do
+      assert API.Base.request_url("/test/request") == "http://localhost:#{bypass.port}/test/request"
     end
   end
 
   describe "request/3" do
-    test_with_server "it makes get request if get method passed" do
-      DataForSeo.Config.add(:process, base_url: FakeServer.http_address())
-      route("/test", RespFactory.build(:basic_test))
+    test "it makes GET request with query params", %{bypass: bypass} do
+      Bypass.expect(bypass, fn conn ->
+        conn = Plug.Conn.fetch_query_params(conn)
 
-      API.Base.request(:get, "test")
+        assert "GET" = conn.method
+        assert "/test" = conn.request_path
+        assert %{"param1" => "value1", "param2" => "value2"} = conn.query_params
 
-      assert request_received("/test", method: "GET", count: 1)
+        Plug.Conn.resp(conn, 200, "[]")
+      end)
+
+      API.Base.request(:get, "/test", [param1: "value1", param2: "value2"])
     end
 
-    test_with_server "it makes GET request with query params" do
-      DataForSeo.Config.add(:process, base_url: FakeServer.http_address())
-      route("/test", RespFactory.build(:basic_test))
+    test "it makes POST request with body params", %{bypass: bypass} do
+      Bypass.expect(bypass, fn conn ->
+        assert "POST" = conn.method
+        assert "/test" = conn.request_path
 
-      params = [param1: "value1", param2: "value2"]
-      API.Base.request(:get, "test", params)
+        {:ok, body, _} = Plug.Conn.read_body(conn)
+        assert body == Jason.encode!(%{param1: "value1", param2: "value2"})
 
-      assert request_received("/test", method: "GET", query: Enum.into(params, %{}), count: 1)
+        Plug.Conn.resp(conn, 200, "[]")
+      end)
+
+      API.Base.request(:post, "/test", %{param1: "value1", param2: "value2"})
     end
 
-    test_with_server "it makes post request if post method passed" do
-      DataForSeo.Config.add(:process, base_url: FakeServer.http_address())
-      route("/test", RespFactory.build(:basic_test))
+    test "it adds default headers to request", %{bypass: bypass} do
+      DataForSeo.Config.set(:process, login: "test", password: "test", base_url: "http://localhost:#{bypass.port}")
 
-      API.Base.request(:post, "test")
+      Bypass.expect(bypass, fn conn ->
+        assert "POST" = conn.method
+        assert "/test" = conn.request_path
+        assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
+        assert Enum.member?(conn.req_headers, Mojito.Headers.auth_header("test", "test"))
 
-      assert request_received("/test", method: "POST", count: 1)
+        Plug.Conn.resp(conn, 200, "[]")
+      end)
+
+      API.Base.request(:post, "/test")
     end
 
-    test_with_server "it makes POST request with body params" do
-      DataForSeo.Config.add(:process, base_url: FakeServer.http_address())
-      route("/test", RespFactory.build(:basic_test))
+    test "it works with bad responces", %{bypass: bypass} do
+      Bypass.expect(bypass, fn conn ->
+        Plug.Conn.resp(conn, 500, "{\"error\": {\"code\": 1234, \"message\":\"Error\"}}")
+      end)
 
-      params = [param1: "value1", param2: "value2"]
-      API.Base.request(:post, "test", params)
+      response = API.Base.request(:post, "/test")
 
-      assert request_received("/test", method: "POST", query: Enum.into(params, %{}), count: 1)
-    end
-
-    test_with_server "it adds default headers to request" do
-      DataForSeo.Config.set(:process,
-        base_url: FakeServer.http_address(),
-        login: "test",
-        password: "test"
-      )
-
-      route("/test", RespFactory.build(:basic_test))
-
-      default_headers = [
-        {"content-type", "application/json"},
-        Mojito.Headers.auth_header("test", "test")
-      ]
-
-      API.Base.request(:post, "test")
-
-      assert(
-        request_received(
-          "/test",
-          method: "POST",
-          headers: Enum.into(default_headers, %{}),
-          count: 1
-        )
-      )
-    end
-
-    test_with_server "it works with bad responces" do
-      DataForSeo.Config.set(:process, base_url: FakeServer.http_address())
-      route("/test", RespFactory.build(:bad))
-
-      response = API.Base.request(:post, "test")
-
-      assert {:error, %{"code" => _, "message" => _}} = response
+      assert {:error, %{"code" => 1234, "message" => "Error"}} = response
     end
   end
 end

@@ -12,7 +12,8 @@ defmodule DataForSeo.API.Base do
 
   def request_url(path) do
     config = DataForSeo.Config.get_tuples()
-    "#{config[:base_url]}/#{path}"
+
+    config[:base_url] <> path
   end
 
   defp do_request(method, url, params, options \\ [parse_result: true]) do
@@ -48,14 +49,8 @@ defmodule DataForSeo.API.Base do
     Mojito.post(
       url,
       [{"content-type", "application/json"}, auth_headers(auth)],
-      params_to_json(params)
+      Jason.encode!(params)
     )
-  end
-
-  defp params_to_json(params) do
-    params
-    |> Enum.into(Map.new())
-    |> Jason.encode!()
   end
 
   defp auth_headers(auth) do

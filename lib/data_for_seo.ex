@@ -1,6 +1,6 @@
 defmodule DataForSeo do
   @moduledoc """
-  Provides access interfaces for the DataForSeo API.
+  Provides access interfaces for the DataForSeo V3 API.
   """
 
   alias DataForSeo.Behaviour
@@ -47,7 +47,7 @@ defmodule DataForSeo do
   Provides general dataforseo API access interface.
   This method simply returns parsed json in Map structure.
   ## Examples
-      DataForSeo.request(:get, "v2/cmn_user")
+      DataForSeo.request(:get, "/v3/serp/google/languages")
   """
   @impl Behaviour
   defdelegate request(method, path), to: DataForSeo.API.Base
@@ -56,44 +56,40 @@ defmodule DataForSeo do
   Provides general dataforseo API access interface.
   This method simply returns parsed json in Map structure.
   ## Examples
-      DataForSeo.request(:post, "v2/srp_tasks_post", [priority: 1, se_name: "google.de", se_language: "German", loc_name_canonical: "Hamburg,Germany", key: "Schrauben"])
+      DataForSeo.request(:post, "/v3/serp/google/organic/task_post", [%{keyword: "Schrauben", language_code: "de-DE", location_name: "Hamburg,Hamburg,Germany", se_domain: "google.de"}])
   """
   @impl Behaviour
   defdelegate request(method, path, params), to: DataForSeo.API.Base
 
   @doc """
-  POST v2/srp_tasks_post
+  POST /v3/serp/google/organic/task_post
   ## Examples
-      DataForSeo.create_tasks(%{"Schrauben" => "123987"}, "German", "20537,Hamburg,Germany", "google.de")
+      DataForSeo.API.Serp.create_tasks("Schrauben")
+      DataForSeo.API.Serp.create_tasks(["Schrauben", "Blumen"])
+      DataForSeo.API.Serp.create_tasks(%{"Schrauben" => "123987", "Blumen" => "789231"})
+      DataForSeo.API.Serp.create_tasks(%{"Schrauben" => "123987", "Blumen" => "789231"},  language_code: "de-DE", location_name: "20537,Hamburg,Germany", se_domain: "google.de")
   ## Reference
-  https://docs.dataforseo.com/v2/srp#setting-serp-tasks
+  https://docs.dataforseo.com/v3/serp/google/organic/task_post/
   """
   @impl Behaviour
-  defdelegate create_tasks(
-                keys_with_unique_ids,
-                se_language,
-                loc_name_canonical,
-                se_name,
-                optional_params \\ []
-              ),
-              to: DataForSeo.API.Serp
+  defdelegate create_tasks(keywords_data, params \\ []), to: DataForSeo.API.Serp
 
   @doc """
-  GET v2/srp_tasks_get
+  GET /v3/serp/google/organic/tasks_ready
   ## Examples
       DataForSeo.completed_tasks
   ## Reference
-  https://docs.dataforseo.com/v2/srp#get-serp-completed-tasks
+  https://docs.dataforseo.com/v3/serp/google/organic/tasks_ready/
   """
   @impl Behaviour
   defdelegate completed_tasks, to: DataForSeo.API.Serp
 
   @doc """
-  GET v2/srp_tasks_get
+  GET /v3/serp/google/organic/task_get/regular/$id
   ## Examples
       DataForSeo.task_result(123456789)
   ## Reference
-  https://docs.dataforseo.com/v2/srp#get-serp-results-by-task_id
+  https://docs.dataforseo.com/v3/serp/google/organic/task_get/regular/
   """
   @impl Behaviour
   defdelegate task_result(task_id), to: DataForSeo.API.Serp

@@ -4,44 +4,27 @@ defmodule DataForSeo.API.Serp do
   """
 
   import DataForSeo.API.Base
-  alias DataForSeo.Serp.{CreateTasksResponse, CompletedTasksResponse, TaskResultResponse}
+  alias DataForSeo.Serp.{CreateTasksResponse, CompletedTasks, TaskResult}
 
   @doc """
-  Creates a task for each key.
+  Creates a task for each keyword.
   ## Options
-    The `keys_with_post_ids` is a map with the key => post_id. You will need post_id later
-    to find your result in the completed tasks.
-    * `:global` - configuration is shared for all processes.
-    * `:process` - configuration is isolated for each process.
+    Keyword, or
+    list of keywords, or
+    a map with the `keyword => tag relation`. You can use tags later to find your result in the completed tasks.
+    Also additional parameters can be passed as a keyword list: https://docs.dataforseo.com/v3/serp/google/organic/task_post
   ## Examples
-      DataForSeo.API.Serp.create_tasks(%{"Schrauben" => 123987}, "German", "20537,Hamburg,Germany", "google.de", [])
+      DataForSeo.API.Serp.create_tasks("Schrauben")
+      DataForSeo.API.Serp.create_tasks(["Schrauben", "Blumen"])
+      DataForSeo.API.Serp.create_tasks(%{"Schrauben" => "123987", "Blumen" => "789231"})
+      DataForSeo.API.Serp.create_tasks(%{"Schrauben" => "123987", "Blumen" => "789231"},  language_code: "de-DE", location_name: "20537,Hamburg,Germany", se_domain: "google.de")
   """
-  def create_tasks(
-        keys_with_post_ids,
-        se_language,
-        loc_name_canonical,
-        se_name,
-        optional_params
-      )
-      when is_map(keys_with_post_ids) do
-    # TODO refactor this
-    all_params =
-      Enum.reduce(keys_with_post_ids, %{}, fn {key, post_id}, acc ->
-        task_params =
-          Map.merge(
-            Enum.into(optional_params, Map.new()),
-            %{
-              key: key,
-              se_language: se_language,
-              loc_name_canonical: loc_name_canonical,
-              se_name: se_name
-            }
-          )
-
-        Map.put(acc, post_id, task_params)
-      end)
-
-    case request(:post, "v2/srp_tasks_post", data: all_params) do
+  def create_tasks(keywords_data, params \\ []) do
+    case request(
+           :post,
+           "/v3/serp/google/organic/task_post",
+           build_request_data(keywords_data, params)
+         ) do
       {:ok, map} ->
         CreateTasksResponse.build(map)
 
@@ -51,14 +34,14 @@ defmodule DataForSeo.API.Serp do
   end
 
   @doc """
-  Gets completed tasks. All returned tasks are then removed from completed list. So be sure to save and process them.
+  Gets the list of completed tasks ids.
   ## Examples
       DataForSeo.API.Serp.completed_tasks()
   """
   def completed_tasks do
-    case request(:get, "v2/srp_tasks_get") do
+    case request(:get, "/v3/serp/google/organic/tasks_ready") do
       {:ok, map} ->
-        CompletedTasksResponse.build(map)
+        CompletedTasks.build(map)
 
       {:error, error} ->
         {:error, error}
@@ -66,17 +49,46 @@ defmodule DataForSeo.API.Serp do
   end
 
   @doc """
-  Gets result for a single task.
+  Gets result for a single task. The fetched tasks are then removed from completed list. So be sure to save and process them.
   ## Examples
-      DataForSeo.API.Serp.completed_tasks()
+      DataForSeo.API.Serp.task_result("test-task-id")
   """
   def task_result(task_id) do
-    case request(:get, "v2/srp_tasks_get/#{task_id}") do
+    case request(:get, "/v3/serp/google/organic/task_get/regular/#{task_id}") do
       {:ok, map} ->
-        TaskResultResponse.build(map)
+        TaskResult.build(map)
 
       {:error, error} ->
         {:error, error}
     end
+  end
+
+  # Private functions
+
+  defp build_request_data(keywords_with_tags, params) when is_map(keywords_with_tags) do
+    Enum.map(keywords_with_tags, fn {keyword, tag} ->
+      Map.merge(request_params(params), %{keyword: keyword, tag: tag})
+    end)
+  end
+
+  defp build_request_data(keywords, params) when is_list(keywords) do
+    Enum.map(keywords, fn keyword -> Map.merge(request_params(params), %{keyword: keyword}) end)
+  end
+
+  defp build_request_data(keyword, params) when is_binary(keyword) do
+    [Map.merge(request_params(params), %{keyword: keyword})]
+  end
+
+  defp request_params(params) do
+    config = DataForSeo.Config.get_tuples()
+
+    Map.merge(
+      Enum.into(params, Map.new()),
+      %{
+        language_code: Keyword.get(params, :language_code, config[:default_language_code]),
+        location_name: Keyword.get(params, :location_name, config[:default_location_name]),
+        se_domain: Keyword.get(params, :se_domain, config[:default_se_domain])
+      }
+    )
   end
 end

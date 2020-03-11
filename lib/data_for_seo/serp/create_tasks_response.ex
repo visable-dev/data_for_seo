@@ -10,26 +10,17 @@ defmodule DataForSeo.Serp.CreateTasksResponse do
   defstruct [:status, :error, :results_time, :results_count, :results]
   @type t :: %__MODULE__{}
 
-  def build(map_with_string_keys) do
-    map_with_atom_keys =
-      Map.new(map_with_string_keys, fn {key, value} ->
-        case key do
-          "results" ->
-            {String.to_atom(key), build_tasks(value)}
+  def build(data) do
+    case data["status_code"] do
+      20000 ->
+        {:ok, build_response_for_tasks(data["tasks"])}
 
-          _ ->
-            {String.to_atom(key), value}
-        end
-      end)
-
-    struct(__MODULE__, map_with_atom_keys)
+      _ ->
+        {:error, {data["status_code"], data["status_message"]}}
+    end
   end
 
-  defp build_tasks(tasks_map) do
-    tasks_map
-    |> Enum.map(fn {key, task_map} ->
-      {key, CreatedTask.build(task_map)}
-    end)
-    |> Enum.into(%{})
+  defp build_response_for_tasks(tasks) do
+    Enum.map(tasks, &CreatedTask.build/1)
   end
 end
