@@ -34,6 +34,7 @@ defmodule DataForSeo.ConfigTest do
 
   test "get_tuples returns empty list when config is not set" do
     DataForSeo.Config.set(nil)
+
     assert DataForSeo.Config.get_tuples() == []
   end
 

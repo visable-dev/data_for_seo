@@ -6,7 +6,7 @@ defmodule DataForSeo.MixProject do
   def project do
     [
       app: :data_for_seo,
-      version: "0.2.0",
+      version: "0.3.0",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -29,10 +29,11 @@ defmodule DataForSeo.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:mojito, ">= 0.5.0"},
-      {:jason, "~> 1.1"},
       {:bypass, "~> 1.0", only: :test},
-      {:ex_doc, ">= 0.0.0", only: [:dev, :docs]}
+      {:ex_doc, ">= 0.0.0", only: [:dev, :docs]},
+      {:jason, "~> 1.1"},
+      {:mojito, ">= 0.5.0"},
+      {:spect, "~> 0.3.1"}
     ]
   end
 

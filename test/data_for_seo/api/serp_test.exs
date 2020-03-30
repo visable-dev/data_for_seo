@@ -3,6 +3,8 @@ defmodule DataForSeo.Api.SerpTest do
 
   alias DataForSeo.API.Serp
 
+  import RespFactory
+
   setup do
     bypass = Bypass.open()
 
@@ -11,8 +13,8 @@ defmodule DataForSeo.Api.SerpTest do
     {:ok, bypass: bypass}
   end
 
-  describe "create_tasks/1 with a string keyword" do
-    test "it makes create_tasks POST request with params", %{bypass: bypass} do
+  describe "task_post/1 with a string keyword" do
+    test "it makes task_post POST request with params", %{bypass: bypass} do
       Bypass.expect(bypass, fn conn ->
         assert "POST" = conn.method
         assert "/v3/serp/google/organic/task_post" = conn.request_path
@@ -35,27 +37,22 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          "{\"version\":\"0.1.20200310\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0.0617sec.\",\"cost\":0.00075,\"tasks_count\":1,\"tasks_error\":0,\"tasks\":[{\"id\":\"03101544-9334-0066-0000-f1b58404c15a\",\"status_code\":20100,\"status_message\":\"TaskCreated.\",\"time\":\"0.0053sec.\",\"cost\":0.00075,\"result_count\":0,\"path\":[\"v3\",\"serp\",\"google\",\"organic\",\"task_post\"],\"data\":{\"api\":\"serp\",\"function\":\"task_post\",\"se\":\"google\",\"se_type\":\"organic\",\"keyword\":\"Schrauben\",\"language_code\":\"en\",\"location_name\":\"San Francisco,California,United States\",\"se_domain\":\"google.com\",\"device\":\"desktop\",\"os\":\"windows\"},\"result\":null}]}"
+          task_post_single_response()
         )
       end)
 
-      resp = Serp.create_tasks("Schrauben")
+      assert {:ok, resp} = Serp.task_post("Schrauben")
 
-      assert {:ok, arr} = resp
-
-      assert %DataForSeo.Serp.CreatedTask{
-               cost: 7.5e-4,
-               id: "03101544-9334-0066-0000-f1b58404c15a",
-               keyword: "Schrauben",
-               status_code: 20100,
-               status_message: "TaskCreated.",
-               tag: nil
-             } = List.first(arr)
+      assert %DataForSeo.Serp.Response{tasks: tasks, tasks_count: 1} = resp
+      task = tasks |> hd
+      assert task.id == "01291721-1535-0066-0000-8f0635c0dc89"
+      assert task.data.keyword == "Schrauben"
+      assert Enum.count(tasks) == 1
     end
   end
 
-  describe "create_tasks/1 with a list of keywords" do
-    test "it makes create_tasks POST request with params", %{bypass: bypass} do
+  describe "task_post/1 with a list of keywords" do
+    test "it makes task_post POST request with params", %{bypass: bypass} do
       Bypass.expect(bypass, fn conn ->
         assert "POST" = conn.method
         assert "/v3/serp/google/organic/task_post" = conn.request_path
@@ -84,36 +81,25 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          "{\"version\":\"0.1.20200310\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0.0671sec.\",\"cost\":0.0015,\"tasks_count\":2,\"tasks_error\":0,\"tasks\":[{\"id\":\"03101557-9334-0066-0000-13bd3f91bb7f\",\"status_code\":20100,\"status_message\":\"TaskCreated.\",\"time\":\"0.0041sec.\",\"cost\":0.00075,\"result_count\":0,\"path\":[\"v3\",\"serp\",\"google\",\"organic\",\"task_post\"],\"data\":{\"api\":\"serp\",\"function\":\"task_post\",\"se\":\"google\",\"se_type\":\"organic\",\"keyword\":\"Schrauben\",\"language_code\":\"en\",\"location_name\":\"San Francisco,California,United States\",\"se_domain\":\"google.com\",\"device\":\"desktop\",\"os\":\"windows\"},\"result\":null},{\"id\":\"03101557-9334-0066-0000-42d70ed95cf1\",\"status_code\":20100,\"status_message\":\"TaskCreated.\",\"time\":\"0.0039sec.\",\"cost\":0.00075,\"result_count\":0,\"path\":[\"v3\",\"serp\",\"google\",\"organic\",\"task_post\"],\"data\":{\"api\":\"serp\",\"function\":\"task_post\",\"se\":\"google\",\"se_type\":\"organic\",\"keyword\":\"Blumen\",\"language_code\":\"en\",\"location_name\":\"San Francisco,California,United States\",\"se_domain\":\"google.com\",\"device\":\"desktop\",\"os\":\"windows\"},\"result\":null}]}"
+          task_post_list_response()
         )
       end)
 
-      resp = Serp.create_tasks(["Schrauben", "Blumen"])
+      assert {:ok, resp} = Serp.task_post(["Schrauben", "Blumen"])
 
-      assert {:ok, arr} = resp
+      assert %DataForSeo.Serp.Response{tasks: tasks, tasks_count: 2} = resp
+      [task1, task2] = tasks
 
-      assert %DataForSeo.Serp.CreatedTask{
-               cost: 7.5e-4,
-               id: "03101557-9334-0066-0000-13bd3f91bb7f",
-               keyword: "Schrauben",
-               status_code: 20100,
-               status_message: "TaskCreated.",
-               tag: nil
-             } = List.first(arr)
+      assert task1.id == "01291721-1535-0066-0000-8f0635c0dc89"
+      assert task1.data.keyword == "Schrauben"
 
-      assert %DataForSeo.Serp.CreatedTask{
-               cost: 7.5e-4,
-               id: "03101557-9334-0066-0000-42d70ed95cf1",
-               keyword: "Blumen",
-               status_code: 20100,
-               status_message: "TaskCreated.",
-               tag: nil
-             } = List.last(arr)
+      assert task2.id == "01291721-1535-0066-0000-2e7a8bf7302c"
+      assert task2.data.keyword == "Blumen"
     end
   end
 
-  describe "create_tasks/1 with a list keywords map" do
-    test "it makes create_tasks POST request with params", %{bypass: bypass} do
+  describe "task_post/1 with a list keywords map" do
+    test "it makes task_post POST request with params", %{bypass: bypass} do
       Bypass.expect(bypass, fn conn ->
         assert "POST" = conn.method
         assert "/v3/serp/google/organic/task_post" = conn.request_path
@@ -144,36 +130,25 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          "{\"version\":\"0.1.20200310\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0.0361sec.\",\"cost\":0.0015,\"tasks_count\":2,\"tasks_error\":0,\"tasks\":[{\"id\":\"03101628-9334-0066-0000-df28eb43dfd2\",\"status_code\":20100,\"status_message\":\"TaskCreated.\",\"time\":\"0.0037sec.\",\"cost\":0.00075,\"result_count\":0,\"path\":[\"v3\",\"serp\",\"google\",\"organic\",\"task_post\"],\"data\":{\"api\":\"serp\",\"function\":\"task_post\",\"se\":\"google\",\"se_type\":\"organic\",\"keyword\":\"Blumen\",\"language_code\":\"en\",\"location_name\":\"San Francisco,California,United States\",\"se_domain\":\"google.com\",\"tag\":\"test-tag-2\",\"device\":\"desktop\",\"os\":\"windows\"},\"result\":null},{\"id\":\"03101628-9334-0066-0000-34ca7793d74a\",\"status_code\":20100,\"status_message\":\"TaskCreated.\",\"time\":\"0.0046sec.\",\"cost\":0.00075,\"result_count\":0,\"path\":[\"v3\",\"serp\",\"google\",\"organic\",\"task_post\"],\"data\":{\"api\":\"serp\",\"function\":\"task_post\",\"se\":\"google\",\"se_type\":\"organic\",\"keyword\":\"Schrauben\",\"language_code\":\"en\",\"location_name\":\"San Francisco,California,United States\",\"se_domain\":\"google.com\",\"tag\":\"test-tag-1\",\"device\":\"desktop\",\"os\":\"windows\"},\"result\":null}]}"
+          task_post_list_response()
         )
       end)
 
-      resp = Serp.create_tasks(%{"Schrauben" => "test-tag-1", "Blumen" => "test-tag-2"})
+      {:ok, resp} = Serp.task_post(%{"Schrauben" => "test-tag-1", "Blumen" => "test-tag-2"})
 
-      assert {:ok, arr} = resp
+      assert %DataForSeo.Serp.Response{tasks: tasks, tasks_count: 2} = resp
+      [task1, task2] = tasks
 
-      assert %DataForSeo.Serp.CreatedTask{
-               cost: 7.5e-4,
-               id: "03101628-9334-0066-0000-df28eb43dfd2",
-               keyword: "Blumen",
-               status_code: 20100,
-               status_message: "TaskCreated.",
-               tag: "test-tag-2"
-             } = List.first(arr)
+      assert task1.id == "01291721-1535-0066-0000-8f0635c0dc89"
+      assert task1.data.keyword == "Schrauben"
 
-      assert %DataForSeo.Serp.CreatedTask{
-               cost: 7.5e-4,
-               id: "03101628-9334-0066-0000-34ca7793d74a",
-               keyword: "Schrauben",
-               status_code: 20100,
-               status_message: "TaskCreated.",
-               tag: "test-tag-1"
-             } = List.last(arr)
+      assert task2.id == "01291721-1535-0066-0000-2e7a8bf7302c"
+      assert task2.data.keyword == "Blumen"
     end
   end
 
-  describe "create_tasks/2 with a string keyword and additional params" do
-    test "it makes create_tasks POST request with params", %{bypass: bypass} do
+  describe "task_post/2 with a string keyword and additional params" do
+    test "it makes task_post POST request with params", %{bypass: bypass} do
       Bypass.expect(bypass, fn conn ->
         assert "POST" = conn.method
         assert "/v3/serp/google/organic/task_post" = conn.request_path
@@ -196,31 +171,29 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          "{\"version\":\"0.1.20200310\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0.0879sec.\",\"cost\":0.00075,\"tasks_count\":1,\"tasks_error\":0,\"tasks\":[{\"id\":\"03101638-9334-0066-0000-44b65a6119fb\",\"status_code\":20100,\"status_message\":\"TaskCreated.\",\"time\":\"0.0040sec.\",\"cost\":0.00075,\"result_count\":0,\"path\":[\"v3\",\"serp\",\"google\",\"organic\",\"task_post\"],\"data\":{\"api\":\"serp\",\"function\":\"task_post\",\"se\":\"google\",\"se_type\":\"organic\",\"keyword\":\"Screws\",\"language_code\":\"en\",\"location_name\":\"Chicago,IL,UnitedStates\",\"se_domain\":\"google.com\",\"device\":\"desktop\",\"os\":\"windows\"},\"result\":null}]}"
+          task_post_list_response()
         )
       end)
 
-      resp =
-        Serp.create_tasks("Screws",
+      {:ok, resp} =
+        Serp.task_post("Screws",
           language_code: "en",
           location_name: "Chicago, IL,United States",
           se_domain: "google.com"
         )
 
-      assert {:ok, arr} = resp
+      assert %DataForSeo.Serp.Response{tasks: tasks, tasks_count: 2} = resp
+      [task1, task2] = tasks
 
-      assert %DataForSeo.Serp.CreatedTask{
-               cost: 7.5e-4,
-               id: "03101638-9334-0066-0000-44b65a6119fb",
-               keyword: "Screws",
-               status_code: 20100,
-               status_message: "TaskCreated.",
-               tag: nil
-             } = List.first(arr)
+      assert task1.id == "01291721-1535-0066-0000-8f0635c0dc89"
+      assert task1.data.keyword == "Schrauben"
+
+      assert task2.id == "01291721-1535-0066-0000-2e7a8bf7302c"
+      assert task2.data.keyword == "Blumen"
     end
   end
 
-  describe "completed_tasks/0" do
+  describe "tasks_ready/0" do
     test "it returns a list of completed tasks ids", %{bypass: bypass} do
       Bypass.expect(bypass, fn conn ->
         assert "GET" = conn.method
@@ -229,16 +202,17 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          "{\"version\":\"0.1.20200310\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0.0835sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":0,\"tasks\":[{\"id\":\"03101719-9334-0087-0000-fea493a70e72\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0.0555sec.\",\"cost\":0,\"result_count\":2,\"path\":[\"v3\",\"serp\",\"google\",\"organic\",\"tasks_ready\"],\"data\":{\"api\":\"serp\",\"function\":\"tasks_ready\",\"se\":\"google\",\"se_type\":\"organic\"},\"result\":[{\"id\":\"03101628-9334-0066-0000-34ca7793d74a\",\"se\":\"google\",\"se_type\":\"organic\",\"date_posted\":\"2020-03-1014:28:11+00:00\",\"endpoint_regular\":\"\\/v3\\/serp\\/google\\/organic\\/task_get\\/regular\\/03101628-9334-0066-0000-34ca7793d74a\",\"endpoint_advanced\":\"\\/v3\\/serp\\/google\\/organic\\/task_get\\/advanced\\/03101628-9334-0066-0000-34ca7793d74a\",\"endpoint_html\":\"\\/v3\\/serp\\/google\\/organic\\/task_get\\/html\\/03101628-9334-0066-0000-34ca7793d74a\"},{\"id\":\"03101628-9334-0066-0000-df28eb43dfd2\",\"se\":\"google\",\"se_type\":\"organic\",\"date_posted\":\"2020-03-1014:28:11+00:00\",\"endpoint_regular\":\"\\/v3\\/serp\\/google\\/organic\\/task_get\\/regular\\/03101628-9334-0066-0000-df28eb43dfd2\",\"endpoint_advanced\":\"\\/v3\\/serp\\/google\\/organic\\/task_get\\/advanced\\/03101628-9334-0066-0000-df28eb43dfd2\",\"endpoint_html\":\"\\/v3\\/serp\\/google\\/organic\\/task_get\\/html\\/03101628-9334-0066-0000-df28eb43dfd2\"}]}]}"
+          tasks_ready_response()
         )
       end)
 
-      resp = Serp.completed_tasks()
+      assert {:ok, %DataForSeo.Serp.Response{tasks: [%DataForSeo.Serp.Task{result: results}]}} =
+               Serp.tasks_ready()
 
-      assert {:ok, arr} = resp
+      task_ids = Enum.map(results, & &1.id)
 
-      assert Enum.member?(arr, "03101628-9334-0066-0000-34ca7793d74a")
-      assert Enum.member?(arr, "03101628-9334-0066-0000-df28eb43dfd2")
+      assert Enum.member?(task_ids, "11081554-0696-0066-0000-27e68ec15871")
+      assert Enum.member?(task_ids, "11151406-0696-0066-0000-c4ece317cdb2")
     end
   end
 
@@ -253,52 +227,18 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          "{\"version\":\"0.1.20200310\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0.1913sec.\",\"cost\":0,\"tasks_count\":1,\"tasks_error\":0,\"tasks\":[{\"id\":\"03101638-9334-0066-0000-44b65a6119fb\",\"status_code\":20000,\"status_message\":\"Ok.\",\"time\":\"0.1010sec.\",\"cost\":0,\"result_count\":1,\"path\":[\"v3\",\"serp\",\"google\",\"organic\",\"task_get\",\"regular\",\"03101638-9334-0066-0000-44b65a6119fb\"],\"data\":{\"api\":\"serp\",\"function\":\"task_get\",\"se\":\"google\",\"se_type\":\"organic\",\"keyword\":\"Screws\",\"language_code\":\"en\",\"location_name\":\"Chicago,IL,UnitedStates\",\"se_domain\":\"google.com\",\"device\":\"desktop\",\"os\":\"windows\"},\"result\":[{\"keyword\":\"Screws\",\"type\":\"organic\",\"se_domain\":\"google.com\",\"location_code\":200602,\"language_code\":\"en\",\"check_url\":\"https:\/\/www.google.com\/search?q=Screws&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCe3L9NA8LA6IEQDAwAmtpuCv\",\"datetime\":\"2020-03-1014:39:42+00:00\",\"spell\":null,\"item_types\":[\"video\",\"organic\",\"people_also_ask\",\"images\",\"local_pack\",\"paid\",\"related_searches\"],\"se_results_count\":754000000,\"items_count\":99,\"items\":[{\"type\":\"paid\",\"rank_group\":1,\"rank_absolute\":1,\"domain\":\"www.fastenersuperstore.com\",\"title\":\"BuyBulkScrewsOnline|FastenerBuyingMadeSimple‎\",\"description\":\"AllTypes\/Styles\/Heads\/Drives\/Etc.BuyBulk&Save.OrdersShipToday.AllPricingOnline.QuickShipping.34,000+UniqueParts.Types:ConcreteScrews,DeckScrews,DrywallScrews,LagScrews,MachineScrews,MetricScrews,SelfDrillingScrews,WeldScrews.\",\"url\":\"https:\/\/www.fastenersuperstore.com\/category\/screws\",\"breadcrumb\":\"www.fastenersuperstore.com\/Screws\"},{\"type\":\"organic\",\"rank_group\":1,\"rank_absolute\":6,\"domain\":\"www.homedepot.com\",\"title\":\"Screws-Fasteners-TheHomeDepot\",\"description\":\"Getfree2-dayshippingonqualifiedScrewsproductsorbuyHardwaredepartmentproductstodaywithBuyOnlinePickUpinStore.\",\"url\":\"https:\/\/www.homedepot.com\/b\/Hardware-Fasteners-Screws\/N-5yc1vZc2b0\",\"breadcrumb\":\"https:\/\/www.homedepot.com›Hardware-Fasteners-Screws\"}]}]}]}"
+          task_result_response()
         )
       end)
 
-      resp = Serp.task_result("03101638-9334-0066-0000-44b65a6119fb")
+      resp = Serp.task_get("03101638-9334-0066-0000-44b65a6119fb")
 
-      assert {:ok,
-              %DataForSeo.Serp.TaskResult{
-                check_url:
-                  "https://www.google.com/search?q=Screws&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCe3L9NA8LA6IEQDAwAmtpuCv",
-                cost: 0,
-                id: "03101638-9334-0066-0000-44b65a6119fb",
-                items_count: 99,
-                keyword: "Screws",
-                language_code: "en",
-                location_name: "Chicago,IL,UnitedStates",
-                results: [
-                  %{
-                    breadcrumb: "www.fastenersuperstore.com/Screws",
-                    description:
-                      "AllTypes/Styles/Heads/Drives/Etc.BuyBulk&Save.OrdersShipToday.AllPricingOnline.QuickShipping.34,000+UniqueParts.Types:ConcreteScrews,DeckScrews,DrywallScrews,LagScrews,MachineScrews,MetricScrews,SelfDrillingScrews,WeldScrews.",
-                    domain: "www.fastenersuperstore.com",
-                    rank_absolute: 1,
-                    rank_group: 1,
-                    title: "BuyBulkScrewsOnline|FastenerBuyingMadeSimple‎",
-                    type: "paid",
-                    url: "https://www.fastenersuperstore.com/category/screws"
-                  },
-                  %{
-                    breadcrumb: "https://www.homedepot.com›Hardware-Fasteners-Screws",
-                    description:
-                      "Getfree2-dayshippingonqualifiedScrewsproductsorbuyHardwaredepartmentproductstodaywithBuyOnlinePickUpinStore.",
-                    domain: "www.homedepot.com",
-                    rank_absolute: 6,
-                    rank_group: 1,
-                    title: "Screws-Fasteners-TheHomeDepot",
-                    type: "organic",
-                    url: "https://www.homedepot.com/b/Hardware-Fasteners-Screws/N-5yc1vZc2b0"
-                  }
-                ],
-                se_domain: "google.com",
-                se_results_count: 754_000_000,
-                status_code: 20000,
-                status_message: "Ok.",
-                tag: nil
-              }} = resp
+      assert {:ok, %DataForSeo.Serp.GetTask.Response{} = response} = resp
+      task = response.tasks |> hd()
+      result = task.result |> hd()
+      item = result.items |> hd()
+
+      assert item.domain == "www.bookingbuddy.com"
     end
   end
 end

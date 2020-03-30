@@ -3,8 +3,7 @@ defmodule DataForSeo.API.Serp do
   Provides SERP API interfaces.
   """
 
-  import DataForSeo.API.Base
-  alias DataForSeo.Serp.{CreateTasksResponse, CompletedTasks, TaskResult}
+  alias DataForSeo.{Parser, Request}
 
   @doc """
   Creates a task for each keyword.
@@ -12,21 +11,20 @@ defmodule DataForSeo.API.Serp do
     Keyword, or
     list of keywords, or
     a map with the `keyword => tag relation`. You can use tags later to find your result in the completed tasks.
-    Also additional parameters can be passed as a keyword list: https://docs.dataforseo.com/v3/serp/google/organic/task_post
+    Also additional parameters can be passed as a keyword list: https://docs.dataforseo.com/v3/serp/google/organic/task_post/
   ## Examples
-      DataForSeo.API.Serp.create_tasks("Schrauben")
-      DataForSeo.API.Serp.create_tasks(["Schrauben", "Blumen"])
-      DataForSeo.API.Serp.create_tasks(%{"Schrauben" => "123987", "Blumen" => "789231"})
-      DataForSeo.API.Serp.create_tasks(%{"Schrauben" => "123987", "Blumen" => "789231"},  language_code: "de-DE", location_name: "20537,Hamburg,Germany", se_domain: "google.de")
+      DataForSeo.API.Serp.task_post("Schrauben")
+      DataForSeo.API.Serp.task_post(["Schrauben", "Blumen"])
+      DataForSeo.API.Serp.task_post(%{"Schrauben" => "123987", "Blumen" => "789231"})
+      DataForSeo.API.Serp.task_post(%{"Schrauben" => "123987", "Blumen" => "789231"},  language_code: "de-DE", location_name: "20537,Hamburg,Germany", se_domain: "google.de")
   """
-  def create_tasks(keywords_data, params \\ []) do
-    case request(
-           :post,
+  def task_post(keywords_data, params \\ []) do
+    case Request.post(
            "/v3/serp/google/organic/task_post",
            build_request_data(keywords_data, params)
          ) do
-      {:ok, map} ->
-        CreateTasksResponse.build(map)
+      {:ok, resp} ->
+        {:ok, Parser.parse(resp, :task_post)}
 
       {:error, error} ->
         {:error, error}
@@ -36,12 +34,12 @@ defmodule DataForSeo.API.Serp do
   @doc """
   Gets the list of completed tasks ids.
   ## Examples
-      DataForSeo.API.Serp.completed_tasks()
+      DataForSeo.API.Serp.tasks_ready()
   """
-  def completed_tasks do
-    case request(:get, "/v3/serp/google/organic/tasks_ready") do
-      {:ok, map} ->
-        CompletedTasks.build(map)
+  def tasks_ready do
+    case Request.get("/v3/serp/google/organic/tasks_ready") do
+      {:ok, resp} ->
+        {:ok, Parser.parse(resp, :tasks_ready)}
 
       {:error, error} ->
         {:error, error}
@@ -51,12 +49,12 @@ defmodule DataForSeo.API.Serp do
   @doc """
   Gets result for a single task. The fetched tasks are then removed from completed list. So be sure to save and process them.
   ## Examples
-      DataForSeo.API.Serp.task_result("test-task-id")
+      DataForSeo.API.Serp.task_get("test-task-id")
   """
-  def task_result(task_id) do
-    case request(:get, "/v3/serp/google/organic/task_get/regular/#{task_id}") do
-      {:ok, map} ->
-        TaskResult.build(map)
+  def task_get(task_id, type \\ :regular) do
+    case Request.get("/v3/serp/google/organic/task_get/#{type}/#{task_id}") do
+      {:ok, resp} ->
+        {:ok, Parser.parse(resp, :task_result)}
 
       {:error, error} ->
         {:error, error}

@@ -40,7 +40,7 @@ defmodule DataForSeo.Config do
   end
 
   @doc """
-  Get Auth configuration values in tuple format.
+  Get configuration values in tuple format.
   """
   def get_tuples do
     case DataForSeo.Config.get() do
