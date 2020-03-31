@@ -46,10 +46,10 @@ defmodule DataForSeo do
   @doc """
   POST /v3/serp/google/organic/task_post
   ## Examples
-      DataForSeo.API.Serp.task_post("Schrauben")
-      DataForSeo.API.Serp.task_post(["Schrauben", "Blumen"])
-      DataForSeo.API.Serp.task_post(%{"Schrauben" => "123987", "Blumen" => "789231"})
-      DataForSeo.API.Serp.task_post(%{"Schrauben" => "123987", "Blumen" => "789231"},  language_code: "de-DE", location_name: "20537,Hamburg,Germany", se_domain: "google.de")
+      DataForSeo.task_post("Schrauben")
+      DataForSeo.task_post(["Schrauben", "Blumen"])
+      DataForSeo.task_post(%{"Schrauben" => "123987", "Blumen" => "789231"})
+      DataForSeo.task_post(%{"Schrauben" => "123987", "Blumen" => "789231"},  language_code: "de-DE", location_name: "20537,Hamburg,Germany", se_domain: "google.de")
   ## Reference
   https://docs.dataforseo.com/v3/serp/google/organic/task_post/
   """

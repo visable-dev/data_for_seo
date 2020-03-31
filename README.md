@@ -18,7 +18,7 @@ by adding `data_for_seo` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:data_for_seo, "~> 0.1.0"}
+    {:data_for_seo, "~> 0.3.0"}
   ]
 end
 ```
