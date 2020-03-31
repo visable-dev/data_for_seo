@@ -40,35 +40,17 @@ defmodule DataForSeo.Parser do
 
   defp convert_values(body, :tasks_ready) do
     body
-    |> update_in(["tasks"], fn tasks ->
-      tasks
-      |> Enum.map(fn %{"result" => result} = task ->
-        result =
-          result
-          |> Enum.map(fn result_item ->
-            result_item
-            |> update_in(["date_posted"], &String.replace_suffix(&1, " +00:00", "Z"))
-          end)
-
-        Map.put(task, "result", result)
-      end)
-    end)
+    |> update_in(
+      ["tasks", Access.all(), "result", Access.all(), "date_posted"],
+      &String.replace_suffix(&1, " +00:00", "Z")
+    )
   end
 
   defp convert_values(body, :task_result) do
     body
-    |> update_in(["tasks"], fn tasks ->
-      tasks
-      |> Enum.map(fn %{"result" => result} = task ->
-        result =
-          result
-          |> Enum.map(fn result_item ->
-            result_item
-            |> update_in(["datetime"], &String.replace_suffix(&1, " +00:00", "Z"))
-          end)
-
-        Map.put(task, "result", result)
-      end)
-    end)
+    |> update_in(
+      ["tasks", Access.all(), "result", Access.all(), "datetime"],
+      &String.replace_suffix(&1, " +00:00", "Z")
+    )
   end
 end
