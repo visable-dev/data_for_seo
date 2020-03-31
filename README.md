@@ -18,7 +18,7 @@ by adding `data_for_seo` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:data_for_seo, "~> 0.3.0"}
+    {:data_for_seo, "~> 0.3.1"}
   ]
 end
 ```
@@ -26,4 +26,3 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/data_for_seo](https://hexdocs.pm/data_for_seo).
-

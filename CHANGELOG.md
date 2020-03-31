@@ -2,8 +2,10 @@
 
 ## unreleased
 
-* Refactor datetime conversion in Parser. https://gitlab.com/egze/data_for_seo/-/merge_requests/19
+## 0.3.1 (2020-03-31)
 
+* Refactor datetime conversion in Parser.
+* Updated docs.
 
 ## 0.3.0 (2020-03-30)
 
