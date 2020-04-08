@@ -2,6 +2,10 @@
 
 ## unreleased
 
+## 0.3.2 (2020-04-08)
+
+* Fixed bug when there were no results.
+
 ## 0.3.1 (2020-03-31)
 
 * Refactor datetime conversion in Parser.

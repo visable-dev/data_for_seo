@@ -39,18 +39,30 @@ defmodule DataForSeo.Parser do
   end
 
   defp convert_values(body, :tasks_ready) do
-    body
-    |> update_in(
-      ["tasks", Access.all(), "result", Access.all(), "date_posted"],
-      &String.replace_suffix(&1, " +00:00", "Z")
-    )
+    case get_in(body, ["tasks", Access.all(), "result"]) do
+      [nil] ->
+        body
+
+      _ ->
+        body
+        |> update_in(
+          ["tasks", Access.all(), "result", Access.all(), "date_posted"],
+          &String.replace_suffix(&1, " +00:00", "Z")
+        )
+    end
   end
 
   defp convert_values(body, :task_result) do
-    body
-    |> update_in(
-      ["tasks", Access.all(), "result", Access.all(), "datetime"],
-      &String.replace_suffix(&1, " +00:00", "Z")
-    )
+    case get_in(body, ["tasks", Access.all(), "result"]) do
+      [nil] ->
+        body
+
+      _ ->
+        body
+        |> update_in(
+          ["tasks", Access.all(), "result", Access.all(), "datetime"],
+          &String.replace_suffix(&1, " +00:00", "Z")
+        )
+    end
   end
 end
