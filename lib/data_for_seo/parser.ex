@@ -24,13 +24,18 @@ defmodule DataForSeo.Parser do
 
   def parse(body, :task_result) do
     body
-    |> convert_values(:task_result)
+    |> convert_date_time("datetime")
     |> Spect.to_spec!(GetTaskResponse)
+  end
+
+  def parse(body, :raw_task_result) do
+    body
+    |> convert_date_time("datetime")
   end
 
   def parse(body, :tasks_ready) do
     body
-    |> convert_values(:tasks_ready)
+    |> convert_date_time("date_posted")
     |> Spect.to_spec!(BaseResponse)
   end
 
@@ -38,7 +43,7 @@ defmodule DataForSeo.Parser do
     resp
   end
 
-  defp convert_values(body, :tasks_ready) do
+  def convert_date_time(body, field_name) do
     case get_in(body, ["tasks", Access.all(), "result"]) do
       [nil] ->
         body
@@ -46,21 +51,7 @@ defmodule DataForSeo.Parser do
       _ ->
         body
         |> update_in(
-          ["tasks", Access.all(), "result", Access.all(), "date_posted"],
-          &String.replace_suffix(&1, " +00:00", "Z")
-        )
-    end
-  end
-
-  defp convert_values(body, :task_result) do
-    case get_in(body, ["tasks", Access.all(), "result"]) do
-      [nil] ->
-        body
-
-      _ ->
-        body
-        |> update_in(
-          ["tasks", Access.all(), "result", Access.all(), "datetime"],
+          ["tasks", Access.all(), "result", Access.all(), field_name],
           &String.replace_suffix(&1, " +00:00", "Z")
         )
     end

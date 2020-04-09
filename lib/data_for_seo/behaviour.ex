@@ -13,5 +13,5 @@ defmodule DataForSeo.Behaviour do
   @callback task_post(String.t() | list(String.t()) | map(), Keyword.t()) ::
               {:ok, BaseResponse.t()} | {:error, String.t()}
   @callback tasks_ready() :: {:ok, BaseResponse.t()} | {:error, String.t()}
-  @callback task_get(String.t(), atom()) :: {:ok, GetTaskResponse.t()} | {:error, String.t()}
+  @callback task_get(String.t(), list()) :: {:ok, GetTaskResponse.t() | map()} | {:error, String.t()}
 end

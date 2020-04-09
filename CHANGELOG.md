@@ -2,6 +2,10 @@
 
 ## unreleased
 
+## 0.3.3 (2020-04-09)
+
+* `DataForSeo.task_get/2` can return unparsed result.
+
 ## 0.3.2 (2020-04-08)
 
 * Fixed bug when there were no results.

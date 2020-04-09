@@ -216,8 +216,8 @@ defmodule DataForSeo.Api.SerpTest do
     end
   end
 
-  describe "task_result/1" do
-    test "it returns a search result for the task", %{bypass: bypass} do
+  describe "task_get/2" do
+    test "it returns a struct", %{bypass: bypass} do
       Bypass.expect(bypass, fn conn ->
         assert "GET" = conn.method
 
@@ -239,6 +239,30 @@ defmodule DataForSeo.Api.SerpTest do
       item = result.items |> hd()
 
       assert item.domain == "www.bookingbuddy.com"
+    end
+
+    test "with parse: false - it returns a raw map", %{bypass: bypass} do
+      Bypass.expect(bypass, fn conn ->
+        assert "GET" = conn.method
+
+        assert "/v3/serp/google/organic/task_get/regular/03101638-9334-0066-0000-44b65a6119fb" =
+                 conn.request_path
+
+        Plug.Conn.resp(
+          conn,
+          200,
+          task_result_response()
+        )
+      end)
+
+      resp = Serp.task_get("03101638-9334-0066-0000-44b65a6119fb", parse: false)
+
+      assert {:ok, response} = resp
+      task = response["tasks"] |> hd()
+      result = task["result"] |> hd()
+      item = result["items"] |> hd()
+
+      assert item["domain"] == "www.bookingbuddy.com"
     end
   end
 end
