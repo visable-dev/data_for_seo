@@ -41,7 +41,13 @@ defmodule DataForSeo.Api.SerpTest do
         )
       end)
 
-      assert {:ok, resp} = Serp.task_post("Schrauben")
+      assert {:ok, resp} =
+               Serp.task_post(%{
+                 keyword: "Schrauben",
+                 language_code: "en",
+                 location_name: "San Francisco,California,United States",
+                 se_domain: "google.com"
+               })
 
       assert %DataForSeo.Serp.Response{tasks: tasks, tasks_count: 1} = resp
       task = tasks |> hd
@@ -85,102 +91,21 @@ defmodule DataForSeo.Api.SerpTest do
         )
       end)
 
-      assert {:ok, resp} = Serp.task_post(["Schrauben", "Blumen"])
-
-      assert %DataForSeo.Serp.Response{tasks: tasks, tasks_count: 2} = resp
-      [task1, task2] = tasks
-
-      assert task1.id == "01291721-1535-0066-0000-8f0635c0dc89"
-      assert task1.data.keyword == "Schrauben"
-
-      assert task2.id == "01291721-1535-0066-0000-2e7a8bf7302c"
-      assert task2.data.keyword == "Blumen"
-    end
-  end
-
-  describe "task_post/1 with a list keywords map" do
-    test "it makes task_post POST request with params", %{bypass: bypass} do
-      Bypass.expect(bypass, fn conn ->
-        assert "POST" = conn.method
-        assert "/v3/serp/google/organic/task_post" = conn.request_path
-        assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
-
-        {:ok, body, _} = Plug.Conn.read_body(conn)
-
-        assert(
-          body ==
-            Jason.encode!([
-              %{
-                keyword: "Blumen",
-                tag: "test-tag-2",
-                language_code: "en",
-                location_name: "San Francisco,California,United States",
-                se_domain: "google.com"
-              },
-              %{
-                keyword: "Schrauben",
-                tag: "test-tag-1",
-                language_code: "en",
-                location_name: "San Francisco,California,United States",
-                se_domain: "google.com"
-              }
-            ])
-        )
-
-        Plug.Conn.resp(
-          conn,
-          200,
-          task_post_list_response()
-        )
-      end)
-
-      {:ok, resp} = Serp.task_post(%{"Schrauben" => "test-tag-1", "Blumen" => "test-tag-2"})
-
-      assert %DataForSeo.Serp.Response{tasks: tasks, tasks_count: 2} = resp
-      [task1, task2] = tasks
-
-      assert task1.id == "01291721-1535-0066-0000-8f0635c0dc89"
-      assert task1.data.keyword == "Schrauben"
-
-      assert task2.id == "01291721-1535-0066-0000-2e7a8bf7302c"
-      assert task2.data.keyword == "Blumen"
-    end
-  end
-
-  describe "task_post/2 with a string keyword and additional params" do
-    test "it makes task_post POST request with params", %{bypass: bypass} do
-      Bypass.expect(bypass, fn conn ->
-        assert "POST" = conn.method
-        assert "/v3/serp/google/organic/task_post" = conn.request_path
-        assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
-
-        {:ok, body, _} = Plug.Conn.read_body(conn)
-
-        assert(
-          body ==
-            Jason.encode!([
-              %{
-                keyword: "Screws",
-                language_code: "en",
-                location_name: "Chicago, IL,United States",
-                se_domain: "google.com"
-              }
-            ])
-        )
-
-        Plug.Conn.resp(
-          conn,
-          200,
-          task_post_list_response()
-        )
-      end)
-
-      {:ok, resp} =
-        Serp.task_post("Screws",
-          language_code: "en",
-          location_name: "Chicago, IL,United States",
-          se_domain: "google.com"
-        )
+      assert {:ok, resp} =
+               Serp.task_post([
+                 %{
+                   keyword: "Schrauben",
+                   language_code: "en",
+                   location_name: "San Francisco,California,United States",
+                   se_domain: "google.com"
+                 },
+                 %{
+                   keyword: "Blumen",
+                   language_code: "en",
+                   location_name: "San Francisco,California,United States",
+                   se_domain: "google.com"
+                 }
+               ])
 
       assert %DataForSeo.Serp.Response{tasks: tasks, tasks_count: 2} = resp
       [task1, task2] = tasks

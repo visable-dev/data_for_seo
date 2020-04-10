@@ -2,6 +2,11 @@
 
 ## unreleased
 
+## 0.4.0 (2020-04-10)
+
+Breaking change.
+* `DataForSeo.task_post/1` requires params like the API, no defaults are set.
+
 ## 0.3.3 (2020-04-09)
 
 * `DataForSeo.task_get/2` can return unparsed result.

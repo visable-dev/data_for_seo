@@ -10,8 +10,9 @@ defmodule DataForSeo.Behaviour do
   @callback configure(:global | :process, Keyword.t()) :: :ok
   @callback configure() :: Keyword.t() | nil
 
-  @callback task_post(String.t() | list(String.t()) | map(), Keyword.t()) ::
+  @callback task_post(list(map()) | map()) ::
               {:ok, BaseResponse.t()} | {:error, String.t()}
   @callback tasks_ready() :: {:ok, BaseResponse.t()} | {:error, String.t()}
-  @callback task_get(String.t(), list()) :: {:ok, GetTaskResponse.t() | map()} | {:error, String.t()}
+  @callback task_get(String.t(), list()) ::
+              {:ok, GetTaskResponse.t() | map()} | {:error, String.t()}
 end
