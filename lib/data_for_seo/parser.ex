@@ -1,13 +1,12 @@
 defmodule DataForSeo.Parser do
   @moduledoc """
-  A parser built on top of Spect for decoding DataForSEO's various return
+  A parser built on top of Jason for decoding DataForSEO's various return
   structures.
+
+  Also it corrects datetime format.
 
   https://github.com/pylon/spect
   """
-
-  alias DataForSeo.Serp.Response, as: BaseResponse
-  alias DataForSeo.Serp.GetTask.Response, as: GetTaskResponse
 
   def parse(%Mojito.Response{body: body, status_code: code}, strategy) do
     case code do
@@ -17,15 +16,11 @@ defmodule DataForSeo.Parser do
     end
   end
 
-  def parse(body, :task_post) do
-    body
-    |> Spect.to_spec!(BaseResponse)
-  end
+  def parse(body, :task_post), do: body
 
   def parse(body, :task_result) do
     body
     |> convert_date_time("datetime")
-    |> Spect.to_spec!(GetTaskResponse)
   end
 
   def parse(body, :raw_task_result) do
@@ -36,7 +31,6 @@ defmodule DataForSeo.Parser do
   def parse(body, :tasks_ready) do
     body
     |> convert_date_time("date_posted")
-    |> Spect.to_spec!(BaseResponse)
   end
 
   def parse(resp, _) do

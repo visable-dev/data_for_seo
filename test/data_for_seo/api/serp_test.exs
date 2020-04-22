@@ -49,10 +49,10 @@ defmodule DataForSeo.Api.SerpTest do
                  se_domain: "google.com"
                })
 
-      assert %DataForSeo.Serp.Response{tasks: tasks, tasks_count: 1} = resp
+      assert %{"tasks" => tasks, "tasks_count" => 1} = resp
       task = tasks |> hd
-      assert task.id == "01291721-1535-0066-0000-8f0635c0dc89"
-      assert task.data.keyword == "Schrauben"
+      assert task["id"] == "01291721-1535-0066-0000-8f0635c0dc89"
+      assert task["data"]["keyword"] == "Schrauben"
       assert Enum.count(tasks) == 1
     end
   end
@@ -107,14 +107,14 @@ defmodule DataForSeo.Api.SerpTest do
                  }
                ])
 
-      assert %DataForSeo.Serp.Response{tasks: tasks, tasks_count: 2} = resp
+      assert %{"tasks" => tasks, "tasks_count" => 2} = resp
       [task1, task2] = tasks
 
-      assert task1.id == "01291721-1535-0066-0000-8f0635c0dc89"
-      assert task1.data.keyword == "Schrauben"
+      assert task1["id"] == "01291721-1535-0066-0000-8f0635c0dc89"
+      assert task1["data"]["keyword"] == "Schrauben"
 
-      assert task2.id == "01291721-1535-0066-0000-2e7a8bf7302c"
-      assert task2.data.keyword == "Blumen"
+      assert task2["id"] == "01291721-1535-0066-0000-2e7a8bf7302c"
+      assert task2["data"]["keyword"] == "Blumen"
     end
   end
 
@@ -131,10 +131,9 @@ defmodule DataForSeo.Api.SerpTest do
         )
       end)
 
-      assert {:ok, %DataForSeo.Serp.Response{tasks: [%DataForSeo.Serp.Task{result: results}]}} =
-               Serp.tasks_ready()
+      assert {:ok, %{"tasks" => [%{"result" => results}]}} = Serp.tasks_ready()
 
-      task_ids = Enum.map(results, & &1.id)
+      task_ids = Enum.map(results, & &1["id"])
 
       assert Enum.member?(task_ids, "11081554-0696-0066-0000-27e68ec15871")
       assert Enum.member?(task_ids, "11151406-0696-0066-0000-c4ece317cdb2")
@@ -142,7 +141,7 @@ defmodule DataForSeo.Api.SerpTest do
   end
 
   describe "task_get/2" do
-    test "it returns a struct", %{bypass: bypass} do
+    test "returns task as map", %{bypass: bypass} do
       Bypass.expect(bypass, fn conn ->
         assert "GET" = conn.method
 
@@ -157,30 +156,6 @@ defmodule DataForSeo.Api.SerpTest do
       end)
 
       resp = Serp.task_get("03101638-9334-0066-0000-44b65a6119fb")
-
-      assert {:ok, %DataForSeo.Serp.GetTask.Response{} = response} = resp
-      task = response.tasks |> hd()
-      result = task.result |> hd()
-      item = result.items |> hd()
-
-      assert item.domain == "www.bookingbuddy.com"
-    end
-
-    test "with parse: false - it returns a raw map", %{bypass: bypass} do
-      Bypass.expect(bypass, fn conn ->
-        assert "GET" = conn.method
-
-        assert "/v3/serp/google/organic/task_get/regular/03101638-9334-0066-0000-44b65a6119fb" =
-                 conn.request_path
-
-        Plug.Conn.resp(
-          conn,
-          200,
-          task_result_response()
-        )
-      end)
-
-      resp = Serp.task_get("03101638-9334-0066-0000-44b65a6119fb", parse: false)
 
       assert {:ok, response} = resp
       task = response["tasks"] |> hd()

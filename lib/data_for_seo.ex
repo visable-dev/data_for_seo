@@ -68,7 +68,6 @@ defmodule DataForSeo do
   GET /v3/serp/google/organic/task_get/regular/$id
   ## Examples
       DataForSeo.task_get("03301617-9324-0066-0000-472866f98a6e")
-      DataForSeo.task_get("03301617-9324-0066-0000-472866f98a6e", parse: false)
   ## Reference
   https://docs.dataforseo.com/v3/serp/google/organic/task_get/regular/
   """

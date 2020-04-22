@@ -2,6 +2,11 @@
 
 ## unreleased
 
+## 0.5.0 (2020-04-22)
+
+Breaking change.
+* All results are returned as pure maps. Structs turned out to be more trouble than help.
+
 ## 0.4.0 (2020-04-10)
 
 Breaking change.

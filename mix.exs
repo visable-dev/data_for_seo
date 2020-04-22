@@ -6,7 +6,7 @@ defmodule DataForSeo.MixProject do
   def project do
     [
       app: :data_for_seo,
-      version: "0.4.0",
+      version: "0.5.0",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -32,8 +32,7 @@ defmodule DataForSeo.MixProject do
       {:bypass, "~> 1.0", only: :test},
       {:ex_doc, ">= 0.0.0", only: [:dev, :docs]},
       {:jason, "~> 1.1"},
-      {:mojito, ">= 0.5.0"},
-      {:spect, "~> 0.3.1"}
+      {:mojito, ">= 0.5.0"}
     ]
   end
 
