@@ -4,7 +4,7 @@
 
 DataForSeo client library for Elixir.
 
-It only supports very limited set of functions yet. Refer to [data_for_seo.ex](https://gitlab.com/egze/data_for_seo/blob/master/lib/data_for_seo.ex) for available functions and examples.
+It only supports very limited set of functions yet. Refer to [data_for_seo.ex](https://gitlab.com/visable/data_for_seo/blob/master/lib/data_for_seo.ex) for available functions and examples.
 
 ## Docs
 

@@ -1,7 +1,7 @@
 defmodule DataForSeo.MixProject do
   use Mix.Project
 
-  @source_url "https://gitlab.com/egze/data_for_seo"
+  @source_url "https://gitlab.com/visable/data_for_seo"
 
   def project do
     [
@@ -44,7 +44,7 @@ defmodule DataForSeo.MixProject do
 
   defp package do
     [
-      maintainers: ["egze"],
+      maintainers: ["visable"],
       licenses: ["MIT"],
       links: %{"GitLab" => @source_url}
     ]
