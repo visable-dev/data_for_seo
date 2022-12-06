@@ -32,7 +32,7 @@ defmodule DataForSeo.MixProject do
     [
       {:bypass, "~> 2.0", only: :test},
       {:ex_doc, ">= 0.0.0", only: [:dev, :docs]},
-      {:jason, "~> 1.3"},
+      {:jason, "~> 1.0"},
       {:finch, "~> 0.13"}
     ]
   end
