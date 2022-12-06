@@ -1,12 +1,12 @@
 defmodule DataForSeo.MixProject do
   use Mix.Project
 
-  @source_url "https://gitlab.com/egze/data_for_seo"
+  @source_url "https://github.com/visable-dev/data_for_seo"
 
   def project do
     [
       app: :data_for_seo,
-      version: "0.5.0",
+      version: "0.6.0",
       elixir: "~> 1.9",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -22,6 +22,7 @@ defmodule DataForSeo.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {DataForSeo.Application, []},
       extra_applications: [:logger]
     ]
   end
@@ -29,10 +30,10 @@ defmodule DataForSeo.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:bypass, "~> 1.0", only: :test},
+      {:bypass, "~> 2.0", only: :test},
       {:ex_doc, ">= 0.0.0", only: [:dev, :docs]},
-      {:jason, "~> 1.1"},
-      {:mojito, ">= 0.5.0"}
+      {:jason, "~> 1.3"},
+      {:finch, "~> 0.13"}
     ]
   end
 
@@ -44,9 +45,9 @@ defmodule DataForSeo.MixProject do
 
   defp package do
     [
-      maintainers: ["egze"],
+      maintainers: ["razue"],
       licenses: ["MIT"],
-      links: %{"GitLab" => @source_url}
+      links: %{"GitHub" => @source_url}
     ]
   end
 
