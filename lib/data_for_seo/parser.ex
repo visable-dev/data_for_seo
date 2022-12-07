@@ -8,7 +8,7 @@ defmodule DataForSeo.Parser do
   https://github.com/pylon/spect
   """
 
-  def parse(%Mojito.Response{body: body, status_code: code}, strategy) do
+  def parse(%{body: body, status_code: code}, strategy) do
     case code do
       _ ->
         body = Jason.decode!(body)

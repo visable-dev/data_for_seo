@@ -3,7 +3,8 @@ defmodule DataForSeo.API.Serp do
   Provides SERP API interfaces.
   """
 
-  alias DataForSeo.{Parser, Request}
+  alias DataForSeo.Client
+  alias DataForSeo.Parser
 
   @doc """
   Creates a task for each keyword.
@@ -22,7 +23,10 @@ defmodule DataForSeo.API.Serp do
   ```
   """
   def task_post(params) when is_list(params) do
-    case Request.post("/v3/serp/google/organic/task_post", params) do
+    Client.post("/v3/serp/google/organic/task_post", params)
+    |> Client.validate_status_code()
+    |> Client.decode_json_response()
+    |> case do
       {:ok, resp} ->
         {:ok, Parser.parse(resp, :task_post)}
 
@@ -39,7 +43,10 @@ defmodule DataForSeo.API.Serp do
       DataForSeo.API.Serp.tasks_ready()
   """
   def tasks_ready do
-    case Request.get("/v3/serp/google/organic/tasks_ready") do
+    Client.get("/v3/serp/google/organic/tasks_ready")
+    |> Client.validate_status_code()
+    |> Client.decode_json_response()
+    |> case do
       {:ok, resp} ->
         {:ok, Parser.parse(resp, :tasks_ready)}
 
@@ -56,7 +63,10 @@ defmodule DataForSeo.API.Serp do
   def task_get(task_id, opts \\ []) do
     {type, _opts} = Keyword.pop(opts, :type, :regular)
 
-    case Request.get("/v3/serp/google/organic/task_get/#{type}/#{task_id}") do
+    Client.get("/v3/serp/google/organic/task_get/#{type}/#{task_id}")
+    |> Client.validate_status_code()
+    |> Client.decode_json_response()
+    |> case do
       {:ok, resp} ->
         {:ok, Parser.parse(resp, :task_result)}
 

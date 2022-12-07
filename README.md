@@ -4,7 +4,7 @@
 
 DataForSeo client library for Elixir.
 
-It only supports very limited set of functions yet. Refer to [data_for_seo.ex](https://gitlab.com/egze/data_for_seo/blob/master/lib/data_for_seo.ex) for available functions and examples.
+It only supports very limited set of functions yet. Refer to [data_for_seo.ex](https://github.com/visable-dev/data_for_seo/blob/master/lib/data_for_seo.ex) for available functions and examples.
 
 ## Docs
 
@@ -17,7 +17,7 @@ The package can be installed by adding `data_for_seo` to your list of dependenci
 ```elixir
 def deps do
   [
-    {:data_for_seo, "~> 0.4.0"}
+    {:data_for_seo, "~> 0.6.0"}
   ]
 end
 ```
@@ -30,5 +30,7 @@ Add to your `config.exs` and make sure the ENVs below are set.
 config :data_for_seo, :api,
   base_url: "https://api.dataforseo.com",
   login: System.get_env("DATAFORSEO_LOGIN"),
-  password: System.get_env("DATAFORSEO_PASSWORD")
+  password: System.get_env("DATAFORSEO_PASSWORD"),
+  pool_timeout: System.get_env("POOL_TIMEOUT"),
+  receive_timeout: System.get_env("RECEIVE_TIMEOUT")
 ```
