@@ -327,4 +327,161 @@ defmodule RespFactory do
     }
     """
   end
+
+  def task_get_location_by_country do
+    """
+    {
+    "cost": 0,
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "time": "0.0629 sec.",
+    "version": "0.1.20230825",
+    "tasks": [
+          {
+            "cost": 0,
+            "data": {
+              "api": "serp",
+              "function": "locations",
+              "se": "google"
+            },
+            "id": "11151921-6990-0096-0000-383626e07f8a",
+            "path": [
+              "v3",
+              "serp",
+              "google",
+              "locations",
+              "lu"
+            ],
+            "result": [
+              {
+                "country_iso_code": "LU",
+                "location_code": 2442,
+                "location_code_parent": null,
+                "location_name": "Luxembourg",
+                "location_type": "Country"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 1009944,
+                "location_code_parent": 2442,
+                "location_name": "Kaerjeng,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 1009948,
+                "location_code_parent": 2442,
+                "location_name": "Bissen,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 1009953,
+                "location_code_parent": 2442,
+                "location_name": "Kirchberg,Luxembourg",
+                "location_type": "Neighborhood"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 1009955,
+                "location_code_parent": 2442,
+                "location_name": "Mamer,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 1009958,
+                "location_code_parent": 2442,
+                "location_name": "Sanem,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 1009960,
+                "location_code_parent": 2442,
+                "location_name": "Strassen,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 1009964,
+                "location_code_parent": 2442,
+                "location_name": "Wormeldange,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 9067741,
+                "location_code_parent": 2442,
+                "location_name": "Clemency,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 9067742,
+                "location_code_parent": 2442,
+                "location_name": "Wiltz,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 9067743,
+                "location_code_parent": 2442,
+                "location_name": "Troisvierges,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 9067744,
+                "location_code_parent": 2442,
+                "location_name": "Munsbach,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 9067745,
+                "location_code_parent": 2442,
+                "location_name": "Ettelbruck,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 9067746,
+                "location_code_parent": 2442,
+                "location_name": "Bertrange,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 9067747,
+                "location_code_parent": 2442,
+                "location_name": "Bettembourg,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 9067748,
+                "location_code_parent": 2442,
+                "location_name": "Dudelange,Luxembourg",
+                "location_type": "City"
+              },
+              {
+                "country_iso_code": "LU",
+                "location_code": 9067749,
+                "location_code_parent": 2442,
+                "location_name": "Luxembourg,Luxembourg",
+                "location_type": "City"
+              }
+            ],
+            "result_count": 17,
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.0058 sec."
+          }
+    ]
+    }
+    """
+  end
 end
