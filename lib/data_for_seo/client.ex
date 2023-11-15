@@ -144,10 +144,15 @@ defmodule DataForSeo.Client do
 
     receive_timeout = opts[:receive_timeout] || config[:receive_timeout] |> String.to_integer()
     pool_timeout = opts[:pool_timeout] || config[:pool_timeout] |> String.to_integer()
+    receive_timeout = opts[:receive_timeout] || config[:receive_timeout] |> to_integer()
+    pool_timeout = opts[:pool_timeout] || config[:pool_timeout] |> to_integer()
 
     Keyword.new(
       pool_timeout: pool_timeout,
       receive_timeout: receive_timeout
     )
   end
+
+  defp to_integer(value) when is_binary(value), do: String.to_integer(value)
+  defp to_integer(value), do: value
 end
