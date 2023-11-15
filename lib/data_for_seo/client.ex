@@ -134,8 +134,9 @@ defmodule DataForSeo.Client do
 
   defp execute_request(request, opts) do
     timeouts = timeout_options(opts)
-
-    Finch.request(request, ApiFinch, timeouts)
+    config = Config.get_tuples() |> verify_config()
+    finch_name = opts[:finch_name] || config[:finch_name] || ApiFinch
+    Finch.request(request, finch_name, timeouts)
   end
 
   defp timeout_options(opts) do
