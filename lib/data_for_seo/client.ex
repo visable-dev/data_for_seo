@@ -141,16 +141,13 @@ defmodule DataForSeo.Client do
 
   defp timeout_options(opts) do
     config = Config.get_tuples() |> verify_config()
-
-    receive_timeout = opts[:receive_timeout] || config[:receive_timeout] |> String.to_integer()
-    pool_timeout = opts[:pool_timeout] || config[:pool_timeout] |> String.to_integer()
-    receive_timeout = opts[:receive_timeout] || config[:receive_timeout] |> to_integer()
-    pool_timeout = opts[:pool_timeout] || config[:pool_timeout] |> to_integer()
-
-    Keyword.new(
-      pool_timeout: pool_timeout,
-      receive_timeout: receive_timeout
-    )
+    [:receive_timeout, :pool_timeout]
+    |> Enum.reduce(opts, fn key, acc ->
+      case opts[key] || config[key] do
+        nil -> acc
+        value -> Keyword.put(acc, key, to_integer(value))
+      end
+    end)
   end
 
   defp to_integer(value) when is_binary(value), do: String.to_integer(value)
