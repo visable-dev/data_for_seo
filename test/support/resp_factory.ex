@@ -40,6 +40,10 @@ defmodule RespFactory do
     get_raw_fixture(["labs", "google", "keyword_research", "keywords-for-site"])
   end
 
+  def task_get_labs_google_keywords_related do
+    get_raw_fixture(["labs", "google", "keyword_research", "related-keywords"])
+  end
+
   # GOOGLE TRENDS
   def task_get_google_trends_categories do
     get_raw_fixture(["keywords", "google_trends", "categories"])
