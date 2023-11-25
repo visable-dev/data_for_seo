@@ -2,8 +2,7 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
   @moduledoc """
   Access to Labs / Google / KeywordResearch API endpoints
   """
-
-  alias DataForSeo.Client
+  use DataForSeo.API.EndpointHandler
 
   @endpoints %{
     search_intent: "/v3/dataforseo_labs/google/search_intent/live",
@@ -198,23 +197,4 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
     |> Client.decode_json_response(opts)
     |> handle_response()
   end
-
-  defp handle_response(resp), do: resp
-
-  defp apply_location(attrs, loc) do
-    # test location, if it's integer - we have location code
-    # we support code both: as int and string
-    case Integer.parse("#{loc}") do
-      :error -> Map.put(attrs, :location_name, loc)
-      {code, _} -> Map.put(attrs, :location_code, code)
-    end
-  end
-
-  defp apply_language(attrs, <<code::binary-size(2), "">>),
-    do: Map.put(attrs, :language_code, code)
-
-  defp apply_language(attrs, lang_name), do: Map.put(attrs, :language_name, lang_name)
-
-  defp apply_tag(attrs, nil), do: attrs
-  defp apply_tag(attrs, tag = <<_::binary-size(1), _::binary>>), do: Map.put(attrs, :tag, tag)
 end

@@ -71,6 +71,22 @@ defmodule RespFactory do
     get_raw_fixture(["keywords", "google_trends", "locations"])
   end
 
+  def task_post_keywords_google_trends_explorer do
+    get_raw_fixture(["keywords", "google_trends", "explorer", "task-post"])
+  end
+
+  def tasks_ready_keywords_google_trends_explorer do
+    get_raw_fixture(["keywords", "google_trends", "explorer", "tasks-ready"])
+  end
+
+  def task_get_keywords_google_trends_explorer do
+    get_raw_fixture(["keywords", "google_trends", "explorer", "task-get"])
+  end
+
+  def task_get_keywords_google_trends_explorer_live do
+    get_raw_fixture(["keywords", "google_trends", "explorer", "task-live"])
+  end
+
   # GOOGLE ADS
   def task_get_google_ads_locations do
     get_raw_fixture(["keywords", "google_ads", "locations"])
