@@ -1,0 +1,41 @@
+{
+  "version": "0.1.20200130",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.0882 sec.",
+  "cost": 0.15,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "02122119-1535-0170-0000-0228cf083d8e",
+      "status_code": 20100,
+      "status_message": "Task Created.",
+      "time": "0.0017 sec.",
+      "cost": 0.05,
+      "result_count": 0,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_trends",
+        "explore",
+        "task_post"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "explore",
+        "se": "google_trends",
+        "location_name": "United States",
+        "type": "youtube",
+        "date_from": "2019-01-15",
+        "date_to": "2020-01-01",
+        "category_code": 3,
+        "keywords": [
+          "seo api",
+          "rank api"
+        ]
+      },
+      "result": null
+    }
+  ]
+}

@@ -1,0 +1,489 @@
+{
+  "version": "0.1.20221214",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.4117 sec.",
+  "cost": 0.0103,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "03231835-1535-0399-0000-cb09ada1b499",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.3568 sec.",
+      "cost": 0.0103,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "google",
+        "keyword_suggestions",
+        "live"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "keyword_suggestions",
+        "se_type": "google",
+        "keyword": "phone",
+        "location_code": 2840,
+        "language_code": "en",
+        "include_serp_info": true,
+        "limit": 3
+      },
+      "result": [
+        {
+          "se_type": "google",
+          "seed_keyword": "phone",
+          "seed_keyword_data": null,
+          "location_code": 2840,
+          "language_code": "en",
+          "total_count": 2582247,
+          "items_count": 3,
+          "offset": 0,
+          "offset_token": "eyJDdXJyZW50T2Zmc2V0IjozLCJSZXF1ZXN0RGF0YSI6eyJrZXl3b3JkIjoicGhvbmUiLCJpbmNsdWRlX3NlZWRfa2V5d29yZCI6ZmFsc2UsImZ1bGxfbWF0Y2giOmZhbHNlLCJsb2FkX3NlcnBfaW5mbyI6dHJ1ZSwic2VhcmNoX2FmdGVyX3Rva2VuIjpudWxsLCJpZ25vcmVfc3lub255bXMiOmZhbHNlLCJsYW5ndWFnZSI6ImVuIiwic2VhcmNoX2VuZ2luZSI6Imdvb2dsZSIsImxvY2F0aW9uIjoyODQwLCJvcmRlcl9ieSI6eyJvcmRlcl9maWVsZCI6ImtleXdvcmRfaW5mby5zZWFyY2hfdm9sdW1lIiwib3JkZXJfdHlwZSI6IkRlc2MiLCJuZXh0IjpudWxsfSwibGltaXQiOjMsIm9mZnNldCI6MCwiYWlkIjoxNTM1fSwiUmF3UXVlcnkiOm51bGwsIlNlYXJjaEFmdGVyRGF0YSI6WzY3MzAwMCwiMTE0YzI3MGYtNWUxYi1kZTk4LTQ3NzMtMWRiZDY0OTgzZDM4Il19",
+          "items": [
+            {
+              "se_type": "google",
+              "keyword": "the black phone",
+              "location_code": 2840,
+              "language_code": "en",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2023-03-21 06:47:08 +00:00",
+                "competition": null,
+                "competition_level": "LOW",
+                "cpc": 0.55,
+                "search_volume": 1220000,
+                "low_top_of_page_bid": 0.27,
+                "high_top_of_page_bid": 0.55,
+                "categories": [
+                  10021,
+                  10176,
+                  10915,
+                  13779
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2023,
+                    "month": 2,
+                    "search_volume": 201000
+                  },
+                  {
+                    "year": 2023,
+                    "month": 1,
+                    "search_volume": 450000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 12,
+                    "search_volume": 301000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 11,
+                    "search_volume": 301000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 10,
+                    "search_volume": 673000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 9,
+                    "search_volume": 1000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 8,
+                    "search_volume": 2240000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 7,
+                    "search_volume": 4090000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 6,
+                    "search_volume": 4090000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 5,
+                    "search_volume": 673000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 4,
+                    "search_volume": 301000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 3,
+                    "search_volume": 135000
+                  }
+                ]
+              },
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": 68,
+                "detected_language": "en",
+                "is_another_language": false
+              },
+              "impressions_info": {
+                "se_type": "google",
+                "last_updated_time": "2022-04-25 03:54:48 +00:00",
+                "bid": 999,
+                "match_type": "exact",
+                "ad_position_min": 1.12,
+                "ad_position_max": 1,
+                "ad_position_average": 1.06,
+                "cpc_min": 27.35,
+                "cpc_max": 33.43,
+                "cpc_average": 30.39,
+                "daily_impressions_min": 90.42,
+                "daily_impressions_max": 110.52,
+                "daily_impressions_average": 100.47,
+                "daily_clicks_min": 5.01,
+                "daily_clicks_max": 6.12,
+                "daily_clicks_average": 5.57,
+                "daily_cost_min": 152.23,
+                "daily_cost_max": 186.06,
+                "daily_cost_average": 169.15
+              },
+              "serp_info": {
+                "se_type": "google",
+                "check_url": "https://www.google.com/search?q=the%20black%20phone&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+                "serp_item_types": [
+                  "video",
+                  "people_also_ask",
+                  "organic",
+                  "people_also_search",
+                  "related_searches",
+                  "knowledge_graph"
+                ],
+                "se_results_count": 8150000000,
+                "last_updated_time": "2023-03-13 07:08:36 +00:00",
+                "previous_updated_time": "2023-02-06 16:29:55 +00:00"
+              },
+              "avg_backlinks_info": {
+                "se_type": "google",
+                "backlinks": 1546.5,
+                "dofollow": 1195.8,
+                "referring_pages": 1384.9,
+                "referring_domains": 268.4,
+                "referring_main_domains": 244.6,
+                "rank": 237.2,
+                "main_domain_rank": 634.8,
+                "last_updated_time": "2023-03-13 07:08:39 +00:00"
+              },
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "commercial",
+                "foreign_intent": null,
+                "last_updated_time": "2023-03-03 18:50:59 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "black phone",
+              "location_code": 2840,
+              "language_code": "en",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2023-03-22 15:04:16 +00:00",
+                "competition": 0.02,
+                "competition_level": "LOW",
+                "cpc": 6.38,
+                "search_volume": 823000,
+                "low_top_of_page_bid": 0.31,
+                "high_top_of_page_bid": 6.38,
+                "categories": [
+                  10007,
+                  10019,
+                  10167,
+                  10878,
+                  12161,
+                  13055,
+                  13381
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2023,
+                    "month": 2,
+                    "search_volume": 135000
+                  },
+                  {
+                    "year": 2023,
+                    "month": 1,
+                    "search_volume": 301000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 12,
+                    "search_volume": 201000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 11,
+                    "search_volume": 201000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 10,
+                    "search_volume": 550000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 9,
+                    "search_volume": 823000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 8,
+                    "search_volume": 1830000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 7,
+                    "search_volume": 3350000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 6,
+                    "search_volume": 2240000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 5,
+                    "search_volume": 201000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 4,
+                    "search_volume": 74000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 3,
+                    "search_volume": 49500
+                  }
+                ]
+              },
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": 72,
+                "detected_language": "en",
+                "is_another_language": false
+              },
+              "impressions_info": {
+                "se_type": "google",
+                "last_updated_time": "2022-04-17 07:38:20 +00:00",
+                "bid": 999,
+                "match_type": "exact",
+                "ad_position_min": 1.11,
+                "ad_position_max": 1,
+                "ad_position_average": 1.06,
+                "cpc_min": 39.02,
+                "cpc_max": 47.69,
+                "cpc_average": 43.36,
+                "daily_impressions_min": 14.39,
+                "daily_impressions_max": 17.59,
+                "daily_impressions_average": 15.99,
+                "daily_clicks_min": 0.73,
+                "daily_clicks_max": 0.89,
+                "daily_clicks_average": 0.81,
+                "daily_cost_min": 31.49,
+                "daily_cost_max": 38.49,
+                "daily_cost_average": 34.99
+              },
+              "serp_info": {
+                "se_type": "google",
+                "check_url": "https://www.google.com/search?q=black%20phone&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+                "serp_item_types": [
+                  "video",
+                  "people_also_ask",
+                  "organic",
+                  "people_also_search",
+                  "related_searches",
+                  "knowledge_graph"
+                ],
+                "se_results_count": 10040000000,
+                "last_updated_time": "2023-03-13 07:11:45 +00:00",
+                "previous_updated_time": "2023-02-06 16:30:25 +00:00"
+              },
+              "avg_backlinks_info": {
+                "se_type": "google",
+                "backlinks": 1567.3,
+                "dofollow": 1212,
+                "referring_pages": 1400.4,
+                "referring_domains": 275.8,
+                "referring_main_domains": 251.2,
+                "rank": 248.2,
+                "main_domain_rank": 650.5,
+                "last_updated_time": "2023-03-13 07:11:45 +00:00"
+              },
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "commercial",
+                "foreign_intent": null,
+                "last_updated_time": "2023-03-03 20:27:03 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "find to my phone",
+              "location_code": 2840,
+              "language_code": "en",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2023-03-21 00:31:34 +00:00",
+                "competition": 0.13,
+                "competition_level": "LOW",
+                "cpc": 1.37,
+                "search_volume": 673000,
+                "low_top_of_page_bid": 0.53,
+                "high_top_of_page_bid": 1.37,
+                "categories": [
+                  10019,
+                  10167,
+                  12153
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2023,
+                    "month": 2,
+                    "search_volume": 550000
+                  },
+                  {
+                    "year": 2023,
+                    "month": 1,
+                    "search_volume": 673000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 12,
+                    "search_volume": 673000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 11,
+                    "search_volume": 673000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 10,
+                    "search_volume": 673000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 9,
+                    "search_volume": 673000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 8,
+                    "search_volume": 823000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 7,
+                    "search_volume": 823000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 6,
+                    "search_volume": 823000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 5,
+                    "search_volume": 823000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 4,
+                    "search_volume": 823000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 3,
+                    "search_volume": 823000
+                  }
+                ]
+              },
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": "find my phone",
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": 100,
+                "detected_language": "en",
+                "is_another_language": false
+              },
+              "impressions_info": {
+                "se_type": "google",
+                "last_updated_time": "2022-03-22 08:34:45 +00:00",
+                "bid": 999,
+                "match_type": "exact",
+                "ad_position_min": 1.11,
+                "ad_position_max": 1,
+                "ad_position_average": 1.06,
+                "cpc_min": 68.97,
+                "cpc_max": 84.3,
+                "cpc_average": 76.63,
+                "daily_impressions_min": 0.15,
+                "daily_impressions_max": 0.18,
+                "daily_impressions_average": 0.16,
+                "daily_clicks_min": 0.01,
+                "daily_clicks_max": 0.02,
+                "daily_clicks_average": 0.01,
+                "daily_cost_min": 0.98,
+                "daily_cost_max": 1.2,
+                "daily_cost_average": 1.09
+              },
+              "serp_info": {
+                "se_type": "google",
+                "check_url": "https://www.google.com/search?q=find%20to%20my%20phone&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+                "serp_item_types": [
+                  "organic",
+                  "people_also_ask",
+                  "people_also_search",
+                  "related_searches",
+                  "knowledge_graph"
+                ],
+                "se_results_count": 10960000000,
+                "last_updated_time": "2023-02-06 16:30:24 +00:00",
+                "previous_updated_time": "2022-10-20 13:54:33 +00:00"
+              },
+              "avg_backlinks_info": {
+                "se_type": "google",
+                "backlinks": 47525.7,
+                "dofollow": 26457.9,
+                "referring_pages": 30839.7,
+                "referring_domains": 2395,
+                "referring_main_domains": 1958.1,
+                "rank": 387.3,
+                "main_domain_rank": 841.3,
+                "last_updated_time": "2023-02-06 16:31:22 +00:00"
+              },
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "commercial",
+                "foreign_intent": [
+                  "navigational"
+                ],
+                "last_updated_time": "2023-03-02 07:46:22 +00:00"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

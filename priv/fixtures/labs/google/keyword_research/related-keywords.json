@@ -1,0 +1,489 @@
+{
+  "version": "0.1.20221214",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.1020 sec.",
+  "cost": 0.0103,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "03210009-4426-0387-0000-5a33a48f3334",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0514 sec.",
+      "cost": 0.0103,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "google",
+        "related_keywords",
+        "live"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "related_keywords",
+        "se_type": "google",
+        "keyword": "phone",
+        "language_name": "English",
+        "location_code": 2840,
+        "limit": 3
+      },
+      "result": [
+        {
+          "se_type": "google",
+          "seed_keyword": "phone",
+          "seed_keyword_data": null,
+          "location_code": 2840,
+          "language_code": "en",
+          "total_count": 8,
+          "items_count": 3,
+          "items": [
+            {
+              "se_type": "google",
+              "keyword_data": {
+                "se_type": "google",
+                "keyword": "phone",
+                "location_code": 2840,
+                "language_code": "en",
+                "keyword_info": {
+                  "se_type": "google",
+                  "last_updated_time": "2023-03-16 07:27:50 +00:00",
+                  "competition": 1,
+                  "competition_level": "HIGH",
+                  "cpc": 4.53,
+                  "search_volume": 368000,
+                  "low_top_of_page_bid": 1.53,
+                  "high_top_of_page_bid": 4.53,
+                  "categories": [
+                    10007,
+                    10878,
+                    12171
+                  ],
+                  "monthly_searches": [
+                    {
+                      "year": 2023,
+                      "month": 2,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2023,
+                      "month": 1,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 12,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 11,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 10,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 9,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 8,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 7,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 6,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 5,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 4,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 3,
+                      "search_volume": 368000
+                    }
+                  ]
+                },
+                "keyword_properties": {
+                  "se_type": "google",
+                  "core_keyword": "phone",
+                  "synonym_clustering_algorithm": "text_processing",
+                  "keyword_difficulty": 100,
+                  "detected_language": "en",
+                  "is_another_language": false
+                },
+                "impressions_info": {
+                  "se_type": "google",
+                  "last_updated_time": "2022-04-25 10:51:53 +00:00",
+                  "bid": 999,
+                  "match_type": "exact",
+                  "ad_position_min": 1.32,
+                  "ad_position_max": 1,
+                  "ad_position_average": 1.2,
+                  "cpc_min": 339.24,
+                  "cpc_max": 414.63,
+                  "cpc_average": 376.94,
+                  "daily_impressions_min": 3778.83,
+                  "daily_impressions_max": 4618.57,
+                  "daily_impressions_average": 4198.7,
+                  "daily_clicks_min": 123.94,
+                  "daily_clicks_max": 151.48,
+                  "daily_clicks_average": 137.71,
+                  "daily_cost_min": 46717.04,
+                  "daily_cost_max": 57098.6,
+                  "daily_cost_average": 51907.82
+                },
+                "serp_info": null,
+                "avg_backlinks_info": {
+                  "se_type": "google",
+                  "backlinks": 16546.7,
+                  "dofollow": 5534.6,
+                  "referring_pages": 11223.3,
+                  "referring_domains": 544.6,
+                  "referring_main_domains": 475.6,
+                  "rank": 340.1,
+                  "main_domain_rank": 688.4,
+                  "last_updated_time": "2023-03-13 07:14:56 +00:00"
+                },
+                "search_intent_info": {
+                  "se_type": "google",
+                  "main_intent": "navigational",
+                  "foreign_intent": [
+                    "commercial"
+                  ],
+                  "last_updated_time": "2023-03-02 03:54:21 +00:00"
+                }
+              },
+              "depth": 0,
+              "related_keywords": [
+                "phone call",
+                "phone, samsung",
+                "phone number",
+                "phone call app",
+                "phone app",
+                "my phone",
+                "phone google",
+                "phone meaning"
+              ]
+            },
+            {
+              "se_type": "google",
+              "keyword_data": {
+                "se_type": "google",
+                "keyword": "phone call",
+                "location_code": 2840,
+                "language_code": "en",
+                "keyword_info": {
+                  "se_type": "google",
+                  "last_updated_time": "2023-03-14 06:38:51 +00:00",
+                  "competition": 1,
+                  "competition_level": "HIGH",
+                  "cpc": 1.78,
+                  "search_volume": 301000,
+                  "low_top_of_page_bid": 0.44,
+                  "high_top_of_page_bid": 1.78,
+                  "categories": [
+                    10007,
+                    10878,
+                    11510,
+                    12762,
+                    13419
+                  ],
+                  "monthly_searches": [
+                    {
+                      "year": 2023,
+                      "month": 2,
+                      "search_volume": 201000
+                    },
+                    {
+                      "year": 2023,
+                      "month": 1,
+                      "search_volume": 246000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 12,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 11,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 10,
+                      "search_volume": 246000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 9,
+                      "search_volume": 246000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 8,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 7,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 6,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 5,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 4,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 3,
+                      "search_volume": 368000
+                    }
+                  ]
+                },
+                "keyword_properties": {
+                  "se_type": "google",
+                  "core_keyword": "phone call",
+                  "synonym_clustering_algorithm": "text_processing",
+                  "keyword_difficulty": 80,
+                  "detected_language": "en",
+                  "is_another_language": false
+                },
+                "impressions_info": {
+                  "se_type": "google",
+                  "last_updated_time": "2022-04-19 09:16:51 +00:00",
+                  "bid": 999,
+                  "match_type": "exact",
+                  "ad_position_min": 1.29,
+                  "ad_position_max": 1,
+                  "ad_position_average": 1.17,
+                  "cpc_min": 333.03,
+                  "cpc_max": 407.04,
+                  "cpc_average": 370.04,
+                  "daily_impressions_min": 169.51,
+                  "daily_impressions_max": 207.18,
+                  "daily_impressions_average": 188.34,
+                  "daily_clicks_min": 35.27,
+                  "daily_clicks_max": 43.1,
+                  "daily_clicks_average": 39.18,
+                  "daily_cost_min": 13049.67,
+                  "daily_cost_max": 15949.6,
+                  "daily_cost_average": 14499.63
+                },
+                "serp_info": null,
+                "avg_backlinks_info": {
+                  "se_type": "google",
+                  "backlinks": 6012.9,
+                  "dofollow": 2240.2,
+                  "referring_pages": 5117.3,
+                  "referring_domains": 969,
+                  "referring_main_domains": 819,
+                  "rank": 262,
+                  "main_domain_rank": 840,
+                  "last_updated_time": "2023-03-13 07:14:38 +00:00"
+                },
+                "search_intent_info": {
+                  "se_type": "google",
+                  "main_intent": "commercial",
+                  "foreign_intent": null,
+                  "last_updated_time": "2023-03-02 03:54:30 +00:00"
+                }
+              },
+              "depth": 1,
+              "related_keywords": [
+                "phone call online",
+                "phone call app",
+                "phone call list",
+                "phone call from computer",
+                "free phone call",
+                "phone dial to call",
+                "phone call app download",
+                "make a phone call to someone"
+              ]
+            },
+            {
+              "se_type": "google",
+              "keyword_data": {
+                "se_type": "google",
+                "keyword": "phone number",
+                "location_code": 2840,
+                "language_code": "en",
+                "keyword_info": {
+                  "se_type": "google",
+                  "last_updated_time": "2023-03-13 15:00:09 +00:00",
+                  "competition": 0.07,
+                  "competition_level": "LOW",
+                  "cpc": 1.48,
+                  "search_volume": 301000,
+                  "low_top_of_page_bid": 0.39,
+                  "high_top_of_page_bid": 1.48,
+                  "categories": [
+                    10007,
+                    10108,
+                    10756,
+                    11498,
+                    13418,
+                    13710
+                  ],
+                  "monthly_searches": [
+                    {
+                      "year": 2023,
+                      "month": 2,
+                      "search_volume": 201000
+                    },
+                    {
+                      "year": 2023,
+                      "month": 1,
+                      "search_volume": 246000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 12,
+                      "search_volume": 246000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 11,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 10,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 9,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 8,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 7,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 6,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 5,
+                      "search_volume": 368000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 4,
+                      "search_volume": 301000
+                    },
+                    {
+                      "year": 2022,
+                      "month": 3,
+                      "search_volume": 368000
+                    }
+                  ]
+                },
+                "keyword_properties": {
+                  "se_type": "google",
+                  "core_keyword": null,
+                  "synonym_clustering_algorithm": "text_processing",
+                  "keyword_difficulty": 69,
+                  "detected_language": "en",
+                  "is_another_language": false
+                },
+                "impressions_info": {
+                  "se_type": "google",
+                  "last_updated_time": "2022-04-17 06:40:51 +00:00",
+                  "bid": 999,
+                  "match_type": "exact",
+                  "ad_position_min": 1.15,
+                  "ad_position_max": 1,
+                  "ad_position_average": 1.08,
+                  "cpc_min": 184.47,
+                  "cpc_max": 225.47,
+                  "cpc_average": 204.97,
+                  "daily_impressions_min": 2041.07,
+                  "daily_impressions_max": 2494.65,
+                  "daily_impressions_average": 2267.86,
+                  "daily_clicks_min": 137.9,
+                  "daily_clicks_max": 168.54,
+                  "daily_clicks_average": 153.22,
+                  "daily_cost_min": 28264.79,
+                  "daily_cost_max": 34545.86,
+                  "daily_cost_average": 31405.33
+                },
+                "serp_info": null,
+                "avg_backlinks_info": {
+                  "se_type": "google",
+                  "backlinks": 12021.4,
+                  "dofollow": 4286.8,
+                  "referring_pages": 9216.5,
+                  "referring_domains": 1228,
+                  "referring_main_domains": 1053.1,
+                  "rank": 293.4,
+                  "main_domain_rank": 731.1,
+                  "last_updated_time": "2023-03-13 07:15:43 +00:00"
+                },
+                "search_intent_info": {
+                  "se_type": "google",
+                  "main_intent": "informational",
+                  "foreign_intent": [
+                    "navigational"
+                  ],
+                  "last_updated_time": "2023-03-02 03:55:07 +00:00"
+                }
+              },
+              "depth": 1,
+              "related_keywords": [
+                "phone number free",
+                "phone number generator",
+                "phone numbers that work",
+                "phone number check",
+                "phone number game",
+                "my phone number",
+                "phone number example",
+                "whose telephone number is this"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

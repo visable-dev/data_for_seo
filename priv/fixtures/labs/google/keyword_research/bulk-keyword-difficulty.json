@@ -1,0 +1,64 @@
+{
+  "version": "0.1.20220216",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.0510 sec.",
+  "cost": 0.0103,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "03021544-0696-0392-0000-f2ae21b8a66e",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0190 sec.",
+      "cost": 0.0103,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "google",
+        "bulk_keyword_difficulty",
+        "live"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "bulk_keyword_difficulty",
+        "se_type": "google",
+        "location_code": 2840,
+        "language_code": "en",
+        "keywords": [
+          "dentist new york",
+          "pizza brooklyn",
+          "car dealer los angeles"
+        ]
+      },
+      "result": [
+        {
+          "se_type": "google",
+          "location_code": 2840,
+          "language_code": "en",
+          "total_count": 3,
+          "items_count": 3,
+          "items": [
+            {
+              "se_type": "google",
+              "keyword": "car dealer los angeles",
+              "keyword_difficulty": 50
+            },
+            {
+              "se_type": "google",
+              "keyword": "dentist new york",
+              "keyword_difficulty": 50
+            },
+            {
+              "se_type": "google",
+              "keyword": "pizza brooklyn",
+              "keyword_difficulty": 44
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
