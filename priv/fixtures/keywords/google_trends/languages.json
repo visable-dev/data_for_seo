@@ -1,0 +1,48 @@
+{
+  "version": "0.1.20200408",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.1977 sec.",
+  "cost": 0,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "04081302-1535-0119-0000-cf474e770569",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0002 sec.",
+      "cost": 0,
+      "result_count": 231,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_trends",
+        "languages"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "languages",
+        "se": "google_trends"
+      },
+      "result": [
+        {
+          "language_name": "Afrikaans",
+          "language_code": "af"
+        },
+        {
+          "language_name": "Albanian",
+          "language_code": "sq"
+        },
+        {
+          "language_name": "English",
+          "language_code": "en"
+        },
+        {
+          "language_name": "German",
+          "language_code": "de"
+        }
+      ]
+    }
+  ]
+}

@@ -24,7 +24,7 @@ defmodule DataForSeo.Api.Labs.Google.CategoriesTest do
       Plug.Conn.resp(
         conn,
         200,
-        task_get_google_categories()
+        task_get_labs_google_categories()
       )
     end)
 

@@ -1,6 +1,6 @@
-defmodule DataForSeo.API.SERP.Location do
+defmodule DataForSeo.API.SERP.Google.Location do
   @moduledoc """
-  Provides SERP Location API interfaces.
+  Provides SERP Google Location API interfaces.
   """
 
   alias DataForSeo.Client
@@ -8,7 +8,7 @@ defmodule DataForSeo.API.SERP.Location do
   @doc """
   Gets all locations by country for specific service: bing, google, youtube etc
   ## Examples
-      DataForSeo.API.SERP.Locations.get_location_by_service_and_country("us")
+      DataForSeo.API.SERP.Google.Locations.get_location_by_service_and_country("us")
   """
   @spec get_location_by_service_and_country(String.t(), String.t(), Keyword.t()) ::
           {:ok, map()} | {:error, term()}

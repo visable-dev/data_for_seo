@@ -1,7 +1,7 @@
-defmodule DataForSeo.Api.LocationTest do
+defmodule DataForSeo.Api.SERP.Google.LocationTest do
   use ExUnit.Case
 
-  alias DataForSeo.API.SERP.Location
+  alias DataForSeo.API.SERP.Google.Location
 
   import RespFactory
 
@@ -24,7 +24,7 @@ defmodule DataForSeo.Api.LocationTest do
       Plug.Conn.resp(
         conn,
         200,
-        task_get_location_by_country()
+        task_get_location_by_country("lu")
       )
     end)
 

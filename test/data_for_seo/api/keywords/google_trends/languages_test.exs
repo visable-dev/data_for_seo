@@ -24,7 +24,7 @@ defmodule DataForSeo.Api.Keywords.GoogleTrends.LanguagesTest do
       Plug.Conn.resp(
         conn,
         200,
-        task_get_google_trend_languages()
+        task_get_google_trends_languages()
       )
     end)
 
