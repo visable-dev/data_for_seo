@@ -25,6 +25,7 @@ defmodule RespFactory do
   end
 
   def task_get_labs_google_keywords_search_intent(payload) do
+    # probably it doesn't make sense and it'd nice to replace dynamic items to mock more complicated cases.
     ["labs", "google", "keyword_research", "search-intent"]
     |> get_json_fixture()
     |> then(fn fixture ->
@@ -33,6 +34,10 @@ defmodule RespFactory do
       end)
     end)
     |> encode_fixture()
+  end
+
+  def task_get_labs_google_keywords_for_site do
+    get_raw_fixture(["labs", "google", "keyword_research", "keywords-for-site"])
   end
 
   # GOOGLE TRENDS

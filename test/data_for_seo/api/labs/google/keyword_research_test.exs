@@ -1,6 +1,13 @@
 defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
   use ExUnit.Case
 
+  # Notes on testing.
+  # There is no a lot of sense to test fixture since we know it was returned and correct.
+  # However it could be useful it each type of data will have it's own structs. Then it'll make sense
+  # if data parsed and mapped properly. Right now it's enough to test that payload is valid.
+  # I tried to test more on search_intent/3, but it's useless b/c fixtures are stale.
+  # Just checking now if it returns a proper decoded fixture as response
+
   alias DataForSeo.API.Labs.Google.KeywordResearch
 
   import RespFactory
@@ -91,4 +98,64 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
       |> hd()
     end
   end
+
+  describe "keywords_for_site/4" do
+    test "request by language code and loc code", %{bypass: bypass} do
+      Bypass.expect(bypass, fn conn ->
+        assert "POST" = conn.method
+        assert "/v3/dataforseo_labs/google/keywords_for_site/live" = conn.request_path
+        assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
+
+        assert {:ok, body, _} = Plug.Conn.read_body(conn)
+        payload = Jason.decode!(body)
+        assert payload["target"] == "apple.com"
+        assert payload["language_code"] == "en"
+        assert payload["location_code"] == 3346
+        # shouldn't be any other data in payload
+        assert map_size(payload) == 3
+
+        Plug.Conn.resp(
+          conn,
+          200,
+          task_get_labs_google_keywords_for_site()
+        )
+      end)
+
+      {:ok, response} = KeywordResearch.keywords_for_site("apple.com", 3346, "en", %{})
+      assert %{"tasks" => [task | _], "tasks_count" => 1} = response
+      assert task["id"] == "03231831-1535-0398-0000-86e0a30305cb"
+      assert task["data"]["target"] == "apple.com"
+    end
+
+    test "request by language name and loc name with extra filters", %{bypass: bypass} do
+      Bypass.expect(bypass, fn conn ->
+        assert "POST" = conn.method
+        assert "/v3/dataforseo_labs/google/keywords_for_site/live" = conn.request_path
+        assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
+
+        assert {:ok, body, _} = Plug.Conn.read_body(conn)
+        payload = Jason.decode!(body)
+        assert payload["target"] == "apple.com"
+        assert payload["language_name"] == "English"
+        assert payload["location_name"] == "United Kingdom"
+        assert payload["include_serp_info"] == true
+        assert payload["limit"] == 100
+        # shouldn't be any other data in payload
+        assert map_size(payload) == 5
+
+        Plug.Conn.resp(
+          conn,
+          200,
+          task_get_labs_google_keywords_for_site()
+        )
+      end)
+
+      {:ok, response} = KeywordResearch.keywords_for_site("apple.com", "United Kingdom", "English", %{include_serp_info: true, limit: 100})
+      assert %{"tasks" => [task | _], "tasks_count" => 1} = response
+      assert task["id"] == "03231831-1535-0398-0000-86e0a30305cb"
+      assert task["data"]["target"] == "apple.com"
+    end
+
+  end
+
 end
