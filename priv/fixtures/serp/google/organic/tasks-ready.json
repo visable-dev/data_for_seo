@@ -1,0 +1,52 @@
+{
+  "version": "0.1.20200129",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.2270 sec.",
+  "cost": 0,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "11151406-0696-0087-0000-e781cb0144a1",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0388 sec.",
+      "cost": 0,
+      "result_count": 2,
+      "path": [
+        "v3",
+        "serp",
+        "google",
+        "organic",
+        "tasks_ready"
+      ],
+      "data": {
+        "api": "serp",
+        "function": "tasks_ready",
+        "se": "google",
+        "se_type": "organic"
+      },
+      "result": [
+        {
+          "id": "11081554-0696-0066-0000-27e68ec15871",
+          "se": "google",
+          "se_type": "organic",
+          "date_posted": "2019-11-08 13:54:43 +00:00",
+          "endpoint_regular": "/v3/serp/google/organic/task_get/regular/11081554-0696-0066-0000-27e68ec15871",
+          "endpoint_advanced": "/v3/serp/google/organic/task_get/advanced/11081554-0696-0066-0000-27e68ec15871",
+          "endpoint_html": "/v3/serp/google/organic/task_get/html/11081554-0696-0066-0000-27e68ec15871"
+        },
+        {
+          "id": "11151406-0696-0066-0000-c4ece317cdb2",
+          "se": "google",
+          "se_type": "organic",
+          "date_posted": "2019-11-15 12:06:09 +00:00",
+          "endpoint_regular": "/v3/serp/google/organic/task_get/regular/11151406-0696-0066-0000-c4ece317cdb2",
+          "endpoint_advanced": "/v3/serp/google/organic/task_get/advanced/11081554-0696-0066-0000-27e68ec15871",
+          "endpoint_html": "/v3/serp/google/organic/task_get/html/11151406-0696-0066-0000-c4ece317cdb2"
+        }
+      ]
+    }
+  ]
+}
