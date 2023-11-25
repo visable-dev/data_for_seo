@@ -1,0 +1,60 @@
+{
+  "version": "3.20191128",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.4305 sec.",
+  "cost": 0,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "11061103-0696-0120-0000-268044305ce6",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.2547 sec.",
+      "cost": 0,
+      "result_count": 94933,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "locations"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "locations",
+        "se": "google_ads"
+      },
+      "result": [
+        {
+          "location_code": 2840,
+          "location_name": "United States",
+          "location_code_parent": null,
+          "country_iso_code": "US",
+          "location_type": "Country"
+        },
+        {
+          "location_code": 21132,
+          "location_name": "Alaska,United States",
+          "location_code_parent": 2840,
+          "country_iso_code": "US",
+          "location_type": "State"
+        },
+        {
+          "location_code": 21133,
+          "location_name": "Alabama,United States",
+          "location_code_parent": 2840,
+          "country_iso_code": "US",
+          "location_type": "State"
+        },
+        {
+          "location_code": 21135,
+          "location_name": "Arkansas,United States",
+          "location_code_parent": 2840,
+          "country_iso_code": "US",
+          "location_type": "State"
+        }
+      ]
+    }
+  ]
+}

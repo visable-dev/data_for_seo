@@ -1,0 +1,48 @@
+{
+  "version": "3.20191128",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.1773 sec.",
+  "cost": 0,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "11061103-0696-0119-0000-a74d6a2ce740",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0000 sec.",
+      "cost": 0,
+      "result_count": 43,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "languages"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "languages",
+        "se": "google_ads"
+      },
+      "result": [
+        {
+          "language_name": "Arabic",
+          "language_code": "ar"
+        },
+        {
+          "language_name": "Bulgarian",
+          "language_code": "bg"
+        },
+        {
+          "language_name": "Catalan",
+          "language_code": "ca"
+        },
+        {
+          "language_name": "Croatian",
+          "language_code": "hr"
+        }
+      ]
+    }
+  ]
+}

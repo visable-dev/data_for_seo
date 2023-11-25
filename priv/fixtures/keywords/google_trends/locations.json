@@ -1,0 +1,104 @@
+{
+  "version": "0.1.20210917",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.1012 sec.",
+  "cost": 0,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "09201832-1535-0120-0000-012e5cc7e0d9",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0244 sec.",
+      "cost": 0,
+      "result_count": 2383,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_trends",
+        "locations"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "locations",
+        "se": "google_trends"
+      },
+      "result": [
+        {
+          "location_code": 2004,
+          "location_name": "Afghanistan",
+          "location_code_parent": null,
+          "country_iso_code": "AF",
+          "location_type": "Country",
+          "geo_name": "Afghanistan",
+          "geo_id": "AF"
+        },
+        {
+          "location_code": 2008,
+          "location_name": "Albania",
+          "location_code_parent": null,
+          "country_iso_code": "AL",
+          "location_type": "Country",
+          "geo_name": "Albania",
+          "geo_id": "AL"
+        },
+        {
+          "location_code": 2010,
+          "location_name": "Antarctica",
+          "location_code_parent": null,
+          "country_iso_code": "AQ",
+          "location_type": "Country",
+          "geo_name": "Antarctica",
+          "geo_id": "AQ"
+        },
+        {
+          "location_code": 2012,
+          "location_name": "Algeria",
+          "location_code_parent": null,
+          "country_iso_code": "DZ",
+          "location_type": "Country",
+          "geo_name": "Algeria",
+          "geo_id": "DZ"
+        },
+        {
+          "location_code": 2016,
+          "location_name": "American Samoa",
+          "location_code_parent": null,
+          "country_iso_code": "AS",
+          "location_type": "Country",
+          "geo_name": "American Samoa",
+          "geo_id": "AS"
+        },
+        {
+          "location_code": 2020,
+          "location_name": "Andorra",
+          "location_code_parent": null,
+          "country_iso_code": "AD",
+          "location_type": "Country",
+          "geo_name": "Andorra",
+          "geo_id": "AD"
+        },
+        {
+          "location_code": 2024,
+          "location_name": "Angola",
+          "location_code_parent": null,
+          "country_iso_code": "AO",
+          "location_type": "Country",
+          "geo_name": "Angola",
+          "geo_id": "AO"
+        },
+        {
+          "location_code": 21113,
+          "location_name": "Donetsk Oblast,Ukraine",
+          "location_code_parent": 2804,
+          "country_iso_code": "UA",
+          "location_type": "Region",
+          "geo_name": "Donetsk Oblast,Ukraine",
+          "geo_id": "Donetsk Oblast,Ukraine"
+        }
+      ]
+    }
+  ]
+}
