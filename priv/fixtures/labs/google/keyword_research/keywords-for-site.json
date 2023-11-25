@@ -1,0 +1,490 @@
+{
+  "version": "0.1.20221214",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "2.3689 sec.",
+  "cost": 0.0103,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "03231831-1535-0398-0000-86e0a30305cb",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "2.3189 sec.",
+      "cost": 0.0103,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "google",
+        "keywords_for_site",
+        "live"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "keywords_for_site",
+        "se_type": "google",
+        "target": "apple.com",
+        "language_code": "en",
+        "location_code": 2840,
+        "include_serp_info": true,
+        "include_subdomains": true,
+        "filters": [
+          "serp_info.se_results_count",
+          ">",
+          0
+        ],
+        "order_by": [
+          "keyword_info.search_volume,desc"
+        ],
+        "limit": 3
+      },
+      "result": [
+        {
+          "se_type": "google",
+          "target": "apple.com",
+          "location_code": 2840,
+          "language_code": "en",
+          "total_count": 6883566,
+          "items_count": 3,
+          "offset": 0,
+          "offset_token": "eyJDdXJyZW50T2Zmc2V0IjozLCJSZXF1ZXN0RGF0YSI6eyJzaXRlIjoiYXBwbGUuY29tIiwibG9jYXRpb24iOjI4NDAsImxhbmd1YWdlIjoiZW4iLCJpbmNsdWRlX3N1YmRvbWFpbnMiOnRydWUsImxvYWRfc2VycF9pbmZvIjp0cnVlLCJzZWFyY2hfYWZ0ZXJfdG9rZW4iOm51bGwsImlnbm9yZV9zeW5vbnltcyI6ZmFsc2UsInNlYXJjaF9lbmdpbmUiOiJnb29nbGUiLCJvcmRlcl9ieSI6eyJvcmRlcl9maWVsZCI6ImtleXdvcmRfaW5mby5zZWFyY2hfdm9sdW1lIiwib3JkZXJfdHlwZSI6IkRlc2MiLCJuZXh0IjpudWxsfSwibGltaXQiOjMsIm9mZnNldCI6MCwiYWlkIjoxNTM1fSwiUmF3UXVlcnkiOnsiZmllbGQiOiJzZXJwX2luZm8uc2VfcmVzdWx0c19jb3VudCIsInR5cGUiOiJndCIsInZhbHVlIjowfSwiU2VhcmNoQWZ0ZXJEYXRhIjpbMTg1MDAwMDAwLCI0YjYzMDYzOS1iYTNkLTg0Y2QtMjVlYS05M2MwYTVhZWQ4OWYiXX0=",
+          "items": [
+            {
+              "se_type": "google",
+              "keyword": "you tuh",
+              "location_code": 2840,
+              "language_code": "en",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2023-03-22 02:01:09 +00:00",
+                "competition": null,
+                "competition_level": "LOW",
+                "cpc": 0.04,
+                "search_volume": 185000000,
+                "low_top_of_page_bid": 0.01,
+                "high_top_of_page_bid": 0.04,
+                "categories": [
+                  10108,
+                  13691
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2023,
+                    "month": 2,
+                    "search_volume": 151000000
+                  },
+                  {
+                    "year": 2023,
+                    "month": 1,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 12,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 11,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 10,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 9,
+                    "search_volume": 151000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 8,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 7,
+                    "search_volume": 151000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 6,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 5,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 4,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 3,
+                    "search_volume": 185000000
+                  }
+                ]
+              },
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": 18,
+                "detected_language": null,
+                "is_another_language": true
+              },
+              "impressions_info": {
+                "se_type": "google",
+                "last_updated_time": null,
+                "bid": null,
+                "match_type": null,
+                "ad_position_min": null,
+                "ad_position_max": null,
+                "ad_position_average": null,
+                "cpc_min": null,
+                "cpc_max": null,
+                "cpc_average": null,
+                "daily_impressions_min": null,
+                "daily_impressions_max": null,
+                "daily_impressions_average": null,
+                "daily_clicks_min": null,
+                "daily_clicks_max": null,
+                "daily_clicks_average": null,
+                "daily_cost_min": null,
+                "daily_cost_max": null,
+                "daily_cost_average": null
+              },
+              "serp_info": {
+                "se_type": "google",
+                "check_url": "https://www.google.com/search?q=you%20tuh&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+                "serp_item_types": [
+                  "video",
+                  "organic",
+                  "images",
+                  "related_searches",
+                  "knowledge_graph"
+                ],
+                "se_results_count": 29800000,
+                "last_updated_time": "2023-03-01 09:44:41 +00:00",
+                "previous_updated_time": "2023-01-26 20:00:01 +00:00"
+              },
+              "avg_backlinks_info": {
+                "se_type": "google",
+                "backlinks": 2.1,
+                "dofollow": 0.2,
+                "referring_pages": 1.5,
+                "referring_domains": 1.2,
+                "referring_main_domains": 1.2,
+                "rank": 14.4,
+                "main_domain_rank": 626.1,
+                "last_updated_time": "2023-03-01 09:44:43 +00:00"
+              },
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "informational",
+                "foreign_intent": null,
+                "last_updated_time": "2023-03-03 16:01:12 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "you",
+              "location_code": 2840,
+              "language_code": "en",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2023-03-21 07:07:46 +00:00",
+                "competition": null,
+                "competition_level": "LOW",
+                "cpc": 0.04,
+                "search_volume": 185000000,
+                "low_top_of_page_bid": 0.01,
+                "high_top_of_page_bid": 0.04,
+                "categories": [
+                  10013,
+                  10109,
+                  13546
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2023,
+                    "month": 2,
+                    "search_volume": 151000000
+                  },
+                  {
+                    "year": 2023,
+                    "month": 1,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 12,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 11,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 10,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 9,
+                    "search_volume": 151000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 8,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 7,
+                    "search_volume": 151000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 6,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 5,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 4,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 3,
+                    "search_volume": 185000000
+                  }
+                ]
+              },
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": 23,
+                "detected_language": "en",
+                "is_another_language": false
+              },
+              "impressions_info": {
+                "se_type": "google",
+                "last_updated_time": "2022-04-17 18:54:48 +00:00",
+                "bid": 999,
+                "match_type": "exact",
+                "ad_position_min": 1.11,
+                "ad_position_max": 1,
+                "ad_position_average": 1.06,
+                "cpc_min": 2.69,
+                "cpc_max": 3.29,
+                "cpc_average": 2.99,
+                "daily_impressions_min": 515.37,
+                "daily_impressions_max": 629.9,
+                "daily_impressions_average": 572.63,
+                "daily_clicks_min": 55.58,
+                "daily_clicks_max": 67.93,
+                "daily_clicks_average": 61.75,
+                "daily_cost_min": 166.29,
+                "daily_cost_max": 203.25,
+                "daily_cost_average": 184.77
+              },
+              "serp_info": {
+                "se_type": "google",
+                "check_url": "https://www.google.com/search?q=you&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+                "serp_item_types": [
+                  "organic",
+                  "video",
+                  "twitter",
+                  "images",
+                  "related_searches",
+                  "knowledge_graph"
+                ],
+                "se_results_count": 100,
+                "last_updated_time": "2023-03-01 09:44:24 +00:00",
+                "previous_updated_time": "2023-01-26 19:59:58 +00:00"
+              },
+              "avg_backlinks_info": {
+                "se_type": "google",
+                "backlinks": 3962.6,
+                "dofollow": 2203,
+                "referring_pages": 2590.4,
+                "referring_domains": 418.5,
+                "referring_main_domains": 307.3,
+                "rank": 180.7,
+                "main_domain_rank": 930.8,
+                "last_updated_time": "2023-03-01 09:44:45 +00:00"
+              },
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "informational",
+                "foreign_intent": [
+                  "navigational"
+                ],
+                "last_updated_time": "2023-03-03 15:55:21 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "yoututbe",
+              "location_code": 2840,
+              "language_code": "en",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2023-03-22 06:16:56 +00:00",
+                "competition": null,
+                "competition_level": "LOW",
+                "cpc": 0.04,
+                "search_volume": 185000000,
+                "low_top_of_page_bid": 0.01,
+                "high_top_of_page_bid": 0.04,
+                "categories": [
+                  10108,
+                  13691
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2023,
+                    "month": 2,
+                    "search_volume": 151000000
+                  },
+                  {
+                    "year": 2023,
+                    "month": 1,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 12,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 11,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 10,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 9,
+                    "search_volume": 151000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 8,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 7,
+                    "search_volume": 151000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 6,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 5,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 4,
+                    "search_volume": 185000000
+                  },
+                  {
+                    "year": 2022,
+                    "month": 3,
+                    "search_volume": 185000000
+                  }
+                ]
+              },
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": 100,
+                "detected_language": null,
+                "is_another_language": true
+              },
+              "impressions_info": {
+                "se_type": "google",
+                "last_updated_time": null,
+                "bid": null,
+                "match_type": null,
+                "ad_position_min": null,
+                "ad_position_max": null,
+                "ad_position_average": null,
+                "cpc_min": null,
+                "cpc_max": null,
+                "cpc_average": null,
+                "daily_impressions_min": null,
+                "daily_impressions_max": null,
+                "daily_impressions_average": null,
+                "daily_clicks_min": null,
+                "daily_clicks_max": null,
+                "daily_clicks_average": null,
+                "daily_cost_min": null,
+                "daily_cost_max": null,
+                "daily_cost_average": null
+              },
+              "serp_info": {
+                "se_type": "google",
+                "check_url": "https://www.google.com/search?q=yoututbe&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+                "serp_item_types": [
+                  "organic",
+                  "twitter",
+                  "top_stories",
+                  "video",
+                  "related_searches",
+                  "knowledge_graph"
+                ],
+                "se_results_count": 52,
+                "last_updated_time": "2022-05-13 13:37:40 +00:00",
+                "previous_updated_time": "2022-04-12 13:31:22 +00:00"
+              },
+              "avg_backlinks_info": {
+                "se_type": "google",
+                "backlinks": 43194108.1,
+                "dofollow": 28723980.5,
+                "referring_pages": 34785918,
+                "referring_domains": 64957.8,
+                "referring_main_domains": 50468.6,
+                "rank": 670.8333129882812,
+                "main_domain_rank": 891.3,
+                "last_updated_time": "2022-09-15 20:06:37 +00:00"
+              },
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "navigational",
+                "foreign_intent": null,
+                "last_updated_time": "2023-03-03 16:23:38 +00:00"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "version": "0.1.20221214",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.1285 sec.",
+  "cost": 0.0014,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "02271900-1535-0541-0000-2ab771deb8e2",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0253 sec.",
+      "cost": 0.0014,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "google",
+        "search_intent",
+        "live"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "search_intent",
+        "se_type": "google",
+        "language_code": "en",
+        "keywords": [
+          "login page",
+          "audi a7",
+          "elon musk",
+          "milk"
+        ]
+      },
+      "result": [
+        {
+          "language_code": "en",
+          "items_count": 4,
+          "items": [
+            {
+              "keyword": "login page",
+              "keyword_intent": {
+                "label": "navigational",
+                "probability": 0.9694191
+              },
+              "secondary_keyword_intents": null
+            },
+            {
+              "keyword": "audi a7",
+              "keyword_intent": {
+                "label": "commercial",
+                "probability": 1
+              },
+              "secondary_keyword_intents": null
+            },
+            {
+              "keyword": "elon musk",
+              "keyword_intent": {
+                "label": "informational",
+                "probability": 0.95328856
+              },
+              "secondary_keyword_intents": null
+            },
+            {
+              "keyword": "milk",
+              "keyword_intent": {
+                "label": "commercial",
+                "probability": 0.49751797
+              },
+              "secondary_keyword_intents": [
+                {
+                  "label": "transactional",
+                  "probability": 0.37083894
+                },
+                {
+                  "label": "informational",
+                  "probability": 0.30781138
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
