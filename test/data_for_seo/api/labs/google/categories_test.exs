@@ -1,7 +1,7 @@
-defmodule DataForSeo.Api.LocationTest do
+defmodule DataForSeo.Api.Labs.Google.CategoriesTest do
   use ExUnit.Case
 
-  alias DataForSeo.API.SERP.Location
+  alias DataForSeo.API.Labs.Google.Categories
 
   import RespFactory
 
@@ -13,10 +13,10 @@ defmodule DataForSeo.Api.LocationTest do
     {:ok, bypass: bypass}
   end
 
-  test "read locations by country", %{bypass: bypass} do
+  test "read categories", %{bypass: bypass} do
     Bypass.expect(bypass, fn conn ->
       assert "GET" = conn.method
-      assert "/v3/serp/google/locations/lu" = conn.request_path
+      assert "/v3/dataforseo_labs/categories" = conn.request_path
       assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
       assert {:ok, "", _} = Plug.Conn.read_body(conn)
@@ -24,22 +24,24 @@ defmodule DataForSeo.Api.LocationTest do
       Plug.Conn.resp(
         conn,
         200,
-        task_get_location_by_country()
+        task_get_google_categories()
       )
     end)
 
-    assert {:ok, resp} = Location.get_location_by_service_and_country("google", "lu")
+    assert {:ok, resp} = Categories.get_all_categories()
 
     assert %{"tasks" => [%{"result" => locations}], "tasks_count" => 1} = resp
 
     assert Enum.any?(
              locations,
-             &(&1["location_type"] == "Country" and &1["location_name"] == "Luxembourg")
+             &(&1["category_name"] == "Apparel" and &1["category_code"] == 10021 and
+                 &1["category_code_parent"] == nil)
            )
 
     assert Enum.any?(
              locations,
-             &(&1["location_type"] == "City" and &1["location_name"] == "Kaerjeng,Luxembourg")
+             &(&1["category_name"] == "Apparel Accessories" and &1["category_code"] == 10178 and
+                 &1["category_code_parent"] == 10021)
            )
   end
 end

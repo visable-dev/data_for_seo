@@ -484,4 +484,349 @@ defmodule RespFactory do
     }
     """
   end
+
+  def task_get_google_categories do
+    """
+    {
+    "version": "0.1.20200305",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.0594 sec.",
+    "cost": 0,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+    {
+      "id": "03061224-1535-0197-0000-4d85996ce1db",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0015 sec.",
+      "cost": 0,
+      "result_count": 3180,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "categories"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "categories"
+      },
+      "result": [
+        {
+          "category_code": 10021,
+          "category_name": "Apparel",
+          "category_code_parent": null
+        },
+        {
+          "category_code": 10178,
+          "category_name": "Apparel Accessories",
+          "category_code_parent": 10021
+        },
+        {
+          "category_code": 10937,
+          "category_name": "Bags & Packs",
+          "category_code_parent": 10178
+        },
+        {
+          "category_code": 12262,
+          "category_name": "Backpacks & Utility Bags",
+          "category_code_parent": 10937
+        }
+      ]
+    }
+    ]
+    }
+    """
+  end
+
+  def task_get_google_trends_categories do
+    task_get_google_categories()
+  end
+
+  def task_get_google_trend_languages do
+    """
+      {
+    "version": "0.1.20200408",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.1977 sec.",
+    "cost": 0,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+    {
+      "id": "04081302-1535-0119-0000-cf474e770569",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0002 sec.",
+      "cost": 0,
+      "result_count": 231,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_trends",
+        "languages"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "languages",
+        "se": "google_trends"
+      },
+      "result": [
+        {
+          "language_name": "Afrikaans",
+          "language_code": "af"
+        },
+        {
+          "language_name": "Albanian",
+          "language_code": "sq"
+        },
+        {
+          "language_name": "English",
+          "language_code": "en"
+        },
+        {
+          "language_name": "German",
+          "language_code": "de"
+        }
+      ]
+    }
+    ]
+    }
+    """
+  end
+
+  def task_get_google_trend_locations do
+    """
+      {
+    "version": "0.1.20210917",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.1012 sec.",
+    "cost": 0,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+    {
+      "id": "09201832-1535-0120-0000-012e5cc7e0d9",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0244 sec.",
+      "cost": 0,
+      "result_count": 2383,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_trends",
+        "locations"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "locations",
+        "se": "google_trends"
+      },
+      "result": [
+        {
+          "location_code": 2004,
+          "location_name": "Afghanistan",
+          "location_code_parent": null,
+          "country_iso_code": "AF",
+          "location_type": "Country",
+          "geo_name": "Afghanistan",
+          "geo_id": "AF"
+        },
+        {
+          "location_code": 2008,
+          "location_name": "Albania",
+          "location_code_parent": null,
+          "country_iso_code": "AL",
+          "location_type": "Country",
+          "geo_name": "Albania",
+          "geo_id": "AL"
+        },
+        {
+          "location_code": 2010,
+          "location_name": "Antarctica",
+          "location_code_parent": null,
+          "country_iso_code": "AQ",
+          "location_type": "Country",
+          "geo_name": "Antarctica",
+          "geo_id": "AQ"
+        },
+        {
+          "location_code": 2012,
+          "location_name": "Algeria",
+          "location_code_parent": null,
+          "country_iso_code": "DZ",
+          "location_type": "Country",
+          "geo_name": "Algeria",
+          "geo_id": "DZ"
+        },
+        {
+          "location_code": 2016,
+          "location_name": "American Samoa",
+          "location_code_parent": null,
+          "country_iso_code": "AS",
+          "location_type": "Country",
+          "geo_name": "American Samoa",
+          "geo_id": "AS"
+        },
+        {
+          "location_code": 2020,
+          "location_name": "Andorra",
+          "location_code_parent": null,
+          "country_iso_code": "AD",
+          "location_type": "Country",
+          "geo_name": "Andorra",
+          "geo_id": "AD"
+        },
+        {
+          "location_code": 2024,
+          "location_name": "Angola",
+          "location_code_parent": null,
+          "country_iso_code": "AO",
+          "location_type": "Country",
+          "geo_name": "Angola",
+          "geo_id": "AO"
+        },
+        {
+          "location_code": 21113,
+          "location_name": "Donetsk Oblast,Ukraine",
+          "location_code_parent": 2804,
+          "country_iso_code": "UA",
+          "location_type": "Region",
+          "geo_name": "Donetsk Oblast,Ukraine",
+          "geo_id": "Donetsk Oblast,Ukraine"
+        }
+      ]
+    }
+    ]
+    }
+    """
+  end
+
+  def task_get_google_trend_locations_by_country(_) do
+    # same fixture at the moment b/c there are no difference with all locations list
+    # only testing a success routing to the url and response format
+    task_get_google_trend_locations()
+  end
+
+  def task_get_google_ads_locations do
+    """
+      {
+    "version": "3.20191128",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.4305 sec.",
+    "cost": 0,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+    {
+      "id": "11061103-0696-0120-0000-268044305ce6",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.2547 sec.",
+      "cost": 0,
+      "result_count": 94933,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "locations"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "locations",
+        "se": "google_ads"
+      },
+      "result": [
+        {
+          "location_code": 2840,
+          "location_name": "United States",
+          "location_code_parent": null,
+          "country_iso_code": "US",
+          "location_type": "Country"
+        },
+        {
+          "location_code": 21132,
+          "location_name": "Alaska,United States",
+          "location_code_parent": 2840,
+          "country_iso_code": "US",
+          "location_type": "State"
+        },
+        {
+          "location_code": 21133,
+          "location_name": "Alabama,United States",
+          "location_code_parent": 2840,
+          "country_iso_code": "US",
+          "location_type": "State"
+        },
+        {
+          "location_code": 21135,
+          "location_name": "Arkansas,United States",
+          "location_code_parent": 2840,
+          "country_iso_code": "US",
+          "location_type": "State"
+        }
+      ]
+    }
+    ]
+    }
+    """
+  end
+
+  def task_get_google_ads_languages do
+    """
+      {
+    "version": "3.20191128",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.1773 sec.",
+    "cost": 0,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+    {
+      "id": "11061103-0696-0119-0000-a74d6a2ce740",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0000 sec.",
+      "cost": 0,
+      "result_count": 43,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google_ads",
+        "languages"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "languages",
+        "se": "google_ads"
+      },
+      "result": [
+        {
+          "language_name": "Arabic",
+          "language_code": "ar"
+        },
+        {
+          "language_name": "Bulgarian",
+          "language_code": "bg"
+        },
+        {
+          "language_name": "Catalan",
+          "language_code": "ca"
+        },
+        {
+          "language_name": "Croatian",
+          "language_code": "hr"
+        }
+      ]
+    }
+    ]
+    }
+    """
+  end
 end

@@ -141,6 +141,7 @@ defmodule DataForSeo.Client do
 
   defp timeout_options(opts) do
     config = Config.get_tuples() |> verify_config()
+
     [:receive_timeout, :pool_timeout]
     |> Enum.reduce(opts, fn key, acc ->
       case opts[key] || config[key] do
