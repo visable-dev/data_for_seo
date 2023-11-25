@@ -8,7 +8,8 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
   @endpoints %{
     search_intent: "/v3/dataforseo_labs/google/search_intent/live",
     keywords_for_site: "/v3/dataforseo_labs/google/keywords_for_site/live",
-    related_keywords: "/v3/dataforseo_labs/google/related_keywords/live"
+    related_keywords: "/v3/dataforseo_labs/google/related_keywords/live",
+    keyword_ideas: "/v3/dataforseo_labs/google/keyword_ideas/live"
   }
 
   @doc """
@@ -107,6 +108,43 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
 
     @endpoints
     |> Map.get(:related_keywords)
+    |> Client.post(payload)
+    |> Client.validate_status_code()
+    |> Client.decode_json_response(opts)
+    |> handle_response()
+  end
+
+  @doc """
+  The Keyword Ideas endpoint provides search terms that are relevant to the product or service categories of the
+  specified keywords.
+  The algorithm selects the keywords which fall into the same categories as the seed keywords
+  specified in a POST array.
+
+
+  Read more: https://docs.dataforseo.com/v3/dataforseo_labs/google/keyword_ideas/live/
+
+  ## Examples
+  DataForSeo.API.Labs.Google.KeywordResearch.keyword_ideas("apples", 2840, "en", %{}, nil)
+
+  DataForSeo.API.Labs.Google.KeywordResearch.keyword_ideas("apples", "Uruguay", "English", %{})
+  """
+  @spec keyword_ideas(
+          [String.t()],
+          String.t() | non_neg_integer(),
+          String.t(),
+          map(),
+          Keyword.t()
+        ) ::
+          {:ok, map()} | {:error, term()}
+  def keyword_ideas(keywords, loc_name_or_code, lang_name_or_code, optional_payload, opts \\ []) do
+    payload =
+      %{keywords: keywords}
+      |> apply_location(loc_name_or_code)
+      |> apply_language(lang_name_or_code)
+      |> Map.merge(optional_payload)
+
+    @endpoints
+    |> Map.get(:keyword_ideas)
     |> Client.post(payload)
     |> Client.validate_status_code()
     |> Client.decode_json_response(opts)

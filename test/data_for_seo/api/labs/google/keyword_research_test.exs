@@ -217,4 +217,63 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
       assert task["id"] == "03210009-4426-0387-0000-5a33a48f3334"
     end
   end
+
+  describe "keyword_ideas/4" do
+    test "request by language code and loc code", %{bypass: bypass} do
+      Bypass.expect(bypass, fn conn ->
+        assert "POST" = conn.method
+        assert "/v3/dataforseo_labs/google/keyword_ideas/live" = conn.request_path
+        assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
+
+        assert {:ok, body, _} = Plug.Conn.read_body(conn)
+        payload = Jason.decode!(body)
+        assert payload["keywords"] == ["phone", "watch"]
+        assert payload["language_code"] == "en"
+        assert payload["location_code"] == 3346
+        # shouldn't be any other data in payload
+        assert map_size(payload) == 3
+
+        Plug.Conn.resp(
+          conn,
+          200,
+          task_get_labs_google_keywords_ideas()
+        )
+      end)
+
+      {:ok, response} = KeywordResearch.keyword_ideas(["phone", "watch"], 3346, "en", %{})
+      assert %{"tasks" => [task | _], "tasks_count" => 1} = response
+      assert task["id"] == "03231838-1535-0400-0000-21ff7a0ecead"
+    end
+
+    test "request by language name and loc name with extra filters", %{bypass: bypass} do
+      Bypass.expect(bypass, fn conn ->
+        assert "POST" = conn.method
+        assert "/v3/dataforseo_labs/google/keyword_ideas/live" = conn.request_path
+        assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
+
+        assert {:ok, body, _} = Plug.Conn.read_body(conn)
+        payload = Jason.decode!(body)
+        assert payload["keywords"] == ["bananas", "fruits"]
+        assert payload["language_name"] == "English"
+        assert payload["location_name"] == "United Kingdom"
+        assert payload["limit"] == 5
+        # shouldn't be any other data in payload
+        assert map_size(payload) == 4
+
+        Plug.Conn.resp(
+          conn,
+          200,
+          task_get_labs_google_keywords_ideas()
+        )
+      end)
+
+      {:ok, response} =
+        KeywordResearch.keyword_ideas(["bananas", "fruits"], "United Kingdom", "English", %{
+          limit: 5
+        })
+
+      assert %{"tasks" => [task | _], "tasks_count" => 1} = response
+      assert task["id"] == "03231838-1535-0400-0000-21ff7a0ecead"
+    end
+  end
 end
