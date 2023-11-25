@@ -9,7 +9,8 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
     search_intent: "/v3/dataforseo_labs/google/search_intent/live",
     keywords_for_site: "/v3/dataforseo_labs/google/keywords_for_site/live",
     related_keywords: "/v3/dataforseo_labs/google/related_keywords/live",
-    keyword_ideas: "/v3/dataforseo_labs/google/keyword_ideas/live"
+    keyword_ideas: "/v3/dataforseo_labs/google/keyword_ideas/live",
+    keyword_suggestions: "/v3/dataforseo_labs/google/keyword_suggestions/live"
   }
 
   @doc """
@@ -145,6 +146,53 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
 
     @endpoints
     |> Map.get(:keyword_ideas)
+    |> Client.post(payload)
+    |> Client.validate_status_code()
+    |> Client.decode_json_response(opts)
+    |> handle_response()
+  end
+
+  @doc """
+  ### Keyword Suggestions
+  The Keyword Suggestions endpoint provides search queries that include the specified seed keyword.
+  The algorithm is based on the full-text search for the specified keyword and therefore returns
+  only those search terms that contain the keyword you set in the POST array with additional words before, after,
+  or within the specified key phrase. Returned keyword suggestions can contain the words from the specified key
+  phrase in a sequence different from the one you specify.
+  As a result, you will get a list of long-tail keywords with each keyword in the
+  list matching the specified search term.
+
+
+  Read more: https://docs.dataforseo.com/v3/dataforseo_labs/google/keyword_suggestions/live/
+
+  ## Examples
+  DataForSeo.API.Labs.Google.KeywordResearch.keyword_suggestions("apples", 2840, "en", %{}, nil)
+
+  DataForSeo.API.Labs.Google.KeywordResearch.keyword_suggestions("apples", "Uruguay", "English", %{})
+  """
+  @spec keyword_suggestions(
+          String.t(),
+          String.t() | non_neg_integer(),
+          String.t(),
+          map(),
+          Keyword.t()
+        ) ::
+          {:ok, map()} | {:error, term()}
+  def keyword_suggestions(
+        keyword,
+        loc_name_or_code,
+        lang_name_or_code,
+        optional_payload,
+        opts \\ []
+      ) do
+    payload =
+      %{keyword: keyword}
+      |> apply_location(loc_name_or_code)
+      |> apply_language(lang_name_or_code)
+      |> Map.merge(optional_payload)
+
+    @endpoints
+    |> Map.get(:keyword_suggestions)
     |> Client.post(payload)
     |> Client.validate_status_code()
     |> Client.decode_json_response(opts)
