@@ -77,10 +77,13 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
   end
 
   @doc """
-  The Keywords For Site endpoint will provide you with a list of keywords relevant to the target domain.
-  Each keyword is supplied with relevant categories, search volume data for the last month, cost-per-click,
-  competition, and search volume trend values for the past 12 months.
-  Read more: https://docs.dataforseo.com/v3/dataforseo_labs/google/keywords_for_site/live/
+  The Related Keywords endpoint provides keywords appearing in the  "searches related to" SERP element
+  You can get up to 4680 keyword ideas by specifying the search depth.
+  Each related keyword comes with the list of relevant product categories, search volume rate for the last month,
+  search volume trend for the previous 12 months, as well as current cost-per-click and competition values.
+  Moreover, this endpoint supplies minimum, maximum and average values of daily impressions,
+  clicks and CPC for each result.
+  Read more: https://docs.dataforseo.com/v3/dataforseo_labs/google/related_keywords/live/
 
   ## Examples
   DataForSeo.API.Labs.Google.KeywordResearch.related_keywords("apples", 2840, "en", %{}, nil)
