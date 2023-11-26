@@ -4,7 +4,7 @@ defmodule DataForSeo.DataModel.Labs.Google.BulkKeywordDifficultyResult do
   @primary_key false
   embedded_schema do
     field(:se_type, :string)
-    field(:location_code, :string)
+    field(:location_code, :integer)
     field(:language_code, :string)
     field(:items_count, :integer)
     field(:total_count, :integer)

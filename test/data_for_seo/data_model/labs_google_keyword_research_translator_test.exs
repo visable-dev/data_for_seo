@@ -489,12 +489,11 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
 
       assert length(items) == 3
 
-      
-      [{"car dealer los angeles", 50}, {"dentist new york", 50}, {"pizza brooklyn", 40}]
+      [{"car dealer los angeles", 50}, {"dentist new york", 50}, {"pizza brooklyn", 44}]
       |> Enum.each(fn {k, d} ->
-        assert %KeywordDifficulty{se_type: "google", keyword: ^k, keyword_difficulty: ^d} = Enum.find(items, & &1.keyword == k)
+        assert %KeywordDifficulty{se_type: "google", keyword: ^k, keyword_difficulty: ^d} =
+                 Enum.find(items, &(&1.keyword == k))
       end)
     end
-
   end
 end

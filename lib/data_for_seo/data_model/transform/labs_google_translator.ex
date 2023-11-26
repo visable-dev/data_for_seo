@@ -19,7 +19,6 @@ defmodule DataForSeo.DataModel.Transform.LabsGoogleTranslator do
       ["keyword_suggestions", "live"] -> load_map_into(result, KeywordsSuggestionsResult)
       ["related_keywords", "live"] -> load_map_into(result, RelatedKeywordsResult)
       ["bulk_keyword_difficulty", "live"] -> load_map_into(result, BulkKeywordDifficultyResult)
-
     end
   end
 end
