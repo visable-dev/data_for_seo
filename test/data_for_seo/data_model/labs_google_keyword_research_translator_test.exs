@@ -20,6 +20,8 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
   alias DataForSeo.DataModel.Labs.Google.KeywordsSuggestionsResult
   alias DataForSeo.DataModel.Labs.Google.RelatedKeywordsResult
   alias DataForSeo.DataModel.Labs.Google.RelatedKeywordItem
+  alias DataForSeo.DataModel.Labs.Google.BulkKeywordDifficultyResult
+  alias DataForSeo.DataModel.Labs.Google.KeywordDifficulty
 
   describe "labs/google/keywords-research" do
     test "search intent" do
@@ -465,5 +467,34 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
                search_intent_info: %SearchIntentInfo{main_intent: "navigational"}
              } = keyword_data
     end
+
+    test "bulk keyword difficulty " do
+      assert %Task{
+               result: [
+                 %BulkKeywordDifficultyResult{
+                   items_count: 3,
+                   total_count: 3,
+                   language_code: "en",
+                   location_code: 2840,
+                   items: items
+                 }
+               ]
+             } =
+               translate_task_from_fixture([
+                 "labs",
+                 "google",
+                 "keyword_research",
+                 "bulk-keyword-difficulty"
+               ])
+
+      assert length(items) == 3
+
+      
+      [{"car dealer los angeles", 50}, {"dentist new york", 50}, {"pizza brooklyn", 40}]
+      |> Enum.each(fn {k, d} ->
+        assert %KeywordDifficulty{se_type: "google", keyword: ^k, keyword_difficulty: ^d} = Enum.find(items, & &1.keyword == k)
+      end)
+    end
+
   end
 end
