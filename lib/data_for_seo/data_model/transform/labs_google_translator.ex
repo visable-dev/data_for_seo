@@ -4,6 +4,7 @@ defmodule DataForSeo.DataModel.Transform.LabsGoogleTranslator do
   alias DataForSeo.DataModel.Labs.Google.SearchIntentResult
   alias DataForSeo.DataModel.Labs.Google.KeywordsForSiteResult
   alias DataForSeo.DataModel.Labs.Google.KeywordsIdeasResult
+  alias DataForSeo.DataModel.Labs.Google.KeywordsSuggestionsResult
 
   @spec translate_google_result(task_path(), input_result()) :: SerpResult.t()
   def translate_google_result(path, result) do
@@ -13,6 +14,7 @@ defmodule DataForSeo.DataModel.Transform.LabsGoogleTranslator do
       ["search_intent", "live"] -> load_map_into(result, SearchIntentResult)
       ["keywords_for_site", "live"] -> load_map_into(result, KeywordsForSiteResult)
       ["keyword_ideas", "live"] -> load_map_into(result, KeywordsIdeasResult)
+      ["keyword_suggestions", "live"] -> load_map_into(result, KeywordsSuggestionsResult)
     end
   end
 end

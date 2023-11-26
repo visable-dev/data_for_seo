@@ -17,6 +17,7 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
   alias DataForSeo.DataModel.Labs.Google.MonthlySearch
 
   alias DataForSeo.DataModel.Labs.Google.KeywordsIdeasResult
+  alias DataForSeo.DataModel.Labs.Google.KeywordsSuggestionsResult
 
   describe "labs/google/keywords-research" do
     test "search intent" do
@@ -275,6 +276,130 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
                low_top_of_page_bid: nil,
                high_top_of_page_bid: nil,
                categories: [10007, 10878, 12171],
+               monthly_searches: monthly_searches
+             } = keyword_info
+
+      assert length(monthly_searches) == 12
+
+      Enum.each(1..12, fn month ->
+        year = if(month in [1, 2], do: 2023, else: 2022)
+
+        assert %MonthlySearch{month: ^month, year: ^year, search_volume: volume} =
+                 Enum.find(monthly_searches, &(&1.month == month))
+
+        assert volume > 0
+      end)
+    end
+
+    test "keyword suggestions" do
+      assert %Task{
+               result: [
+                 %KeywordsSuggestionsResult{
+                   items_count: 3,
+                   total_count: 2_582_247,
+                   language_code: "en",
+                   seed_keyword: "phone",
+                   seed_keyword_data: nil,
+                   offset: 0,
+                   offset_token: <<"eyJDdXJyZW5"::binary, _::binary>>,
+                   items: items
+                 }
+               ]
+             } =
+               translate_task_from_fixture([
+                 "labs",
+                 "google",
+                 "keyword_research",
+                 "keyword-suggestions"
+               ])
+
+      assert length(items) == 3
+
+      %KeywordData{
+        search_intent_info: intent,
+        avg_backlinks_info: backlinks,
+        serp_info: serp_info,
+        impressions_info: impressions,
+        keyword_properties: keyword_properties,
+        keyword_info: keyword_info
+      } = Enum.find(items, &(&1.keyword == "find to my phone"))
+
+      assert %SearchIntentInfo{
+               se_type: "google",
+               main_intent: "commercial",
+               foreign_intent: ["navigational"],
+               last_updated_time: ~U[2023-03-02 07:46:22Z]
+             } == intent
+
+      assert %AvgBackLinksInfo{
+               se_type: "google",
+               backlinks: 47525.7,
+               dofollow: 26457.9,
+               referring_pages: 30839.7,
+               referring_domains: 2395,
+               referring_main_domains: 1958.1,
+               rank: 387.3,
+               main_domain_rank: 841.3,
+               last_updated_time: ~U[2023-02-06 16:31:22Z]
+             } == backlinks
+
+      assert %KeywordSerpInfo{
+               se_type: "google",
+               check_url:
+                 "https://www.google.com/search?q=find%20to%20my%20phone&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+               serp_item_types: [
+                 "organic",
+                 "people_also_ask",
+                 "people_also_search",
+                 "related_searches",
+                 "knowledge_graph"
+               ],
+               se_results_count: 10_960_000_000,
+               last_updated_time: ~U[2023-02-06 16:30:24Z],
+               previous_updated_time: ~U[2022-10-20 13:54:33Z]
+             } == serp_info
+
+      assert %KeywordImpressionsInfo{
+               se_type: "google",
+               last_updated_time: ~U[2022-03-22 08:34:45Z],
+               bid: 999,
+               match_type: "exact",
+               ad_position_min: 1.11,
+               ad_position_max: 1,
+               ad_position_average: 1.06,
+               cpc_min: 68.97,
+               cpc_max: 84.3,
+               cpc_average: 76.63,
+               daily_impressions_min: 0.15,
+               daily_impressions_max: 0.18,
+               daily_impressions_average: 0.16,
+               daily_clicks_min: 0.01,
+               daily_clicks_max: 0.02,
+               daily_clicks_average: 0.01,
+               daily_cost_min: 0.98,
+               daily_cost_max: 1.2,
+               daily_cost_average: 1.09
+             } == impressions
+
+      assert %KeywordProperties{
+               se_type: "google",
+               core_keyword: "find my phone",
+               synonym_clustering_algorithm: "text_processing",
+               keyword_difficulty: 100,
+               detected_language: "en",
+               is_another_language: false
+             } == keyword_properties
+
+      assert %KeywordInfo{
+               se_type: "google",
+               last_updated_time: ~U[2023-03-21 00:31:34Z],
+               competition: 0.13,
+               competition_level: "LOW",
+               cpc: 1.37,
+               search_volume: 673_000,
+               low_top_of_page_bid: 0.53,
+               high_top_of_page_bid: 1.37,
+               categories: [10019, 10167, 12153],
                monthly_searches: monthly_searches
              } = keyword_info
 
