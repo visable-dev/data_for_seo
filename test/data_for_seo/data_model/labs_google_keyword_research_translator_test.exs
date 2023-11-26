@@ -18,6 +18,8 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
 
   alias DataForSeo.DataModel.Labs.Google.KeywordsIdeasResult
   alias DataForSeo.DataModel.Labs.Google.KeywordsSuggestionsResult
+  alias DataForSeo.DataModel.Labs.Google.RelatedKeywordsResult
+  alias DataForSeo.DataModel.Labs.Google.RelatedKeywordItem
 
   describe "labs/google/keywords-research" do
     test "search intent" do
@@ -413,6 +415,55 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
 
         assert volume > 0
       end)
+    end
+
+    test "related keyword " do
+      assert %Task{
+               result: [
+                 %RelatedKeywordsResult{
+                   items_count: 3,
+                   total_count: 8,
+                   language_code: "en",
+                   seed_keyword: "phone",
+                   seed_keyword_data: nil,
+                   items: items
+                 }
+               ]
+             } =
+               translate_task_from_fixture([
+                 "labs",
+                 "google",
+                 "keyword_research",
+                 "related-keywords"
+               ])
+
+      assert length(items) == 3
+
+      %RelatedKeywordItem{
+        depth: 0,
+        se_type: "google",
+        related_keywords: [
+          "phone call",
+          "phone, samsung",
+          "phone number",
+          "phone call app",
+          "phone app",
+          "my phone",
+          "phone google",
+          "phone meaning"
+        ],
+        keyword_data: keyword_data
+      } = hd(items)
+
+      assert %KeywordData{
+               keyword: "phone",
+               keyword_info: %KeywordInfo{competition_level: "HIGH"},
+               keyword_properties: %KeywordProperties{core_keyword: "phone"},
+               impressions_info: %KeywordImpressionsInfo{daily_cost_average: 51907.82},
+               serp_info: nil,
+               avg_backlinks_info: %AvgBackLinksInfo{last_updated_time: ~U[2023-03-13 07:14:56Z]},
+               search_intent_info: %SearchIntentInfo{main_intent: "navigational"}
+             } = keyword_data
     end
   end
 end
