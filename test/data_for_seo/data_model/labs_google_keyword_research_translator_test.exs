@@ -22,6 +22,27 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
   alias DataForSeo.DataModel.Labs.Google.RelatedKeywordItem
   alias DataForSeo.DataModel.Labs.Google.BulkKeywordDifficultyResult
   alias DataForSeo.DataModel.Labs.Google.KeywordDifficulty
+  alias DataForSeo.DataModel.Labs.Google.LabCategory
+
+  describe "labs/google" do
+    test "categories" do
+      assert %Task{
+               result: items
+             } = translate_task_from_fixture(["labs", "google", "categories"])
+
+      assert 4 == length(items)
+
+      [
+        %LabCategory{category_code: 10021, category_code_parent: nil, category_name: "Apparel"},
+        %LabCategory{
+          category_code: 10178,
+          category_code_parent: 10021,
+          category_name: "Apparel Accessories"
+        }
+        | _
+      ] = items
+    end
+  end
 
   describe "labs/google/keywords-research" do
     test "search intent" do

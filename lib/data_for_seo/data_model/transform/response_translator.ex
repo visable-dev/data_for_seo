@@ -29,7 +29,7 @@ defmodule DataForSeo.DataModel.Transform.ResponseTranslator do
       ["v3", "serp", "google", "organic" | _] ->
         GoogleSerpTranslator.translate_organic_result(path, result)
 
-      ["v3", "dataforseo_labs", "google" | _] ->
+      ["v3", "dataforseo_labs" | _] ->
         LabsGoogleTranslator.translate_google_result(path, result)
     end
   end
