@@ -5,7 +5,7 @@ defmodule DataForSeo.DataModel.Labs.Google.AvgBackLinksInfo do
   embedded_schema do
     field(:se_type, :string)
     field(:backlinks, :float)
-    field(:dofollow, :integer)
+    field(:dofollow, :float)
     field(:referring_pages, :float)
     field(:referring_domains, :float)
     field(:referring_main_domains, :float)

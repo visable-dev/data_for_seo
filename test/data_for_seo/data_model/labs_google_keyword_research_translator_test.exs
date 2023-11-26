@@ -16,6 +16,8 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
   alias DataForSeo.DataModel.Labs.Google.SearchIntentInfo
   alias DataForSeo.DataModel.Labs.Google.MonthlySearch
 
+  alias DataForSeo.DataModel.Labs.Google.KeywordsIdeasResult
+
   describe "labs/google/keywords-research" do
     test "search intent" do
       assert %Task{
@@ -157,6 +159,122 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
                  10109,
                  13546
                ],
+               monthly_searches: monthly_searches
+             } = keyword_info
+
+      assert length(monthly_searches) == 12
+
+      Enum.each(1..12, fn month ->
+        year = if(month in [1, 2], do: 2023, else: 2022)
+
+        assert %MonthlySearch{month: ^month, year: ^year, search_volume: volume} =
+                 Enum.find(monthly_searches, &(&1.month == month))
+
+        assert volume > 0
+      end)
+    end
+
+    test "keyword ideas" do
+      assert %Task{
+               result: [
+                 %KeywordsIdeasResult{
+                   items_count: 3,
+                   total_count: 2_321_099,
+                   language_code: "en",
+                   items: items
+                 }
+               ]
+             } =
+               translate_task_from_fixture(["labs", "google", "keyword_research", "keyword-ideas"])
+
+      assert length(items) == 3
+
+      %KeywordData{
+        search_intent_info: intent,
+        avg_backlinks_info: backlinks,
+        serp_info: serp_info,
+        impressions_info: impressions,
+        keyword_properties: keyword_properties,
+        keyword_info: keyword_info
+      } = Enum.find(items, &(&1.keyword == "telephone in japan"))
+
+      assert %SearchIntentInfo{
+               se_type: "google",
+               main_intent: "commercial",
+               foreign_intent: ["informational", "transactional"],
+               last_updated_time: ~U[2023-03-02 18:35:26Z]
+             } == intent
+
+      assert %AvgBackLinksInfo{
+               se_type: "google",
+               backlinks: 29.3,
+               dofollow: 14.6,
+               referring_pages: 26,
+               referring_domains: 17,
+               referring_main_domains: 15.4,
+               rank: 103.5,
+               main_domain_rank: 478.1,
+               last_updated_time: ~U[2023-03-15 22:05:52Z]
+             } == backlinks
+
+      assert %KeywordSerpInfo{
+               se_type: "google",
+               check_url:
+                 "https://www.google.com/search?q=telephone%20in%20japan&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+               serp_item_types: [
+                 "featured_snippet",
+                 "people_also_ask",
+                 "organic",
+                 "images",
+                 "people_also_search",
+                 "related_searches"
+               ],
+               se_results_count: 332_000_000,
+               last_updated_time: ~U[2023-03-15 22:05:45Z],
+               previous_updated_time: ~U[2023-02-09 15:33:06Z]
+             } == serp_info
+
+      assert %KeywordImpressionsInfo{
+               se_type: "google",
+               last_updated_time: ~U[2022-03-26 19:32:21Z],
+               bid: 999,
+               match_type: "exact",
+               ad_position_min: nil,
+               ad_position_max: nil,
+               ad_position_average: nil,
+               cpc_min: nil,
+               cpc_max: nil,
+               cpc_average: nil,
+               daily_impressions_min: nil,
+               daily_impressions_max: nil,
+               daily_impressions_average: nil,
+               daily_clicks_min: nil,
+               daily_clicks_max: nil,
+               daily_clicks_average: nil,
+               daily_cost_min: nil,
+               daily_cost_max: nil,
+               daily_cost_average: nil
+             } == impressions
+
+      assert %KeywordProperties{
+               se_type: "google",
+               core_keyword: nil,
+               synonym_clustering_algorithm: "text_processing",
+               keyword_difficulty: 48,
+               detected_language: "en",
+               is_another_language: false
+             } == keyword_properties
+
+      assert %KeywordInfo{
+               se_type: "google",
+               last_updated_time: ~U[2023-03-21 10:09:17Z],
+               competition: 0.07,
+               competition_level: "LOW",
+               cpc: nil,
+               search_volume: 210,
+               low_top_of_page_bid: nil,
+               high_top_of_page_bid: nil,
+               categories: [10007, 10878, 12171],
                monthly_searches: monthly_searches
              } = keyword_info
 

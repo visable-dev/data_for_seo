@@ -5,7 +5,7 @@ defmodule DataForSeo.DataModel.Labs.Google.KeywordInfo do
   embedded_schema do
     field(:se_type, :string)
     field(:last_updated_time, :utc_datetime)
-    field(:competition, :integer)
+    field(:competition, :float)
     field(:competition_level, :string)
     field(:cpc, :float)
     field(:search_volume, :integer)
