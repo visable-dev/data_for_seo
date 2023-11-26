@@ -1,6 +1,4 @@
 defmodule DataForSeo.TranslatorCase do
-
-
   defmacro __using__(_) do
     quote do
       import RespFactory
@@ -17,5 +15,4 @@ defmodule DataForSeo.TranslatorCase do
       end
     end
   end
-
 end

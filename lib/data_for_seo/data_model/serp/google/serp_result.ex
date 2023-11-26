@@ -34,18 +34,23 @@ defmodule DataForSeo.DataModel.SERP.Google.SerpResult do
       )a
 
   def changeset(:load_regular, data) do
-    data = data
-          |> parse_utc_datetime()
-           |> Map.put("regual_items", data["items"])
+    data =
+      data
+      |> parse_utc_datetime()
+      |> Map.put("regual_items", data["items"])
+
     %__MODULE__{}
     |> cast(data, @fields)
     |> cast_embed(:regual_items)
   end
 
-  defp parse_utc_datetime(map = %{"datetime" => dt}), do: Map.put(map, "datetime", convert_utc_datetime(dt))
+  defp parse_utc_datetime(map = %{"datetime" => dt}),
+    do: Map.put(map, "datetime", convert_utc_datetime(dt))
+
   defp parse_utc_datetime(map), do: map
 
   defp convert_utc_datetime(nil), do: nil
+
   defp convert_utc_datetime(dt) when is_binary(dt) do
     Timex.parse!(dt, "%F %T %:z", :strftime)
   end
