@@ -16,7 +16,7 @@ defmodule DataForSeo.DataModel.SERP.Google.SerpResult do
     field(:se_results_count, :integer)
     field(:items_count, :integer)
 
-    embeds_many(:regual_items, SerpItemRegular)
+    embeds_many(:regular_items, SerpItemRegular)
   end
 
   @fields ~w(
@@ -36,22 +36,11 @@ defmodule DataForSeo.DataModel.SERP.Google.SerpResult do
   def changeset(:load_regular, data) do
     data =
       data
-      |> parse_utc_datetime()
-      |> Map.put("regual_items", data["items"])
+      |> parse_utc_datetime_at_field("datetime")
+      |> Map.put("regular_items", data["items"])
 
     %__MODULE__{}
     |> cast(data, @fields)
-    |> cast_embed(:regual_items)
-  end
-
-  defp parse_utc_datetime(map = %{"datetime" => dt}),
-    do: Map.put(map, "datetime", convert_utc_datetime(dt))
-
-  defp parse_utc_datetime(map), do: map
-
-  defp convert_utc_datetime(nil), do: nil
-
-  defp convert_utc_datetime(dt) when is_binary(dt) do
-    Timex.parse!(dt, "%F %T %:z", :strftime)
+    |> cast_embed(:regular_items)
   end
 end

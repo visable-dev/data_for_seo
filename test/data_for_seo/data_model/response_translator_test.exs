@@ -54,7 +54,7 @@ defmodule DataForSeo.DataModel.ResponseTranslatorTest do
                  keyword: "flight ticket new york san francisco",
                  language_code: "en",
                  location_code: 2840,
-                 regual_items: items,
+                 regular_items: items,
                  se_domain: "google.com",
                  se_results_count: 85_600_000,
                  spell: nil,
