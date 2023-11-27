@@ -6,6 +6,7 @@ defmodule DataForSeo.DataModel.Transform.ResponseTranslator do
 
   alias DataForSeo.DataModel.Transform.GoogleSerpTranslator
   alias DataForSeo.DataModel.Transform.LabsGoogleTranslator
+  alias DataForSeo.DataModel.Transform.GoogleTrendsTranslator
 
   @spec load_response(map()) :: Response.t()
   def load_response(data) do
@@ -31,6 +32,12 @@ defmodule DataForSeo.DataModel.Transform.ResponseTranslator do
 
       ["v3", "dataforseo_labs" | _] ->
         LabsGoogleTranslator.translate_google_result(path, result)
+
+      ["v3", "keywords_data", "google", "explore", "tasks_ready"] ->
+        GoogleTrendsTranslator.translate_trends_result(path, result)
+
+      ["v3", "keywords_data", "google_trends" | _] ->
+        GoogleTrendsTranslator.translate_trends_result(path, result)
     end
   end
 

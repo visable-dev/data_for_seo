@@ -30,7 +30,7 @@ defmodule DataForSeo.DataModel.Keywords.GoogleTrends.ExplorerResult do
       items_count
       )a
 
-  def changeset(:load_regular, data) do
+  def changeset(:load, data) do
     data =
       data
       |> parse_utc_datetime_at_field("datetime")
