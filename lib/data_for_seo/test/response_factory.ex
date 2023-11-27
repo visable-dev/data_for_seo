@@ -99,9 +99,8 @@ defmodule DataForSeo.Test.ResponseFactory do
 
   # FIXTURE METHODS
   def get_raw_fixture(path = [_ | _]) do
-    :data_for_seo
-    |> :code.priv_dir()
-    |> Path.join(Enum.join(["fixtures" | path], "/"))
+    get_fixture_base_path()
+    |> Path.join(Enum.join(path, "/"))
     |> Kernel.<>(".json")
     |> File.read!()
   end
@@ -122,10 +121,7 @@ defmodule DataForSeo.Test.ResponseFactory do
 
          false ->
            # may be it's internal path in priv/fixtures dir?
-
-           :data_for_seo
-           |> :code.priv_dir()
-           |> Path.join("fixtures")
+           get_fixture_base_path()
            |> Path.join(path)
            |> File.read!()
        end
@@ -138,5 +134,11 @@ defmodule DataForSeo.Test.ResponseFactory do
 
   def encode_fixture(fixture) do
     Jason.encode!(fixture)
+  end
+
+  defp get_fixture_base_path do
+    :data_for_seo
+    |> Application.get_env(:fixtures_path, :code.priv_dir(:data_for_seo))
+    |> Path.join("fixtures")
   end
 end
