@@ -3,7 +3,7 @@ defmodule DataForSeo.Api.SERP.Google.LocationTest do
 
   alias DataForSeo.API.SERP.Google.Location
 
-  import RespFactory
+  import DataForSeo.Test.ResponseFactory
 
   setup do
     bypass = Bypass.open()

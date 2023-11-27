@@ -1,7 +1,7 @@
 defmodule DataForSeo.TranslatorCase do
   defmacro __using__(_) do
     quote do
-      import RespFactory
+      import DataForSeo.Test.ResponseFactory
       alias DataForSeo.DataModel.Generic.Task
       alias DataForSeo.DataModel.Transform.ResponseTranslator
 

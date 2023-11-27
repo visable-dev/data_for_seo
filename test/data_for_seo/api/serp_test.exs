@@ -3,7 +3,7 @@ defmodule DataForSeo.Api.SerpTest do
 
   alias DataForSeo.API.Serp
 
-  import RespFactory
+  import DataForSeo.Test.ResponseFactory
 
   setup do
     bypass = Bypass.open()

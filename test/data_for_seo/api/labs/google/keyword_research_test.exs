@@ -10,7 +10,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
 
   alias DataForSeo.API.Labs.Google.KeywordResearch
 
-  import RespFactory
+  import DataForSeo.Test.ResponseFactory
 
   setup do
     bypass = Bypass.open()

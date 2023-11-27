@@ -3,7 +3,7 @@ defmodule DataForSeo.Api.Keywords.GoogleAds.LanguagesTest do
 
   alias DataForSeo.API.Keywords.GoogleAds.Languages
 
-  import RespFactory
+  import DataForSeo.Test.ResponseFactory
 
   setup do
     bypass = Bypass.open()

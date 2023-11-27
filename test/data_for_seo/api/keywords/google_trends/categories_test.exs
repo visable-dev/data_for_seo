@@ -3,7 +3,7 @@ defmodule DataForSeo.Api.Keywords.GoogleTrends.CategoriesTest do
 
   alias DataForSeo.API.Keywords.GoogleTrends.Categories
 
-  import RespFactory
+  import DataForSeo.Test.ResponseFactory
 
   setup do
     bypass = Bypass.open()

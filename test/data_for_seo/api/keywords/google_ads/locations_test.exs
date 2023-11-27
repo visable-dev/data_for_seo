@@ -3,7 +3,7 @@ defmodule DataForSeo.Api.Keywords.GoogleAds.LocationsTest do
 
   alias DataForSeo.API.Keywords.GoogleAds.Locations
 
-  import RespFactory
+  import DataForSeo.Test.ResponseFactory
 
   setup do
     bypass = Bypass.open()

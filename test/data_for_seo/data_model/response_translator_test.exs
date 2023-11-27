@@ -6,7 +6,7 @@ defmodule DataForSeo.DataModel.ResponseTranslatorTest do
   alias DataForSeo.DataModel.Generic.Task
   alias DataForSeo.DataModel.SERP.TaskReadyItem
   alias DataForSeo.DataModel.SERP.Google.SerpItemRegular, as: GoogleSerpItemRegular
-  import RespFactory
+  import DataForSeo.Test.ResponseFactory
 
   test "test translating response into object" do
     # Get all available fixtures and check if they could be loaded into response struct

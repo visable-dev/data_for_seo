@@ -1,4 +1,4 @@
-defmodule RespFactory do
+defmodule DataForSeo.Test.ResponseFactory do
   # SERP
   def task_post_serp_google_single_response do
     get_raw_fixture(["serp", "google", "organic", "task-post-single"])
@@ -116,19 +116,19 @@ defmodule RespFactory do
     path
     |> File.exists?()
     |> case do
-      true ->
-        path
-        |> File.read!()
+         true ->
+           path
+           |> File.read!()
 
-      false ->
-        # may be it's internal path in priv/fixtures dir?
+         false ->
+           # may be it's internal path in priv/fixtures dir?
 
-        :data_for_seo
-        |> :code.priv_dir()
-        |> Path.join("fixtures")
-        |> Path.join(path)
-        |> File.read!()
-    end
+           :data_for_seo
+           |> :code.priv_dir()
+           |> Path.join("fixtures")
+           |> Path.join(path)
+           |> File.read!()
+       end
     |> Jason.decode!()
   end
 
