@@ -37,7 +37,7 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          task_post_single_response()
+          task_post_serp_google_single_response()
         )
       end)
 
@@ -87,7 +87,7 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          task_post_list_response()
+          task_post_serp_google_list_response()
         )
       end)
 
@@ -127,7 +127,7 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          tasks_ready_response()
+          tasks_ready_serp_google_response()
         )
       end)
 
@@ -151,7 +151,7 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          task_result_response()
+          task_result_serp_google_regular_response()
         )
       end)
 

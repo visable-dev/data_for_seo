@@ -24,7 +24,7 @@ defmodule DataForSeo.Api.SERP.Google.LocationTest do
       Plug.Conn.resp(
         conn,
         200,
-        task_get_location_by_country("lu")
+        task_get_serp_google_location_by_country("lu")
       )
     end)
 

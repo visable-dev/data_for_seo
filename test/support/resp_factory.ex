@@ -1,21 +1,22 @@
 defmodule RespFactory do
-  def task_post_single_response do
+  # SERP
+  def task_post_serp_google_single_response do
     get_raw_fixture(["serp", "google", "organic", "task-post-single"])
   end
 
-  def task_post_list_response do
+  def task_post_serp_google_list_response do
     get_raw_fixture(["serp", "google", "organic", "task-post"])
   end
 
-  def tasks_ready_response do
+  def tasks_ready_serp_google_response do
     get_raw_fixture(["serp", "google", "organic", "tasks-ready"])
   end
 
-  def task_result_response do
-    get_raw_fixture(["serp", "google", "organic", "task-get"])
+  def task_result_serp_google_regular_response do
+    get_raw_fixture(["serp", "google", "organic", "task-get-regular"])
   end
 
-  def task_get_location_by_country(code) do
+  def task_get_serp_google_location_by_country(code) do
     get_raw_fixture(["serp", "google", "locations-#{code}"])
   end
 
@@ -108,6 +109,26 @@ defmodule RespFactory do
   def get_json_fixture(path = [_ | _]) do
     path
     |> get_raw_fixture()
+    |> Jason.decode!()
+  end
+
+  def get_json_fixture(path) when is_binary(path) do
+    path
+    |> File.exists?()
+    |> case do
+      true ->
+        path
+        |> File.read!()
+
+      false ->
+        # may be it's internal path in priv/fixtures dir?
+
+        :data_for_seo
+        |> :code.priv_dir()
+        |> Path.join("fixtures")
+        |> Path.join(path)
+        |> File.read!()
+    end
     |> Jason.decode!()
   end
 
