@@ -19,7 +19,11 @@ defmodule DataForSeo.DataModel.Entity do
       defp convert_utc_datetime(nil), do: nil
 
       defp convert_utc_datetime(dt) when is_binary(dt) do
-        Timex.parse!(dt, "%F %T %:z", :strftime)
+        # May be it's alread ISO format?
+        case DateTime.from_iso8601(dt) do
+          {:ok, parsed, _offset} -> parsed
+          {:error, _} -> Timex.parse!(dt, "%F %T %:z", :strftime)
+        end
       end
     end
   end
