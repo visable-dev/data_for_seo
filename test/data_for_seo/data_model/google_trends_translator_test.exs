@@ -11,6 +11,9 @@ defmodule DataForSeo.DataModel.GoogleTrendsTranslatorTest do
   alias DataForSeo.DataModel.Keywords.GoogleTrends.DataQueryNode
   alias DataForSeo.DataModel.Keywords.GoogleTrends.DataTopic
   alias DataForSeo.DataModel.Keywords.GoogleTrends.DataTopicNode
+  alias alias DataForSeo.DataModel.Category
+  alias alias DataForSeo.DataModel.Language
+  alias alias DataForSeo.DataModel.Location
 
   describe "keywords/google_trends/explorer" do
     test "task-post" do
@@ -187,6 +190,63 @@ defmodule DataForSeo.DataModel.GoogleTrendsTranslatorTest do
       Enum.each(tasks, fn %TaskReadyItem{id: id} ->
         assert Enum.member?(ids, id)
       end)
+    end
+  end
+
+  describe "categories/languages/locations" do
+    test "categories" do
+      assert %Task{
+               result: items
+             } = translate_task_from_fixture(["keywords", "google_trends", "categories"])
+
+      assert 4 == length(items)
+
+      [
+        %Category{category_code: 10021, category_code_parent: nil, category_name: "Apparel"},
+        %Category{
+          category_code: 10178,
+          category_code_parent: 10021,
+          category_name: "Apparel Accessories"
+        }
+        | _
+      ] = items
+    end
+
+    test "locations" do
+      assert %Task{
+               result: items
+             } = translate_task_from_fixture(["keywords", "google_trends", "locations"])
+
+      assert 8 == length(items)
+
+      [
+        %Location{
+          location_code: 2004,
+          location_name: "Afghanistan",
+          location_code_parent: nil,
+          country_iso_code: "AF",
+          location_type: "Country",
+          geo_name: "Afghanistan",
+          geo_id: "AF"
+        }
+        | _
+      ] = items
+    end
+
+    test "languages" do
+      assert %Task{
+               result: items
+             } = translate_task_from_fixture(["keywords", "google_trends", "languages"])
+
+      assert 4 == length(items)
+
+      [
+        %Language{
+          language_name: "Afrikaans",
+          language_code: "af"
+        }
+        | _
+      ] = items
     end
   end
 end

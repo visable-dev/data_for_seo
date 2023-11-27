@@ -22,7 +22,7 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
   alias DataForSeo.DataModel.Labs.Google.RelatedKeywordItem
   alias DataForSeo.DataModel.Labs.Google.BulkKeywordDifficultyResult
   alias DataForSeo.DataModel.Labs.Google.KeywordDifficulty
-  alias DataForSeo.DataModel.Labs.Google.LabCategory
+  alias DataForSeo.DataModel.Category
 
   describe "labs/google" do
     test "categories" do
@@ -33,8 +33,8 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
       assert 4 == length(items)
 
       [
-        %LabCategory{category_code: 10021, category_code_parent: nil, category_name: "Apparel"},
-        %LabCategory{
+        %Category{category_code: 10021, category_code_parent: nil, category_name: "Apparel"},
+        %Category{
           category_code: 10178,
           category_code_parent: 10021,
           category_name: "Apparel Accessories"

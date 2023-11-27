@@ -1,4 +1,4 @@
-defmodule DataForSeo.DataModel.Labs.Google.LabCategory do
+defmodule DataForSeo.DataModel.Category do
   use DataForSeo.DataModel.Entity
 
   @primary_key false

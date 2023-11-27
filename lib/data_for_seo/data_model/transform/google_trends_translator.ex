@@ -3,11 +3,22 @@ defmodule DataForSeo.DataModel.Transform.GoogleTrendsTranslator do
 
   alias DataForSeo.DataModel.Keywords.GoogleTrends.ExplorerResult
   alias DataForSeo.DataModel.Keywords.GoogleTrends.Explorer.TaskReadyItem
-  #  alias DataForSeo.DataModel.Keywords.GoogleTrends.ExplorerItem
+  alias DataForSeo.DataModel.Category
+  alias DataForSeo.DataModel.Location
+  alias DataForSeo.DataModel.Language
 
   @spec translate_trends_result(task_path(), input_result()) :: SerpResult.t()
   def translate_trends_result(["v3", "keywords_data", "google_trends" | path_tail], result) do
     case path_tail do
+      ["categories"] ->
+        load_map_into(result, Category)
+
+      ["locations"] ->
+        load_map_into(result, Location)
+
+      ["languages"] ->
+        load_map_into(result, Language)
+
       ["explore", "tasks_ready"] ->
         load_map_into(result, TaskReadyItem)
 
