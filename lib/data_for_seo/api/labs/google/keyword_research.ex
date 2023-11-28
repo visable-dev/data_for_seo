@@ -34,6 +34,7 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
       %{keywords: keywords}
       |> apply_language(lang_name_or_code)
       |> apply_tag(tag)
+      |> List.wrap()
 
     @endpoints
     |> Map.get(:search_intent)
@@ -68,6 +69,7 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
       |> apply_location(loc_name_or_code)
       |> apply_language(lang_name_or_code)
       |> Map.merge(optional_payload)
+      |> List.wrap()
 
     @endpoints
     |> Map.get(:keywords_for_site)
@@ -105,6 +107,7 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
       |> apply_location(loc_name_or_code)
       |> apply_language(lang_name_or_code)
       |> Map.merge(optional_payload)
+      |> List.wrap()
 
     @endpoints
     |> Map.get(:related_keywords)
@@ -142,6 +145,7 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
       |> apply_location(loc_name_or_code)
       |> apply_language(lang_name_or_code)
       |> Map.merge(optional_payload)
+      |> List.wrap()
 
     @endpoints
     |> Map.get(:keyword_ideas)
@@ -189,6 +193,7 @@ defmodule DataForSeo.API.Labs.Google.KeywordResearch do
       |> apply_location(loc_name_or_code)
       |> apply_language(lang_name_or_code)
       |> Map.merge(optional_payload)
+      |> List.wrap()
 
     @endpoints
     |> Map.get(:keyword_suggestions)

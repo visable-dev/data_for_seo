@@ -28,7 +28,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         assert {:ok, body, _} = Plug.Conn.read_body(conn)
-        payload = Jason.decode!(body)
+        [payload] = Jason.decode!(body)
         assert payload["keywords"] == ["milk"]
         assert payload["language_code"] == "en"
         refute Map.has_key?(payload, "language_name")
@@ -63,7 +63,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         assert {:ok, body, _} = Plug.Conn.read_body(conn)
-        payload = Jason.decode!(body)
+        [payload] = Jason.decode!(body)
         assert payload["keywords"] == ["audi a7"]
         assert payload["tag"] == "mytag"
         assert payload["language_name"] == "English"
@@ -106,7 +106,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         assert {:ok, body, _} = Plug.Conn.read_body(conn)
-        payload = Jason.decode!(body)
+        [payload] = Jason.decode!(body)
         assert payload["target"] == "apple.com"
         assert payload["language_code"] == "en"
         assert payload["location_code"] == 3346
@@ -133,7 +133,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         assert {:ok, body, _} = Plug.Conn.read_body(conn)
-        payload = Jason.decode!(body)
+        [payload] = Jason.decode!(body)
         assert payload["target"] == "apple.com"
         assert payload["language_name"] == "English"
         assert payload["location_name"] == "United Kingdom"
@@ -169,7 +169,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         assert {:ok, body, _} = Plug.Conn.read_body(conn)
-        payload = Jason.decode!(body)
+        [payload] = Jason.decode!(body)
         assert payload["keyword"] == "apples"
         assert payload["language_code"] == "en"
         assert payload["location_code"] == 3346
@@ -195,7 +195,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         assert {:ok, body, _} = Plug.Conn.read_body(conn)
-        payload = Jason.decode!(body)
+        [payload] = Jason.decode!(body)
         assert payload["keyword"] == "bananas"
         assert payload["language_name"] == "English"
         assert payload["location_name"] == "United Kingdom"
@@ -226,7 +226,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         assert {:ok, body, _} = Plug.Conn.read_body(conn)
-        payload = Jason.decode!(body)
+        [payload] = Jason.decode!(body)
         assert payload["keywords"] == ["phone", "watch"]
         assert payload["language_code"] == "en"
         assert payload["location_code"] == 3346
@@ -252,7 +252,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         assert {:ok, body, _} = Plug.Conn.read_body(conn)
-        payload = Jason.decode!(body)
+        [payload] = Jason.decode!(body)
         assert payload["keywords"] == ["bananas", "fruits"]
         assert payload["language_name"] == "English"
         assert payload["location_name"] == "United Kingdom"
@@ -285,7 +285,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         assert {:ok, body, _} = Plug.Conn.read_body(conn)
-        payload = Jason.decode!(body)
+        [payload] = Jason.decode!(body)
         assert payload["keyword"] == "apples"
         assert payload["language_code"] == "en"
         assert payload["location_code"] == 3346
@@ -311,7 +311,7 @@ defmodule DataForSeo.Api.Labs.Google.KeywordResearchTest do
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         assert {:ok, body, _} = Plug.Conn.read_body(conn)
-        payload = Jason.decode!(body)
+        [payload] = Jason.decode!(body)
         assert payload["keyword"] == "bananas"
         assert payload["language_name"] == "English"
         assert payload["location_name"] == "United Kingdom"

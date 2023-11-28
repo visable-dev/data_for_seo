@@ -115,16 +115,16 @@ defmodule DataForSeo.Test.ResponseFactory do
     path
     |> File.exists?()
     |> case do
-         true ->
-           path
-           |> File.read!()
+      true ->
+        path
+        |> File.read!()
 
-         false ->
-           # may be it's internal path in priv/fixtures dir?
-           get_fixture_base_path()
-           |> Path.join(path)
-           |> File.read!()
-       end
+      false ->
+        # may be it's internal path in priv/fixtures dir?
+        get_fixture_base_path()
+        |> Path.join(path)
+        |> File.read!()
+    end
     |> Jason.decode!()
   end
 
