@@ -44,4 +44,24 @@ defmodule DataForSeo.Api.Labs.Google.CategoriesTest do
                  &1["category_code_parent"] == 10021)
            )
   end
+
+  test "result is empty", %{bypass: bypass} do
+    Bypass.expect(bypass, fn conn ->
+      assert "GET" = conn.method
+      assert "/v3/dataforseo_labs/categories" = conn.request_path
+      assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
+
+      assert {:ok, "", _} = Plug.Conn.read_body(conn)
+
+      Plug.Conn.resp(
+        conn,
+        200,
+        get_raw_fixture(["labs", "google", "categories-nil-result"])
+      )
+    end)
+
+    assert {:ok, resp} = Categories.get_all_categories()
+
+    assert %{"tasks" => [%{"result" => nil}], "tasks_count" => 1} = resp
+  end
 end

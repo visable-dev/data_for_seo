@@ -200,6 +200,15 @@ defmodule DataForSeo.DataModel.LabsGooogleKeywordResearchTranslatorTest do
       end)
     end
 
+    test "keyword for site result is null" do
+      translate_task_from_fixture([
+        "labs",
+        "google",
+        "keyword_research",
+        "keywords-for-site-null-result"
+      ])
+    end
+
     test "keyword ideas" do
       assert %Task{
                result: [

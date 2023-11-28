@@ -10,6 +10,10 @@ defmodule DataForSeo.DataModel.Translator do
         Enum.map(list_of_maps, &load_map_into(&1, module, changeset_type))
       end
 
+      defp load_map_into(nil, _module, _changeset_type) do
+        nil
+      end
+
       defp load_map_into(map, module, changeset_type) do
         changeset_type
         |> module.changeset(map)
