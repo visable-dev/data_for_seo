@@ -1,0 +1,29 @@
+{
+  "version": "0.1.20200305",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.0594 sec.",
+  "cost": 0,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "03061224-1535-0197-0000-4d85996ce1db",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0015 sec.",
+      "cost": 0,
+      "result_count": 3180,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "categories"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "categories"
+      },
+      "result": null
+    }
+  ]
+}

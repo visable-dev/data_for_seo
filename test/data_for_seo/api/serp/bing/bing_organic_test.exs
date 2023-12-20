@@ -1,7 +1,7 @@
-defmodule DataForSeo.Api.SerpTest do
+defmodule DataForSeo.Api.Bing.OrganicTest do
   use ExUnit.Case
 
-  alias DataForSeo.API.Serp
+  alias DataForSeo.API.SERP.Bing.Organic, as: BingOrganic
 
   import DataForSeo.Test.ResponseFactory
 
@@ -17,7 +17,7 @@ defmodule DataForSeo.Api.SerpTest do
     test "it makes task_post POST request with params", %{bypass: bypass} do
       Bypass.expect(bypass, fn conn ->
         assert "POST" = conn.method
-        assert "/v3/serp/google/organic/task_post" = conn.request_path
+        assert "/v3/serp/bing/organic/task_post" = conn.request_path
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         {:ok, body, _} = Plug.Conn.read_body(conn)
@@ -29,7 +29,7 @@ defmodule DataForSeo.Api.SerpTest do
                 keyword: "Schrauben",
                 language_code: "en",
                 location_name: "San Francisco,California,United States",
-                se_domain: "google.com"
+                se_domain: "bing.com"
               }
             ])
         )
@@ -37,16 +37,16 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          task_post_serp_google_single_response()
+          task_post_serp_bing_single_response()
         )
       end)
 
       assert {:ok, resp} =
-               Serp.task_post(%{
+               BingOrganic.task_post(%{
                  keyword: "Schrauben",
                  language_code: "en",
                  location_name: "San Francisco,California,United States",
-                 se_domain: "google.com"
+                 se_domain: "bing.com"
                })
 
       assert %{"tasks" => tasks, "tasks_count" => 1} = resp
@@ -61,7 +61,7 @@ defmodule DataForSeo.Api.SerpTest do
     test "it makes task_post POST request with params", %{bypass: bypass} do
       Bypass.expect(bypass, fn conn ->
         assert "POST" = conn.method
-        assert "/v3/serp/google/organic/task_post" = conn.request_path
+        assert "/v3/serp/bing/organic/task_post" = conn.request_path
         assert Enum.member?(conn.req_headers, {"content-type", "application/json"})
 
         {:ok, body, _} = Plug.Conn.read_body(conn)
@@ -73,13 +73,13 @@ defmodule DataForSeo.Api.SerpTest do
                 keyword: "Schrauben",
                 language_code: "en",
                 location_name: "San Francisco,California,United States",
-                se_domain: "google.com"
+                se_domain: "bing.com"
               },
               %{
                 keyword: "Blumen",
                 language_code: "en",
                 location_name: "San Francisco,California,United States",
-                se_domain: "google.com"
+                se_domain: "bing.com"
               }
             ])
         )
@@ -87,23 +87,23 @@ defmodule DataForSeo.Api.SerpTest do
         Plug.Conn.resp(
           conn,
           200,
-          task_post_serp_google_list_response()
+          task_post_serp_bing_list_response()
         )
       end)
 
       assert {:ok, resp} =
-               Serp.task_post([
+               BingOrganic.task_post([
                  %{
                    keyword: "Schrauben",
                    language_code: "en",
                    location_name: "San Francisco,California,United States",
-                   se_domain: "google.com"
+                   se_domain: "bing.com"
                  },
                  %{
                    keyword: "Blumen",
                    language_code: "en",
                    location_name: "San Francisco,California,United States",
-                   se_domain: "google.com"
+                   se_domain: "bing.com"
                  }
                ])
 
@@ -122,16 +122,16 @@ defmodule DataForSeo.Api.SerpTest do
     test "it returns a list of completed tasks ids", %{bypass: bypass} do
       Bypass.expect(bypass, fn conn ->
         assert "GET" = conn.method
-        assert "/v3/serp/google/organic/tasks_ready" = conn.request_path
+        assert "/v3/serp/bing/organic/tasks_ready" = conn.request_path
 
         Plug.Conn.resp(
           conn,
           200,
-          tasks_ready_serp_google_response()
+          tasks_ready_serp_bing_response()
         )
       end)
 
-      assert {:ok, %{"tasks" => [%{"result" => results}]}} = Serp.tasks_ready()
+      assert {:ok, %{"tasks" => [%{"result" => results}]}} = BingOrganic.tasks_ready()
 
       task_ids = Enum.map(results, & &1["id"])
 
@@ -145,17 +145,17 @@ defmodule DataForSeo.Api.SerpTest do
       Bypass.expect(bypass, fn conn ->
         assert "GET" = conn.method
 
-        assert "/v3/serp/google/organic/task_get/regular/03101638-9334-0066-0000-44b65a6119fb" =
+        assert "/v3/serp/bing/organic/task_get/regular/03101638-9334-0066-0000-44b65a6119fb" =
                  conn.request_path
 
         Plug.Conn.resp(
           conn,
           200,
-          task_result_serp_google_regular_response()
+          task_result_serp_bing_regular_response()
         )
       end)
 
-      resp = Serp.task_get("03101638-9334-0066-0000-44b65a6119fb")
+      resp = BingOrganic.task_get("03101638-9334-0066-0000-44b65a6119fb")
 
       assert {:ok, response} = resp
       task = response["tasks"] |> hd()

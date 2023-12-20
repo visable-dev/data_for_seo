@@ -134,19 +134,23 @@ defmodule DataForSeo.Client do
 
   defp execute_request(request, opts) do
     timeouts = timeout_options(opts)
-
-    Finch.request(request, ApiFinch, timeouts)
+    config = Config.get_tuples() |> verify_config()
+    finch_name = opts[:finch_name] || config[:finch_name] || ApiFinch
+    Finch.request(request, finch_name, timeouts)
   end
 
   defp timeout_options(opts) do
     config = Config.get_tuples() |> verify_config()
 
-    receive_timeout = opts[:receive_timeout] || config[:receive_timeout] |> String.to_integer()
-    pool_timeout = opts[:pool_timeout] || config[:pool_timeout] |> String.to_integer()
-
-    Keyword.new(
-      pool_timeout: pool_timeout,
-      receive_timeout: receive_timeout
-    )
+    [:receive_timeout, :pool_timeout]
+    |> Enum.reduce(opts, fn key, acc ->
+      case opts[key] || config[key] do
+        nil -> acc
+        value -> Keyword.put(acc, key, to_integer(value))
+      end
+    end)
   end
+
+  defp to_integer(value) when is_binary(value), do: String.to_integer(value)
+  defp to_integer(value), do: value
 end

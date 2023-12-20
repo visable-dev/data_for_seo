@@ -1,0 +1,57 @@
+{
+  "version": "3.20191128",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.1927 sec.",
+  "cost": 0,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "11211342-0696-0153-0000-12436ded1ab2",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.0892 sec.",
+      "cost": 0,
+      "result_count": 3,
+      "path": [
+        "v3",
+        "keywords_data",
+        "google",
+        "explore",
+        "tasks_ready"
+      ],
+      "data": {
+        "api": "keywords_data",
+        "function": "explore",
+        "se": "google"
+      },
+      "result": [
+        {
+          "id": "10311535-0696-0093-0000-8fe3770f079b",
+          "se": "google",
+          "function": "explore",
+          "date_posted": "2019-10-31 11:35:04 +00:00",
+          "tag": "tag1",
+          "endpoint": "/v3/keywords_data/google_trends/explore/task_get/10311535-0696-0093-0000-8fe3770f079b"
+        },
+        {
+          "id": "11111403-0696-0110-0000-c69794ecf661",
+          "se": "google",
+          "function": "explore",
+          "date_posted": "2019-11-11 10:03:59 +00:00",
+          "tag": "tag2",
+          "endpoint": "/v3/keywords_data/google_trends/explore/task_get/11111403-0696-0110-0000-c69794ecf661"
+        },
+        {
+          "id": "11201044-0696-0110-0000-9f560a19543e",
+          "se": "google",
+          "function": "explore",
+          "date_posted": "2019-11-20 06:44:26 +00:00",
+          "tag": "tag3",
+          "endpoint": "/v3/keywords_data/google_trends/explore/task_get/11201044-0696-0110-0000-9f560a19543e"
+        }
+      ]
+    }
+  ]
+}

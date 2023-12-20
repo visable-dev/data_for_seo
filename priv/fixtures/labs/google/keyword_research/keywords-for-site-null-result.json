@@ -1,0 +1,46 @@
+{
+  "version": "0.1.20221214",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "2.3689 sec.",
+  "cost": 0.0103,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "03231831-1535-0398-0000-86e0a30305cb",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "2.3189 sec.",
+      "cost": 0.0103,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "google",
+        "keywords_for_site",
+        "live"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "keywords_for_site",
+        "se_type": "google",
+        "target": "apple.com",
+        "language_code": "en",
+        "location_code": 2840,
+        "include_serp_info": true,
+        "include_subdomains": true,
+        "filters": [
+          "serp_info.se_results_count",
+          ">",
+          0
+        ],
+        "order_by": [
+          "keyword_info.search_volume,desc"
+        ],
+        "limit": 3
+      },
+      "result": null
+    }
+  ]
+}

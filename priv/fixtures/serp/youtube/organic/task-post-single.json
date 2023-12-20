@@ -1,0 +1,38 @@
+{
+  "version": "0.1.20200129",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.0818 sec.",
+  "cost": 0.0045,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "01291721-1535-0066-0000-8f0635c0dc89",
+      "status_code": 20100,
+      "status_message": "Task Created.",
+      "time": "0.0038 sec.",
+      "cost": 0.0015,
+      "result_count": 0,
+      "path": [
+        "v3",
+        "serp",
+        "youtube",
+        "organic",
+        "task_post"
+      ],
+      "data": {
+        "api": "serp",
+        "function": "task_post",
+        "se": "youtube",
+        "se_type": "organic",
+        "language_code": "en",
+        "location_code": 2840,
+        "keyword": "Schrauben",
+        "device": "desktop",
+        "os": "windows"
+      },
+      "result": null
+    }
+  ]
+}

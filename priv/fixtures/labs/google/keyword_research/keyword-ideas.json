@@ -1,0 +1,445 @@
+{
+  "version": "0.1.20221214",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "time": "0.4790 sec.",
+  "cost": 0.0103,
+  "tasks_count": 1,
+  "tasks_error": 0,
+  "tasks": [
+    {
+      "id": "03231838-1535-0400-0000-21ff7a0ecead",
+      "status_code": 20000,
+      "status_message": "Ok.",
+      "time": "0.4413 sec.",
+      "cost": 0.0103,
+      "result_count": 1,
+      "path": [
+        "v3",
+        "dataforseo_labs",
+        "google",
+        "keyword_ideas",
+        "live"
+      ],
+      "data": {
+        "api": "dataforseo_labs",
+        "function": "keyword_ideas",
+        "se_type": "google",
+        "keywords": [
+          "phone",
+          "watch"
+        ],
+        "location_code": 2840,
+        "language_code": "en",
+        "include_serp_info": true,
+        "limit": 3
+      },
+      "result": [
+        {
+          "se_type": "google",
+          "seed_keywords": [
+            "phone",
+            "watch"
+          ],
+          "location_code": 2840,
+          "language_code": "en",
+          "total_count": 2321099,
+          "items_count": 3,
+          "offset": 0,
+          "offset_token": "eyJDdXJyZW50T2Zmc2V0IjozLCJSZXF1ZXN0RGF0YSI6eyJrZXl3b3JkcyI6WyJwaG9uZSIsIndhdGNoIl0sImxvY2F0aW9uIjoyODQwLCJsYW5ndWFnZSI6ImVuIiwiY2xvc2VseV92YXJpYW50cyI6ZmFsc2UsIm5ld2VzdCI6ZmFsc2UsImV4dGVuZGVkIjpmYWxzZSwibG9hZF9zZXJwX2luZm8iOnRydWUsImF1dG9jb3JyZWN0Ijp0cnVlLCJJc09sZCI6ZmFsc2UsInNlYXJjaF9hZnRlcl90b2tlbiI6bnVsbCwiaWdub3JlX3N5bm9ueW1zIjpmYWxzZSwic2VhcmNoX2VuZ2luZSI6Imdvb2dsZSIsIm9yZGVyX2J5Ijp7Im9yZGVyX2ZpZWxkIjoiX3Njb3JlIiwib3JkZXJfdHlwZSI6IkRlc2MiLCJuZXh0IjpudWxsfSwibGltaXQiOjMsIm9mZnNldCI6MCwiYWlkIjoxNTM1fSwiUmF3UXVlcnkiOm51bGwsIlNlYXJjaEFmdGVyRGF0YSI6WzI1LjE3MzE4MiwiMDA4ZGEyMWMtNGQxZi03M2YzLTEwMGYtMzA5YjFkMjkxMjBmIl19",
+          "items": [
+            {
+              "se_type": "google",
+              "keyword": "refer to our telephone conversation",
+              "location_code": 2840,
+              "language_code": "en",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2023-03-22 16:20:58 +00:00",
+                "competition": null,
+                "competition_level": "LOW",
+                "cpc": null,
+                "search_volume": 10,
+                "low_top_of_page_bid": null,
+                "high_top_of_page_bid": null,
+                "categories": [
+                  10007,
+                  10878,
+                  12171
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2023,
+                    "month": 2,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2023,
+                    "month": 1,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 12,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 11,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2022,
+                    "month": 10,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2022,
+                    "month": 9,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2022,
+                    "month": 8,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2022,
+                    "month": 7,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2022,
+                    "month": 6,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 5,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 4,
+                    "search_volume": 10
+                  },
+                  {
+                    "year": 2022,
+                    "month": 3,
+                    "search_volume": 10
+                  }
+                ]
+              },
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": null,
+                "detected_language": "en",
+                "is_another_language": false
+              },
+              "impressions_info": {
+                "se_type": "google",
+                "last_updated_time": "2022-04-22 02:43:34 +00:00",
+                "bid": 999,
+                "match_type": "exact",
+                "ad_position_min": null,
+                "ad_position_max": null,
+                "ad_position_average": null,
+                "cpc_min": null,
+                "cpc_max": null,
+                "cpc_average": null,
+                "daily_impressions_min": null,
+                "daily_impressions_max": null,
+                "daily_impressions_average": null,
+                "daily_clicks_min": null,
+                "daily_clicks_max": null,
+                "daily_clicks_average": null,
+                "daily_cost_min": null,
+                "daily_cost_max": null,
+                "daily_cost_average": null
+              },
+              "serp_info": null,
+              "avg_backlinks_info": null,
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "transactional",
+                "foreign_intent": [
+                  "commercial"
+                ],
+                "last_updated_time": "2023-03-01 16:55:11 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "telephone in japan",
+              "location_code": 2840,
+              "language_code": "en",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2023-03-21 10:09:17 +00:00",
+                "competition": 0.07,
+                "competition_level": "LOW",
+                "cpc": null,
+                "search_volume": 210,
+                "low_top_of_page_bid": null,
+                "high_top_of_page_bid": null,
+                "categories": [
+                  10007,
+                  10878,
+                  12171
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2023,
+                    "month": 2,
+                    "search_volume": 210
+                  },
+                  {
+                    "year": 2023,
+                    "month": 1,
+                    "search_volume": 260
+                  },
+                  {
+                    "year": 2022,
+                    "month": 12,
+                    "search_volume": 210
+                  },
+                  {
+                    "year": 2022,
+                    "month": 11,
+                    "search_volume": 210
+                  },
+                  {
+                    "year": 2022,
+                    "month": 10,
+                    "search_volume": 260
+                  },
+                  {
+                    "year": 2022,
+                    "month": 9,
+                    "search_volume": 260
+                  },
+                  {
+                    "year": 2022,
+                    "month": 8,
+                    "search_volume": 260
+                  },
+                  {
+                    "year": 2022,
+                    "month": 7,
+                    "search_volume": 170
+                  },
+                  {
+                    "year": 2022,
+                    "month": 6,
+                    "search_volume": 210
+                  },
+                  {
+                    "year": 2022,
+                    "month": 5,
+                    "search_volume": 210
+                  },
+                  {
+                    "year": 2022,
+                    "month": 4,
+                    "search_volume": 210
+                  },
+                  {
+                    "year": 2022,
+                    "month": 3,
+                    "search_volume": 210
+                  }
+                ]
+              },
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": 48,
+                "detected_language": "en",
+                "is_another_language": false
+              },
+              "impressions_info": {
+                "se_type": "google",
+                "last_updated_time": "2022-03-26 19:32:21 +00:00",
+                "bid": 999,
+                "match_type": "exact",
+                "ad_position_min": null,
+                "ad_position_max": null,
+                "ad_position_average": null,
+                "cpc_min": null,
+                "cpc_max": null,
+                "cpc_average": null,
+                "daily_impressions_min": null,
+                "daily_impressions_max": null,
+                "daily_impressions_average": null,
+                "daily_clicks_min": null,
+                "daily_clicks_max": null,
+                "daily_clicks_average": null,
+                "daily_cost_min": null,
+                "daily_cost_max": null,
+                "daily_cost_average": null
+              },
+              "serp_info": {
+                "se_type": "google",
+                "check_url": "https://www.google.com/search?q=telephone%20in%20japan&num=100&hl=en&gl=US&gws_rd=cr&ie=UTF-8&oe=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+                "serp_item_types": [
+                  "featured_snippet",
+                  "people_also_ask",
+                  "organic",
+                  "images",
+                  "people_also_search",
+                  "related_searches"
+                ],
+                "se_results_count": 332000000,
+                "last_updated_time": "2023-03-15 22:05:45 +00:00",
+                "previous_updated_time": "2023-02-09 15:33:06 +00:00"
+              },
+              "avg_backlinks_info": {
+                "se_type": "google",
+                "backlinks": 29.3,
+                "dofollow": 14.6,
+                "referring_pages": 26,
+                "referring_domains": 17,
+                "referring_main_domains": 15.4,
+                "rank": 103.5,
+                "main_domain_rank": 478.1,
+                "last_updated_time": "2023-03-15 22:05:52 +00:00"
+              },
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "commercial",
+                "foreign_intent": [
+                  "informational",
+                  "transactional"
+                ],
+                "last_updated_time": "2023-03-02 18:35:26 +00:00"
+              }
+            },
+            {
+              "se_type": "google",
+              "keyword": "telefon qiymetleri 2018",
+              "location_code": 2840,
+              "language_code": "en",
+              "keyword_info": {
+                "se_type": "google",
+                "last_updated_time": "2023-03-22 06:14:05 +00:00",
+                "competition": null,
+                "competition_level": null,
+                "cpc": null,
+                "search_volume": 0,
+                "low_top_of_page_bid": null,
+                "high_top_of_page_bid": null,
+                "categories": [
+                  10007,
+                  10878,
+                  12171
+                ],
+                "monthly_searches": [
+                  {
+                    "year": 2023,
+                    "month": 2,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2023,
+                    "month": 1,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 12,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 11,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 10,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 9,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 8,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 7,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 6,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 5,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 4,
+                    "search_volume": 0
+                  },
+                  {
+                    "year": 2022,
+                    "month": 3,
+                    "search_volume": 0
+                  }
+                ]
+              },
+              "keyword_properties": {
+                "se_type": "google",
+                "core_keyword": null,
+                "synonym_clustering_algorithm": "text_processing",
+                "keyword_difficulty": null,
+                "detected_language": "hu",
+                "is_another_language": true
+              },
+              "impressions_info": {
+                "se_type": "google",
+                "last_updated_time": "2022-03-23 06:47:01 +00:00",
+                "bid": 999,
+                "match_type": "exact",
+                "ad_position_min": null,
+                "ad_position_max": null,
+                "ad_position_average": null,
+                "cpc_min": null,
+                "cpc_max": null,
+                "cpc_average": null,
+                "daily_impressions_min": null,
+                "daily_impressions_max": null,
+                "daily_impressions_average": null,
+                "daily_clicks_min": null,
+                "daily_clicks_max": null,
+                "daily_clicks_average": null,
+                "daily_cost_min": null,
+                "daily_cost_max": null,
+                "daily_cost_average": null
+              },
+              "serp_info": null,
+              "avg_backlinks_info": null,
+              "search_intent_info": {
+                "se_type": "google",
+                "main_intent": "transactional",
+                "foreign_intent": null,
+                "last_updated_time": "2023-03-02 18:33:29 +00:00"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
