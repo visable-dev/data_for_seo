@@ -18,8 +18,7 @@ defmodule DataForSeo.API.SERP.Youtube.Organic do
   end
 
   @doc "Get single task"
-  def task_get(task_id, opts \\ []) do
-    {type, _opts} = Keyword.pop(opts, :type, :regular)
-    get_one_task("/v3/serp/youtube/organic/task_get/#{type}/#{task_id}")
+  def task_get(task_id, _opts \\ []) do
+    get_one_task("/v3/serp/youtube/organic/task_get/advanced/#{task_id}")
   end
 end

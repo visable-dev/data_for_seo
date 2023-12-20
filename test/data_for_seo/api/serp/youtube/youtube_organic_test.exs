@@ -145,13 +145,13 @@ defmodule DataForSeo.Api.Youtube.OrganicTest do
       Bypass.expect(bypass, fn conn ->
         assert "GET" = conn.method
 
-        assert "/v3/serp/youtube/organic/task_get/regular/03101638-9334-0066-0000-44b65a6119fb" =
+        assert "/v3/serp/youtube/organic/task_get/advanced/03101638-9334-0066-0000-44b65a6119fb" =
                  conn.request_path
 
         Plug.Conn.resp(
           conn,
           200,
-          task_result_serp_youtube_regular_response()
+          task_result_serp_youtube_advanced_response()
         )
       end)
 

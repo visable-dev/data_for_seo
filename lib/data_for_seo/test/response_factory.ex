@@ -44,8 +44,8 @@ defmodule DataForSeo.Test.ResponseFactory do
     get_raw_fixture(["serp", "youtube", "organic", "tasks-ready"])
   end
 
-  def task_result_serp_youtube_regular_response do
-    get_raw_fixture(["serp", "youtube", "organic", "task-get-regular"])
+  def task_result_serp_youtube_advanced_response do
+    get_raw_fixture(["serp", "youtube", "organic", "task-get-advanced"])
   end
 
   def task_get_serp_google_location_by_country(code) do
