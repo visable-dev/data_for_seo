@@ -16,6 +16,38 @@ defmodule DataForSeo.Test.ResponseFactory do
     get_raw_fixture(["serp", "google", "organic", "task-get-regular"])
   end
 
+  def task_post_serp_bing_single_response do
+    get_raw_fixture(["serp", "bing", "organic", "task-post-single"])
+  end
+
+  def task_post_serp_bing_list_response do
+    get_raw_fixture(["serp", "bing", "organic", "task-post"])
+  end
+
+  def tasks_ready_serp_bing_response do
+    get_raw_fixture(["serp", "bing", "organic", "tasks-ready"])
+  end
+
+  def task_result_serp_bing_regular_response do
+    get_raw_fixture(["serp", "bing", "organic", "task-get-regular"])
+  end
+
+  def task_post_serp_youtube_single_response do
+    get_raw_fixture(["serp", "youtube", "organic", "task-post-single"])
+  end
+
+  def task_post_serp_youtube_list_response do
+    get_raw_fixture(["serp", "youtube", "organic", "task-post"])
+  end
+
+  def tasks_ready_serp_youtube_response do
+    get_raw_fixture(["serp", "youtube", "organic", "tasks-ready"])
+  end
+
+  def task_result_serp_youtube_regular_response do
+    get_raw_fixture(["serp", "youtube", "organic", "task-get-regular"])
+  end
+
   def task_get_serp_google_location_by_country(code) do
     get_raw_fixture(["serp", "google", "locations-#{code}"])
   end
